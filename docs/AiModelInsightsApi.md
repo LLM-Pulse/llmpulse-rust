@@ -25,12 +25,12 @@ Name | Type | Description  | Required | Notes
 **project_id** | **i32** | Project ID | [required] |
 **range** | Option<**i32**> | Number of days to look back (alternative to from/to) |  |
 **from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
-**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
+**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
 **granularity** | Option<**String**> |  |  |
-**collection_id** | Option<**i32**> |  |  |
-**country_code** | Option<**String**> | ISO country code (e.g. US, GB, DE) |  |
-**language_code** | Option<**String**> | ISO language code (e.g. en, es, de) |  |
-**prompt_type** | Option<**String**> | Filter by prompt type (search intent) |  |
+**collection_id** | Option<[**GetTimeseriesCollectionIdParameter**](GetTimeseriesCollectionIdParameter.md)> | One collection/tag ID or a comma-separated list of IDs |  |
+**country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
+**language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |
+**prompt_type** | Option<**String**> | One prompt type or a comma-separated list: informational, navigational, commercial, transactional |  |
 **brand_kind** | Option<**String**> | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. |  |
 **competitors** | Option<**String**> | Comma-separated competitor IDs (unknown IDs return ERR_INVALID_PARAM) |  |
 
@@ -63,12 +63,12 @@ Name | Type | Description  | Required | Notes
 **project_id** | **i32** | Project ID | [required] |
 **range** | Option<**i32**> | Number of days to look back (alternative to from/to) |  |
 **from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
-**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
+**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
 **granularity** | Option<**String**> |  |  |
-**collection_id** | Option<**i32**> |  |  |
-**country_code** | Option<**String**> | ISO country code (e.g. US, GB, DE) |  |
-**language_code** | Option<**String**> | ISO language code (e.g. en, es, de) |  |
-**prompt_type** | Option<**String**> | Filter by prompt type (search intent) |  |
+**collection_id** | Option<[**GetTimeseriesCollectionIdParameter**](GetTimeseriesCollectionIdParameter.md)> | One collection/tag ID or a comma-separated list of IDs |  |
+**country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
+**language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |
+**prompt_type** | Option<**String**> | One prompt type or a comma-separated list: informational, navigational, commercial, transactional |  |
 **brand_kind** | Option<**String**> | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. |  |
 **model** | Option<**String**> | Filter by AI model. Models the API key's user has not enabled are silently dropped. |  |
 **brand1** | Option<**i32**> | Competitor ID for the first comparison brand (omit to compare project brand) |  |
@@ -103,12 +103,12 @@ Name | Type | Description  | Required | Notes
 **project_id** | **i32** | Project ID | [required] |
 **range** | Option<**i32**> | Number of days to look back (alternative to from/to) |  |
 **from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
-**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
+**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
 **granularity** | Option<**String**> |  |  |
-**collection_id** | Option<**i32**> |  |  |
-**country_code** | Option<**String**> | ISO country code (e.g. US, GB, DE) |  |
-**language_code** | Option<**String**> | ISO language code (e.g. en, es, de) |  |
-**prompt_type** | Option<**String**> | Filter by prompt type (search intent) |  |
+**collection_id** | Option<[**GetTimeseriesCollectionIdParameter**](GetTimeseriesCollectionIdParameter.md)> | One collection/tag ID or a comma-separated list of IDs |  |
+**country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
+**language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |
+**prompt_type** | Option<**String**> | One prompt type or a comma-separated list: informational, navigational, commercial, transactional |  |
 **brand_kind** | Option<**String**> | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. |  |
 **page** | Option<**u32**> |  |  |[default to 1]
 **per_page** | Option<**u32**> |  |  |[default to 20]

@@ -22,6 +22,8 @@ Name | Type | Description | Notes
 **estimated_time** | Option<**String**> |  | [optional]
 **created_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
 **processed_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
+**manually_edited_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> | When the content was last edited by hand; null while the output is as generated | [optional]
+**edited_by_user_id** | Option<**i32**> | User behind the last manual edit; null for an unedited task or an edit made from an embedded portal | [optional]
 **request_id** | Option<**String**> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

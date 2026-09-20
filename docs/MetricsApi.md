@@ -4,86 +4,12 @@ All URIs are relative to *https://api.llmpulse.ai/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_agent_traffic**](MetricsApi.md#get_agent_traffic) | **GET** /metrics/agent_traffic | AI bot crawler traffic (Scale+, Beta)
-[**get_ai_traffic**](MetricsApi.md#get_ai_traffic) | **GET** /metrics/ai_traffic | AI referral traffic (Scale+)
 [**get_prompt_summary**](MetricsApi.md#get_prompt_summary) | **GET** /metrics/prompt_summary | Per-prompt metrics summary
 [**get_share_of_voice**](MetricsApi.md#get_share_of_voice) | **GET** /metrics/sov | Share of Voice
 [**get_summary**](MetricsApi.md#get_summary) | **GET** /metrics/summary | Aggregated metrics summary
 [**get_timeseries**](MetricsApi.md#get_timeseries) | **GET** /metrics/timeseries | Time-series metrics
 [**get_top_sources**](MetricsApi.md#get_top_sources) | **GET** /metrics/top_sources | Top cited sources
 
-
-
-## get_agent_traffic
-
-> models::AgentTrafficResponse get_agent_traffic(project_id, range, from, to, bot, company, group_by, granularity)
-AI bot crawler traffic (Scale+, Beta)
-
-Aggregated AI bot traffic hitting the project's origin server (GPTBot, PerplexityBot, ClaudeBot, OAI-SearchBot, Google-Extended, etc.). Sourced from Cloudflare or CSV uploads. Requires the Scale plan; lower tiers receive ERR_PLAN_REQUIRED.
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**project_id** | **i32** | Project ID | [required] |
-**range** | Option<**i32**> | Number of days to look back (alternative to from/to) |  |
-**from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
-**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
-**bot** | Option<**String**> | Filter by bot slug (e.g. gptbot, claudebot, perplexitybot) |  |
-**company** | Option<**String**> | Filter by company (e.g. openai, anthropic, google) |  |
-**group_by** | Option<**String**> |  |  |[default to bot]
-**granularity** | Option<**String**> |  |  |
-
-### Return type
-
-[**models::AgentTrafficResponse**](AgentTrafficResponse.md)
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
-## get_ai_traffic
-
-> get_ai_traffic(project_id, range, from, to, source, granularity)
-AI referral traffic (Scale+)
-
-AI referral traffic for a project: human visits arriving from AI assistants (ChatGPT, Perplexity, Gemini, Claude, etc.), measured from the connected web analytics provider (Google Analytics 4, Adobe Analytics, PostHog, Plausible or Piano). Returns per-source users, sessions and conversions with totals and a conversion rate. Requires a connected provider and the Scale plan; otherwise returns ERR_AI_TRAFFIC_NOT_CONNECTED or ERR_PLAN_REQUIRED.
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**project_id** | **i32** | Project ID | [required] |
-**range** | Option<**i32**> | Number of days to look back (alternative to from/to) |  |
-**from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
-**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
-**source** | Option<**String**> | Filter by a single AI source slug (e.g. chatgpt, perplexity, gemini, claude) |  |
-**granularity** | Option<**String**> |  |  |
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## get_prompt_summary
@@ -101,14 +27,14 @@ Name | Type | Description  | Required | Notes
 **project_id** | **i32** | Project ID | [required] |
 **range** | Option<**i32**> | Number of days to look back (alternative to from/to) |  |
 **from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
-**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
+**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
 **breakdown** | Option<**String**> | Add per-(prompt, model) rows to the output |  |
 **model** | Option<**String**> | Filter by AI model. Models the API key's user has not enabled are silently dropped. |  |
-**collection_id** | Option<**i32**> |  |  |
-**country_code** | Option<**String**> | ISO country code (e.g. US, GB, DE) |  |
-**language_code** | Option<**String**> | ISO language code (e.g. en, es, de) |  |
+**collection_id** | Option<[**GetTimeseriesCollectionIdParameter**](GetTimeseriesCollectionIdParameter.md)> | One collection/tag ID or a comma-separated list of IDs |  |
+**country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
+**language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |
 **prompt** | Option<**i32**> | Filter by prompt ID |  |
-**prompt_type** | Option<**String**> | Filter by prompt type (search intent) |  |
+**prompt_type** | Option<**String**> | One prompt type or a comma-separated list: informational, navigational, commercial, transactional |  |
 **brand_kind** | Option<**String**> | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. |  |
 **sort** | Option<**String**> |  |  |[default to responses]
 **sort_dir** | Option<**String**> |  |  |[default to desc]
@@ -147,13 +73,13 @@ Name | Type | Description  | Required | Notes
 **project_id** | **i32** | Project ID | [required] |
 **range** | Option<**i32**> | Number of days to look back (alternative to from/to) |  |
 **from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
-**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
+**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
 **granularity** | Option<**String**> |  |  |
 **competitors** | Option<**String**> | Comma-separated competitor IDs (unknown IDs return ERR_INVALID_PARAM) |  |
 **model** | Option<**String**> | Filter by AI model. Models the API key's user has not enabled are silently dropped. |  |
-**collection_id** | Option<**i32**> |  |  |
+**collection_id** | Option<[**GetTimeseriesCollectionIdParameter**](GetTimeseriesCollectionIdParameter.md)> | One collection/tag ID or a comma-separated list of IDs |  |
 **prompt** | Option<**i32**> | Filter by prompt ID |  |
-**prompt_type** | Option<**String**> | Filter by prompt type (search intent) |  |
+**prompt_type** | Option<**String**> | One prompt type or a comma-separated list: informational, navigational, commercial, transactional |  |
 **brand_kind** | Option<**String**> | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. |  |
 **output** | Option<**String**> | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. |  |
 **view** | Option<**String**> | Which Share of Voice projection to flatten. Only valid together with 'output'. 'over_time' (default) is one row per date and actor, 'current' the ranked snapshot, 'breakdown' the Top 4 plus Others. |  |[default to over_time]
@@ -191,12 +117,12 @@ Name | Type | Description  | Required | Notes
 **granularity** | Option<**String**> |  |  |
 **range** | Option<**i32**> | Number of days to look back (alternative to from/to) |  |
 **from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
-**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
+**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
 **competitors** | Option<**String**> | Comma-separated competitor IDs (unknown IDs return ERR_INVALID_PARAM) |  |
 **model** | Option<**String**> | Filter by AI model. Models the API key's user has not enabled are silently dropped. |  |
-**collection_id** | Option<**i32**> |  |  |
+**collection_id** | Option<[**GetTimeseriesCollectionIdParameter**](GetTimeseriesCollectionIdParameter.md)> | One collection/tag ID or a comma-separated list of IDs |  |
 **prompt** | Option<**i32**> | Filter by prompt ID |  |
-**prompt_type** | Option<**String**> | Filter by prompt type (search intent) |  |
+**prompt_type** | Option<**String**> | One prompt type or a comma-separated list: informational, navigational, commercial, transactional |  |
 **brand_kind** | Option<**String**> | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. |  |
 **output** | Option<**String**> | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. |  |
 
@@ -233,14 +159,14 @@ Name | Type | Description  | Required | Notes
 **granularity** | Option<**String**> |  |  |
 **range** | Option<**i32**> | Number of days to look back (alternative to from/to) |  |
 **from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
-**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
+**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
 **competitors** | Option<**String**> | Comma-separated competitor IDs (unknown IDs return ERR_INVALID_PARAM) |  |
 **model** | Option<**String**> | Filter by AI model. Models the API key's user has not enabled are silently dropped. |  |
-**collection_id** | Option<**i32**> |  |  |
-**country_code** | Option<**String**> | ISO country code (e.g. US, GB, DE) |  |
-**language_code** | Option<**String**> | ISO language code (e.g. en, es, de) |  |
+**collection_id** | Option<[**GetTimeseriesCollectionIdParameter**](GetTimeseriesCollectionIdParameter.md)> | One collection/tag ID or a comma-separated list of IDs |  |
+**country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
+**language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |
 **prompt** | Option<**i32**> | Filter by prompt ID |  |
-**prompt_type** | Option<**String**> | Filter by prompt type (search intent) |  |
+**prompt_type** | Option<**String**> | One prompt type or a comma-separated list: informational, navigational, commercial, transactional |  |
 **brand_kind** | Option<**String**> | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. |  |
 **include_project** | Option<**bool**> |  |  |[default to true]
 **output** | Option<**String**> | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. |  |
@@ -276,13 +202,13 @@ Name | Type | Description  | Required | Notes
 **project_id** | **i32** | Project ID | [required] |
 **range** | Option<**i32**> | Number of days to look back (alternative to from/to) |  |
 **from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
-**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
+**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
 **model** | Option<**String**> | Filter by AI model. Models the API key's user has not enabled are silently dropped. |  |
-**collection_id** | Option<**i32**> |  |  |
-**country_code** | Option<**String**> | ISO country code (e.g. US, GB, DE) |  |
-**language_code** | Option<**String**> | ISO language code (e.g. en, es, de) |  |
+**collection_id** | Option<[**GetTimeseriesCollectionIdParameter**](GetTimeseriesCollectionIdParameter.md)> | One collection/tag ID or a comma-separated list of IDs |  |
+**country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
+**language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |
 **prompt** | Option<**i32**> | Filter by prompt ID |  |
-**prompt_type** | Option<**String**> | Filter by prompt type (search intent) |  |
+**prompt_type** | Option<**String**> | One prompt type or a comma-separated list: informational, navigational, commercial, transactional |  |
 **brand_kind** | Option<**String**> | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. |  |
 **sort** | Option<**String**> |  |  |[default to total_responses]
 **query** | Option<**String**> | Filter domains by case-insensitive partial match |  |

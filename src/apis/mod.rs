@@ -111,22 +111,27 @@ impl From<&str> for ContentType {
     }
 }
 
+pub mod ai_agent_traffic_api;
 pub mod ai_model_insights_api;
+pub mod account_api;
 pub mod annotations_api;
 pub mod answers_api;
-pub mod citation_intelligence_api;
-pub mod collections_api;
+pub mod collections_tags_api;
 pub mod competitors_api;
-pub mod dimensions_api;
 pub mod geo_writer_api;
 pub mod health_api;
+pub mod mentions_citations_api;
 pub mod metrics_api;
+pub mod owned_media_communities_api;
 pub mod projects_api;
 pub mod prompts_api;
 pub mod recommendations_api;
-pub mod reports_api;
+pub mod reputation_studies_api;
 pub mod search_console_api;
 pub mod sentiments_api;
+pub mod shopping_ads_api;
+pub mod sources_citation_intelligence_api;
+pub mod technical_geo_reports_api;
 pub mod webhooks_api;
 
 pub mod configuration;

@@ -1,6 +1,6 @@
 [package]
 name = "llmpulse"
-version = "1.22.0"
+version = "1.46.0"
 authors = ["info@llmpulse.ai"]
 description = "REST API client for LLM Pulse AI visibility analytics."
 license = "MIT"

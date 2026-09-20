@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | Option<**i32**> |  | [optional]
 **project_id** | Option<**i32**> |  | [optional]
-**event_type** | Option<**EventType**> |  (enum: mention.created, competitor_mention.created, citation.created, prompt_execution.completed, sentiment.negative_detected, recommendation.completed, intelligence_task.completed) | [optional]
+**event_type** | Option<**EventType**> |  (enum: mention.created, competitor_mention.created, citation.created, prompt_execution.completed, sentiment.negative_detected, recommendation.completed, intelligence_task.completed, intelligence_task.updated) | [optional]
 **target_url** | Option<**String**> |  | [optional]
 **disabled** | Option<**bool**> |  | [optional]
 **failure_count** | Option<**i32**> |  | [optional]
