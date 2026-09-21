@@ -27,7 +27,7 @@ Name | Type | Description  | Required | Notes
 **from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
 **to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
 **granularity** | Option<**String**> |  |  |
-**collection_id** | Option<[**GetTimeseriesCollectionIdParameter**](GetTimeseriesCollectionIdParameter.md)> | One collection/tag ID or a comma-separated list of IDs |  |
+**collection_id** | Option<**String**> | One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize. |  |
 **country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
 **language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |
 **prompt_type** | Option<**String**> | One prompt type or a comma-separated list: informational, navigational, commercial, transactional |  |
@@ -65,7 +65,7 @@ Name | Type | Description  | Required | Notes
 **from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
 **to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
 **granularity** | Option<**String**> |  |  |
-**collection_id** | Option<[**GetTimeseriesCollectionIdParameter**](GetTimeseriesCollectionIdParameter.md)> | One collection/tag ID or a comma-separated list of IDs |  |
+**collection_id** | Option<**String**> | One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize. |  |
 **country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
 **language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |
 **prompt_type** | Option<**String**> | One prompt type or a comma-separated list: informational, navigational, commercial, transactional |  |
@@ -105,7 +105,7 @@ Name | Type | Description  | Required | Notes
 **from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
 **to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
 **granularity** | Option<**String**> |  |  |
-**collection_id** | Option<[**GetTimeseriesCollectionIdParameter**](GetTimeseriesCollectionIdParameter.md)> | One collection/tag ID or a comma-separated list of IDs |  |
+**collection_id** | Option<**String**> | One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize. |  |
 **country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
 **language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |
 **prompt_type** | Option<**String**> | One prompt type or a comma-separated list: informational, navigational, commercial, transactional |  |

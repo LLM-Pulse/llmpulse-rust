@@ -30,7 +30,7 @@ Name | Type | Description  | Required | Notes
 **direction** | Option<**String**> | Sort direction for view=advertisers. Defaults to desc, except avg_position and domain which default to asc. |  |
 **query** | Option<**String**> | Case-insensitive substring filter on the ad title, domain or snippet |  |
 **model** | Option<**String**> | Filter by AI model. Models the API key's user has not enabled are silently dropped. |  |
-**collection_id** | Option<[**GetTimeseriesCollectionIdParameter**](GetTimeseriesCollectionIdParameter.md)> | One collection/tag ID or a comma-separated list of IDs |  |
+**collection_id** | Option<**String**> | One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize. |  |
 **country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
 **language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |
 **prompt** | Option<**i32**> | Filter by prompt ID |  |
@@ -78,7 +78,7 @@ Name | Type | Description  | Required | Notes
 **direction** | Option<**String**> |  |  |[default to desc]
 **query** | Option<**String**> | Case-insensitive substring filter on the product title |  |
 **model** | Option<**String**> | Filter by AI model. Models the API key's user has not enabled are silently dropped. |  |
-**collection_id** | Option<[**GetTimeseriesCollectionIdParameter**](GetTimeseriesCollectionIdParameter.md)> | One collection/tag ID or a comma-separated list of IDs |  |
+**collection_id** | Option<**String**> | One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize. |  |
 **country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
 **language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |
 **prompt** | Option<**i32**> | Filter by prompt ID |  |

@@ -58,7 +58,7 @@ pub enum GetTopSourcesError {
 
 
 /// Paginated per-prompt aggregated metrics. Returns responses, mentions, citations, mention_rate, citation_rate, avg_mention_position and avg_position per prompt. Citations and citation rate include visible citations and background source references; avg_position uses visible citations only. Pass `breakdown=model` to split each prompt by model.
-pub async fn get_prompt_summary(configuration: &configuration::Configuration, project_id: i32, range: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, breakdown: Option<&str>, model: Option<&str>, collection_id: Option<models::GetTimeseriesCollectionIdParameter>, country_code: Option<&str>, language_code: Option<&str>, prompt: Option<i32>, prompt_type: Option<&str>, brand_kind: Option<&str>, sort: Option<&str>, sort_dir: Option<&str>, page: Option<u32>, per_page: Option<u32>, output: Option<&str>) -> Result<models::PromptSummaryResponse, Error<GetPromptSummaryError>> {
+pub async fn get_prompt_summary(configuration: &configuration::Configuration, project_id: i32, range: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, breakdown: Option<&str>, model: Option<&str>, collection_id: Option<&str>, country_code: Option<&str>, language_code: Option<&str>, prompt: Option<i32>, prompt_type: Option<&str>, brand_kind: Option<&str>, sort: Option<&str>, sort_dir: Option<&str>, page: Option<u32>, per_page: Option<u32>, output: Option<&str>) -> Result<models::PromptSummaryResponse, Error<GetPromptSummaryError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_project_id = project_id;
     let p_query_range = range;
@@ -98,7 +98,7 @@ pub async fn get_prompt_summary(configuration: &configuration::Configuration, pr
         req_builder = req_builder.query(&[("model", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_collection_id {
-        req_builder = req_builder.query(&[("collection_id", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("collection_id", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_country_code {
         req_builder = req_builder.query(&[("country_code", &param_value.to_string())]);
@@ -163,7 +163,7 @@ pub async fn get_prompt_summary(configuration: &configuration::Configuration, pr
 }
 
 /// Share of Voice breakdown comparing your project to competitors. Returns over_time, current snapshot, and a Top-4 + Others breakdown.
-pub async fn get_share_of_voice(configuration: &configuration::Configuration, project_id: i32, range: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, granularity: Option<&str>, competitors: Option<&str>, model: Option<&str>, collection_id: Option<models::GetTimeseriesCollectionIdParameter>, prompt: Option<i32>, prompt_type: Option<&str>, brand_kind: Option<&str>, output: Option<&str>, view: Option<&str>) -> Result<models::SovResponse, Error<GetShareOfVoiceError>> {
+pub async fn get_share_of_voice(configuration: &configuration::Configuration, project_id: i32, range: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, granularity: Option<&str>, competitors: Option<&str>, model: Option<&str>, collection_id: Option<&str>, prompt: Option<i32>, prompt_type: Option<&str>, brand_kind: Option<&str>, output: Option<&str>, view: Option<&str>) -> Result<models::SovResponse, Error<GetShareOfVoiceError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_project_id = project_id;
     let p_query_range = range;
@@ -202,7 +202,7 @@ pub async fn get_share_of_voice(configuration: &configuration::Configuration, pr
         req_builder = req_builder.query(&[("model", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_collection_id {
-        req_builder = req_builder.query(&[("collection_id", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("collection_id", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_prompt {
         req_builder = req_builder.query(&[("prompt", &param_value.to_string())]);
@@ -252,7 +252,7 @@ pub async fn get_share_of_voice(configuration: &configuration::Configuration, pr
 }
 
 /// Same as /metrics/timeseries but adds a `summary` block with total/min/max/last per metric per actor, plus a `position_distribution` block (Position 1, Position 2, Position 3+). Citations and citation rate include visible citations and background source references. Background references use position 0 and are excluded from avg_position and position distributions. `total` is a SUM for count metrics (mentions, citations, responses) and an AVERAGE across periods for rate/percentage and average metrics (visibility/mention_rate, citation_rate, ai_visibility_score, sentiment shares, avg_position, avg_mention_position, net_sentiment); rates are never summed. Each summary row carries an `aggregation` field (`sum` or `average`).
-pub async fn get_summary(configuration: &configuration::Configuration, project_id: i32, metrics: Option<&str>, granularity: Option<&str>, range: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, competitors: Option<&str>, model: Option<&str>, collection_id: Option<models::GetTimeseriesCollectionIdParameter>, prompt: Option<i32>, prompt_type: Option<&str>, brand_kind: Option<&str>, output: Option<&str>) -> Result<models::SummaryResponse, Error<GetSummaryError>> {
+pub async fn get_summary(configuration: &configuration::Configuration, project_id: i32, metrics: Option<&str>, granularity: Option<&str>, range: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, competitors: Option<&str>, model: Option<&str>, collection_id: Option<&str>, prompt: Option<i32>, prompt_type: Option<&str>, brand_kind: Option<&str>, output: Option<&str>) -> Result<models::SummaryResponse, Error<GetSummaryError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_project_id = project_id;
     let p_query_metrics = metrics;
@@ -294,7 +294,7 @@ pub async fn get_summary(configuration: &configuration::Configuration, project_i
         req_builder = req_builder.query(&[("model", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_collection_id {
-        req_builder = req_builder.query(&[("collection_id", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("collection_id", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_prompt {
         req_builder = req_builder.query(&[("prompt", &param_value.to_string())]);
@@ -341,7 +341,7 @@ pub async fn get_summary(configuration: &configuration::Configuration, project_i
 }
 
 /// Returns time-series data for one or more metrics, broken down by actor (project + competitors). Supports day/week/month granularity, with sticky carry-forward semantics for week/month aggregates.
-pub async fn get_timeseries(configuration: &configuration::Configuration, project_id: i32, metrics: Option<&str>, granularity: Option<&str>, range: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, competitors: Option<&str>, model: Option<&str>, collection_id: Option<models::GetTimeseriesCollectionIdParameter>, country_code: Option<&str>, language_code: Option<&str>, prompt: Option<i32>, prompt_type: Option<&str>, brand_kind: Option<&str>, include_project: Option<bool>, output: Option<&str>) -> Result<models::TimeseriesResponse, Error<GetTimeseriesError>> {
+pub async fn get_timeseries(configuration: &configuration::Configuration, project_id: i32, metrics: Option<&str>, granularity: Option<&str>, range: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, competitors: Option<&str>, model: Option<&str>, collection_id: Option<&str>, country_code: Option<&str>, language_code: Option<&str>, prompt: Option<i32>, prompt_type: Option<&str>, brand_kind: Option<&str>, include_project: Option<bool>, output: Option<&str>) -> Result<models::TimeseriesResponse, Error<GetTimeseriesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_project_id = project_id;
     let p_query_metrics = metrics;
@@ -386,7 +386,7 @@ pub async fn get_timeseries(configuration: &configuration::Configuration, projec
         req_builder = req_builder.query(&[("model", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_collection_id {
-        req_builder = req_builder.query(&[("collection_id", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("collection_id", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_country_code {
         req_builder = req_builder.query(&[("country_code", &param_value.to_string())]);
@@ -442,7 +442,7 @@ pub async fn get_timeseries(configuration: &configuration::Configuration, projec
 }
 
 /// Registrable domains most frequently cited in AI responses for the project, including visible citations and background source references. This endpoint remains a domain rollup when exact-subdomain matching is enabled. Results can be sorted by total responses, average mention rate, or average visibility.
-pub async fn get_top_sources(configuration: &configuration::Configuration, project_id: i32, range: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, model: Option<&str>, collection_id: Option<models::GetTimeseriesCollectionIdParameter>, country_code: Option<&str>, language_code: Option<&str>, prompt: Option<i32>, prompt_type: Option<&str>, brand_kind: Option<&str>, sort: Option<&str>, query: Option<&str>, page: Option<u32>, per_page: Option<u32>, output: Option<&str>) -> Result<models::TopSourcesResponse, Error<GetTopSourcesError>> {
+pub async fn get_top_sources(configuration: &configuration::Configuration, project_id: i32, range: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, model: Option<&str>, collection_id: Option<&str>, country_code: Option<&str>, language_code: Option<&str>, prompt: Option<i32>, prompt_type: Option<&str>, brand_kind: Option<&str>, sort: Option<&str>, query: Option<&str>, page: Option<u32>, per_page: Option<u32>, output: Option<&str>) -> Result<models::TopSourcesResponse, Error<GetTopSourcesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_project_id = project_id;
     let p_query_range = range;
@@ -478,7 +478,7 @@ pub async fn get_top_sources(configuration: &configuration::Configuration, proje
         req_builder = req_builder.query(&[("model", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_collection_id {
-        req_builder = req_builder.query(&[("collection_id", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("collection_id", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_country_code {
         req_builder = req_builder.query(&[("country_code", &param_value.to_string())]);

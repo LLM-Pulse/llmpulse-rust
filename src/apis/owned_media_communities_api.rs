@@ -33,7 +33,7 @@ pub enum ListRedditCitationsError {
 
 
 /// Which owned-media content AI answers cite, by platform. `provider` is required. Each row carries a `yours` flag so you can compare your own presence against everyone else cited on the same platform. view=own_citations returns the raw citations of the connected profile only and stays empty until a profile is connected. For Reddit use /dimensions/reddit. Requires the Growth plan or above.
-pub async fn list_owned_media(configuration: &configuration::Configuration, project_id: i32, provider: &str, page: Option<u32>, per_page: Option<u32>, view: Option<&str>, store: Option<&str>, owned: Option<bool>, model: Option<&str>, collection_id: Option<models::GetTimeseriesCollectionIdParameter>, country_code: Option<&str>, language_code: Option<&str>, brand_kind: Option<&str>, range: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, output: Option<&str>) -> Result<(), Error<ListOwnedMediaError>> {
+pub async fn list_owned_media(configuration: &configuration::Configuration, project_id: i32, provider: &str, page: Option<u32>, per_page: Option<u32>, view: Option<&str>, store: Option<&str>, owned: Option<bool>, model: Option<&str>, collection_id: Option<&str>, country_code: Option<&str>, language_code: Option<&str>, brand_kind: Option<&str>, range: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, output: Option<&str>) -> Result<(), Error<ListOwnedMediaError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_project_id = project_id;
     let p_query_provider = provider;
@@ -76,7 +76,7 @@ pub async fn list_owned_media(configuration: &configuration::Configuration, proj
         req_builder = req_builder.query(&[("model", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_collection_id {
-        req_builder = req_builder.query(&[("collection_id", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("collection_id", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_country_code {
         req_builder = req_builder.query(&[("country_code", &param_value.to_string())]);
@@ -121,7 +121,7 @@ pub async fn list_owned_media(configuration: &configuration::Configuration, proj
 }
 
 /// Which Reddit content AI answers cite for your tracked prompts. view=subreddits (default) returns one row per subreddit with its citation count, unique authors and positive/negative sentiment split; view=authors returns one row per author; view=threads returns the individual cited threads with upvotes, comments, average position and dominant sentiment. Requires the Growth plan or above.
-pub async fn list_reddit_citations(configuration: &configuration::Configuration, project_id: i32, page: Option<u32>, per_page: Option<u32>, view: Option<&str>, subreddit: Option<&str>, author: Option<&str>, status: Option<&str>, owned: Option<bool>, brand: Option<&str>, order: Option<&str>, direction: Option<&str>, model: Option<&str>, collection_id: Option<models::GetTimeseriesCollectionIdParameter>, country_code: Option<&str>, language_code: Option<&str>, brand_kind: Option<&str>, range: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, output: Option<&str>) -> Result<(), Error<ListRedditCitationsError>> {
+pub async fn list_reddit_citations(configuration: &configuration::Configuration, project_id: i32, page: Option<u32>, per_page: Option<u32>, view: Option<&str>, subreddit: Option<&str>, author: Option<&str>, status: Option<&str>, owned: Option<bool>, brand: Option<&str>, order: Option<&str>, direction: Option<&str>, model: Option<&str>, collection_id: Option<&str>, country_code: Option<&str>, language_code: Option<&str>, brand_kind: Option<&str>, range: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, output: Option<&str>) -> Result<(), Error<ListRedditCitationsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_project_id = project_id;
     let p_query_page = page;
@@ -182,7 +182,7 @@ pub async fn list_reddit_citations(configuration: &configuration::Configuration,
         req_builder = req_builder.query(&[("model", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_collection_id {
-        req_builder = req_builder.query(&[("collection_id", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("collection_id", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_country_code {
         req_builder = req_builder.query(&[("country_code", &param_value.to_string())]);

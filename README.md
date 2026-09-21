@@ -144,7 +144,6 @@ Class | Method | HTTP request | Description
  - [GetAccount200ResponseLimits](docs/GetAccount200ResponseLimits.md)
  - [GetAccount200ResponseRateLimits](docs/GetAccount200ResponseRateLimits.md)
  - [GetAccount200ResponseSubscription](docs/GetAccount200ResponseSubscription.md)
- - [GetTimeseriesCollectionIdParameter](docs/GetTimeseriesCollectionIdParameter.md)
  - [IntelligenceTask](docs/IntelligenceTask.md)
  - [IntelligenceTaskCreateRequest](docs/IntelligenceTaskCreateRequest.md)
  - [IntelligenceTaskUpdateRequest](docs/IntelligenceTaskUpdateRequest.md)

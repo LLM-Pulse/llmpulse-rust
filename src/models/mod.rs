@@ -50,8 +50,6 @@ pub mod get_account_200_response_rate_limits;
 pub use self::get_account_200_response_rate_limits::GetAccount200ResponseRateLimits;
 pub mod get_account_200_response_subscription;
 pub use self::get_account_200_response_subscription::GetAccount200ResponseSubscription;
-pub mod get_timeseries_collection_id_parameter;
-pub use self::get_timeseries_collection_id_parameter::GetTimeseriesCollectionIdParameter;
 pub mod intelligence_task;
 pub use self::intelligence_task::IntelligenceTask;
 pub mod intelligence_task_create_request;

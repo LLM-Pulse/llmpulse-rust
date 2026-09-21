@@ -126,7 +126,7 @@ pub async fn get_cited_url_detail(configuration: &configuration::Configuration, 
 }
 
 /// For the responses where each given source domain is cited, returns the share of those responses that mention the brand vs each competitor (brand + competitors sum to 100% per domain). Pass multiple domains to get the whole matrix in one call.
-pub async fn get_mentions_by_citing_domain(configuration: &configuration::Configuration, project_id: i32, domains: Vec<String>, model: Option<&str>, collection_id: Option<models::GetTimeseriesCollectionIdParameter>, country_code: Option<&str>, language_code: Option<&str>, prompt: Option<i32>, brand_kind: Option<&str>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>) -> Result<(), Error<GetMentionsByCitingDomainError>> {
+pub async fn get_mentions_by_citing_domain(configuration: &configuration::Configuration, project_id: i32, domains: Vec<String>, model: Option<&str>, collection_id: Option<&str>, country_code: Option<&str>, language_code: Option<&str>, prompt: Option<i32>, brand_kind: Option<&str>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>) -> Result<(), Error<GetMentionsByCitingDomainError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_project_id = project_id;
     let p_query_domains = domains;
@@ -151,7 +151,7 @@ pub async fn get_mentions_by_citing_domain(configuration: &configuration::Config
         req_builder = req_builder.query(&[("model", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_collection_id {
-        req_builder = req_builder.query(&[("collection_id", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("collection_id", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_country_code {
         req_builder = req_builder.query(&[("country_code", &param_value.to_string())]);
@@ -193,7 +193,7 @@ pub async fn get_mentions_by_citing_domain(configuration: &configuration::Config
 }
 
 /// Grouped citation intelligence by url / domain / host with per-model breakdown, citation rate, and avg citation position. Counts and citation rate include visible citations and background source references. Average position ignores rows with position=0. Owned and competitor source matching honor the project's exact-subdomain setting. Filter vocabulary aligns with `source_type` returned by the API. Unavailable page content keeps the cited URL and citation metrics. Page metadata/content and unknown brand_mentioned/competitor_mentioned return null; content_gap_status is content_unavailable (or missing_page_cache). Mention arrays stay empty until usable content has completed analysis. status_code shows a saved successful response or observed 404/410; other crawl failures and error_message are hidden. last_crawled_at dates the saved copy. Domain/host crawled_urls_count counts usable copies; mention counts are null when no URL has completed analysis.
-pub async fn list_citation_groups(configuration: &configuration::Configuration, project_id: i32, view: Option<&str>, page: Option<u32>, per_page: Option<u32>, order: Option<&str>, direction: Option<&str>, model: Option<&str>, collection_id: Option<models::GetTimeseriesCollectionIdParameter>, country_code: Option<&str>, language_code: Option<&str>, prompt: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, query: Option<&str>, source_type: Option<&str>, sentiment: Option<&str>, content_gap: Option<&str>) -> Result<(), Error<ListCitationGroupsError>> {
+pub async fn list_citation_groups(configuration: &configuration::Configuration, project_id: i32, view: Option<&str>, page: Option<u32>, per_page: Option<u32>, order: Option<&str>, direction: Option<&str>, model: Option<&str>, collection_id: Option<&str>, country_code: Option<&str>, language_code: Option<&str>, prompt: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, query: Option<&str>, source_type: Option<&str>, sentiment: Option<&str>, content_gap: Option<&str>) -> Result<(), Error<ListCitationGroupsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_project_id = project_id;
     let p_query_view = view;
@@ -236,7 +236,7 @@ pub async fn list_citation_groups(configuration: &configuration::Configuration, 
         req_builder = req_builder.query(&[("model", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_collection_id {
-        req_builder = req_builder.query(&[("collection_id", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("collection_id", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_country_code {
         req_builder = req_builder.query(&[("country_code", &param_value.to_string())]);
@@ -324,7 +324,7 @@ pub async fn list_cited_url_occurrences(configuration: &configuration::Configura
     }
 }
 
-pub async fn list_sources(configuration: &configuration::Configuration, project_id: i32, page: Option<u32>, per_page: Option<u32>, model: Option<&str>, collection_id: Option<models::GetTimeseriesCollectionIdParameter>, country_code: Option<&str>, language_code: Option<&str>, prompt: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, source_type: Option<&str>, mention_filter: Option<&str>, competitors: Option<&str>, output: Option<&str>) -> Result<(), Error<ListSourcesError>> {
+pub async fn list_sources(configuration: &configuration::Configuration, project_id: i32, page: Option<u32>, per_page: Option<u32>, model: Option<&str>, collection_id: Option<&str>, country_code: Option<&str>, language_code: Option<&str>, prompt: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, source_type: Option<&str>, mention_filter: Option<&str>, competitors: Option<&str>, output: Option<&str>) -> Result<(), Error<ListSourcesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_project_id = project_id;
     let p_query_page = page;
@@ -355,7 +355,7 @@ pub async fn list_sources(configuration: &configuration::Configuration, project_
         req_builder = req_builder.query(&[("model", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_collection_id {
-        req_builder = req_builder.query(&[("collection_id", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("collection_id", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_country_code {
         req_builder = req_builder.query(&[("country_code", &param_value.to_string())]);

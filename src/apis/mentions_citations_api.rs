@@ -59,7 +59,7 @@ pub enum ListMentionsError {
 
 
 /// Unified citations stream with an `actor_type` field on each record. Includes visible citations and background source references; background references use position 0, meaning no visible rank.
-pub async fn list_all_citations(configuration: &configuration::Configuration, project_id: i32, competitors: Option<&str>, page: Option<u32>, per_page: Option<u32>, model: Option<&str>, collection_id: Option<models::GetTimeseriesCollectionIdParameter>, prompt: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, output: Option<&str>) -> Result<(), Error<ListAllCitationsError>> {
+pub async fn list_all_citations(configuration: &configuration::Configuration, project_id: i32, competitors: Option<&str>, page: Option<u32>, per_page: Option<u32>, model: Option<&str>, collection_id: Option<&str>, prompt: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, output: Option<&str>) -> Result<(), Error<ListAllCitationsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_project_id = project_id;
     let p_query_competitors = competitors;
@@ -89,7 +89,7 @@ pub async fn list_all_citations(configuration: &configuration::Configuration, pr
         req_builder = req_builder.query(&[("model", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_collection_id {
-        req_builder = req_builder.query(&[("collection_id", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("collection_id", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_prompt {
         req_builder = req_builder.query(&[("prompt", &param_value.to_string())]);
@@ -125,7 +125,7 @@ pub async fn list_all_citations(configuration: &configuration::Configuration, pr
 }
 
 /// Unified mentions stream. Each record has an `actor_type` field (`project` or `competitor`) so the same payload covers both.
-pub async fn list_all_mentions(configuration: &configuration::Configuration, project_id: i32, competitors: Option<&str>, page: Option<u32>, per_page: Option<u32>, model: Option<&str>, collection_id: Option<models::GetTimeseriesCollectionIdParameter>, prompt: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, output: Option<&str>) -> Result<(), Error<ListAllMentionsError>> {
+pub async fn list_all_mentions(configuration: &configuration::Configuration, project_id: i32, competitors: Option<&str>, page: Option<u32>, per_page: Option<u32>, model: Option<&str>, collection_id: Option<&str>, prompt: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, output: Option<&str>) -> Result<(), Error<ListAllMentionsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_project_id = project_id;
     let p_query_competitors = competitors;
@@ -155,7 +155,7 @@ pub async fn list_all_mentions(configuration: &configuration::Configuration, pro
         req_builder = req_builder.query(&[("model", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_collection_id {
-        req_builder = req_builder.query(&[("collection_id", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("collection_id", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_prompt {
         req_builder = req_builder.query(&[("prompt", &param_value.to_string())]);
@@ -191,7 +191,7 @@ pub async fn list_all_mentions(configuration: &configuration::Configuration, pro
 }
 
 /// Includes visible citations and background source references. Background references use position 0, meaning no visible rank.
-pub async fn list_citations(configuration: &configuration::Configuration, project_id: i32, page: Option<u32>, per_page: Option<u32>, model: Option<&str>, collection_id: Option<models::GetTimeseriesCollectionIdParameter>, country_code: Option<&str>, language_code: Option<&str>, prompt: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, output: Option<&str>) -> Result<(), Error<ListCitationsError>> {
+pub async fn list_citations(configuration: &configuration::Configuration, project_id: i32, page: Option<u32>, per_page: Option<u32>, model: Option<&str>, collection_id: Option<&str>, country_code: Option<&str>, language_code: Option<&str>, prompt: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, output: Option<&str>) -> Result<(), Error<ListCitationsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_project_id = project_id;
     let p_query_page = page;
@@ -219,7 +219,7 @@ pub async fn list_citations(configuration: &configuration::Configuration, projec
         req_builder = req_builder.query(&[("model", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_collection_id {
-        req_builder = req_builder.query(&[("collection_id", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("collection_id", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_country_code {
         req_builder = req_builder.query(&[("country_code", &param_value.to_string())]);
@@ -261,7 +261,7 @@ pub async fn list_citations(configuration: &configuration::Configuration, projec
 }
 
 /// Includes visible citations and background source references. Background references use position 0, meaning no visible rank.
-pub async fn list_competitor_citations(configuration: &configuration::Configuration, project_id: i32, competitors: Option<&str>, page: Option<u32>, per_page: Option<u32>, model: Option<&str>, collection_id: Option<models::GetTimeseriesCollectionIdParameter>, prompt: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, output: Option<&str>) -> Result<(), Error<ListCompetitorCitationsError>> {
+pub async fn list_competitor_citations(configuration: &configuration::Configuration, project_id: i32, competitors: Option<&str>, page: Option<u32>, per_page: Option<u32>, model: Option<&str>, collection_id: Option<&str>, prompt: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, output: Option<&str>) -> Result<(), Error<ListCompetitorCitationsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_project_id = project_id;
     let p_query_competitors = competitors;
@@ -291,7 +291,7 @@ pub async fn list_competitor_citations(configuration: &configuration::Configurat
         req_builder = req_builder.query(&[("model", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_collection_id {
-        req_builder = req_builder.query(&[("collection_id", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("collection_id", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_prompt {
         req_builder = req_builder.query(&[("prompt", &param_value.to_string())]);
@@ -326,7 +326,7 @@ pub async fn list_competitor_citations(configuration: &configuration::Configurat
     }
 }
 
-pub async fn list_competitor_mentions(configuration: &configuration::Configuration, project_id: i32, competitors: Option<&str>, page: Option<u32>, per_page: Option<u32>, model: Option<&str>, collection_id: Option<models::GetTimeseriesCollectionIdParameter>, prompt: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, output: Option<&str>) -> Result<(), Error<ListCompetitorMentionsError>> {
+pub async fn list_competitor_mentions(configuration: &configuration::Configuration, project_id: i32, competitors: Option<&str>, page: Option<u32>, per_page: Option<u32>, model: Option<&str>, collection_id: Option<&str>, prompt: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, output: Option<&str>) -> Result<(), Error<ListCompetitorMentionsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_project_id = project_id;
     let p_query_competitors = competitors;
@@ -356,7 +356,7 @@ pub async fn list_competitor_mentions(configuration: &configuration::Configurati
         req_builder = req_builder.query(&[("model", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_collection_id {
-        req_builder = req_builder.query(&[("collection_id", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("collection_id", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_prompt {
         req_builder = req_builder.query(&[("prompt", &param_value.to_string())]);
@@ -391,7 +391,7 @@ pub async fn list_competitor_mentions(configuration: &configuration::Configurati
     }
 }
 
-pub async fn list_mentions(configuration: &configuration::Configuration, project_id: i32, page: Option<u32>, per_page: Option<u32>, model: Option<&str>, collection_id: Option<models::GetTimeseriesCollectionIdParameter>, country_code: Option<&str>, language_code: Option<&str>, prompt: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, output: Option<&str>) -> Result<(), Error<ListMentionsError>> {
+pub async fn list_mentions(configuration: &configuration::Configuration, project_id: i32, page: Option<u32>, per_page: Option<u32>, model: Option<&str>, collection_id: Option<&str>, country_code: Option<&str>, language_code: Option<&str>, prompt: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, output: Option<&str>) -> Result<(), Error<ListMentionsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_project_id = project_id;
     let p_query_page = page;
@@ -419,7 +419,7 @@ pub async fn list_mentions(configuration: &configuration::Configuration, project
         req_builder = req_builder.query(&[("model", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_collection_id {
-        req_builder = req_builder.query(&[("collection_id", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("collection_id", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_country_code {
         req_builder = req_builder.query(&[("country_code", &param_value.to_string())]);

@@ -128,7 +128,7 @@ pub async fn delete_prompt(configuration: &configuration::Configuration, project
     }
 }
 
-pub async fn list_prompt_executions(configuration: &configuration::Configuration, project_id: i32, page: Option<u32>, per_page: Option<u32>, model: Option<&str>, collection_id: Option<models::GetTimeseriesCollectionIdParameter>, country_code: Option<&str>, language_code: Option<&str>, prompt: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, mention_filter: Option<&str>, citation_filter: Option<&str>, competitors: Option<&str>, output: Option<&str>) -> Result<(), Error<ListPromptExecutionsError>> {
+pub async fn list_prompt_executions(configuration: &configuration::Configuration, project_id: i32, page: Option<u32>, per_page: Option<u32>, model: Option<&str>, collection_id: Option<&str>, country_code: Option<&str>, language_code: Option<&str>, prompt: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, mention_filter: Option<&str>, citation_filter: Option<&str>, competitors: Option<&str>, output: Option<&str>) -> Result<(), Error<ListPromptExecutionsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_project_id = project_id;
     let p_query_page = page;
@@ -159,7 +159,7 @@ pub async fn list_prompt_executions(configuration: &configuration::Configuration
         req_builder = req_builder.query(&[("model", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_collection_id {
-        req_builder = req_builder.query(&[("collection_id", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("collection_id", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_country_code {
         req_builder = req_builder.query(&[("country_code", &param_value.to_string())]);
@@ -209,7 +209,7 @@ pub async fn list_prompt_executions(configuration: &configuration::Configuration
     }
 }
 
-pub async fn list_prompts(configuration: &configuration::Configuration, project_id: i32, page: Option<u32>, per_page: Option<u32>, model: Option<&str>, collection_id: Option<models::GetTimeseriesCollectionIdParameter>, country_code: Option<&str>, language_code: Option<&str>, prompt_type: Option<&str>, brand_kind: Option<&str>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, output: Option<&str>) -> Result<(), Error<ListPromptsError>> {
+pub async fn list_prompts(configuration: &configuration::Configuration, project_id: i32, page: Option<u32>, per_page: Option<u32>, model: Option<&str>, collection_id: Option<&str>, country_code: Option<&str>, language_code: Option<&str>, prompt_type: Option<&str>, brand_kind: Option<&str>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, output: Option<&str>) -> Result<(), Error<ListPromptsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_project_id = project_id;
     let p_query_page = page;
@@ -238,7 +238,7 @@ pub async fn list_prompts(configuration: &configuration::Configuration, project_
         req_builder = req_builder.query(&[("model", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_collection_id {
-        req_builder = req_builder.query(&[("collection_id", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("collection_id", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_country_code {
         req_builder = req_builder.query(&[("country_code", &param_value.to_string())]);
@@ -283,7 +283,7 @@ pub async fn list_prompts(configuration: &configuration::Configuration, project_
 }
 
 /// The sub-queries a model actually issued when answering your tracked prompts. view=query (default) returns one row per distinct sub-query with count and share of all occurrences; view=prompt returns one row per prompt with how many distinct sub-queries it produced. Fan-out is reported mainly by ChatGPT, so an empty result usually means the models in scope do not expose it. The API returns the aggregation only: for a period-over-period delta, call it twice with explicit from/to.
-pub async fn list_query_fan_outs(configuration: &configuration::Configuration, project_id: i32, page: Option<u32>, per_page: Option<u32>, view: Option<&str>, order: Option<&str>, direction: Option<&str>, query: Option<&str>, model: Option<&str>, collection_id: Option<models::GetTimeseriesCollectionIdParameter>, country_code: Option<&str>, language_code: Option<&str>, prompt: Option<i32>, prompt_type: Option<&str>, brand_kind: Option<&str>, range: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, output: Option<&str>) -> Result<(), Error<ListQueryFanOutsError>> {
+pub async fn list_query_fan_outs(configuration: &configuration::Configuration, project_id: i32, page: Option<u32>, per_page: Option<u32>, view: Option<&str>, order: Option<&str>, direction: Option<&str>, query: Option<&str>, model: Option<&str>, collection_id: Option<&str>, country_code: Option<&str>, language_code: Option<&str>, prompt: Option<i32>, prompt_type: Option<&str>, brand_kind: Option<&str>, range: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, output: Option<&str>) -> Result<(), Error<ListQueryFanOutsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_project_id = project_id;
     let p_query_page = page;
@@ -330,7 +330,7 @@ pub async fn list_query_fan_outs(configuration: &configuration::Configuration, p
         req_builder = req_builder.query(&[("model", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_collection_id {
-        req_builder = req_builder.query(&[("collection_id", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("collection_id", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_country_code {
         req_builder = req_builder.query(&[("country_code", &param_value.to_string())]);

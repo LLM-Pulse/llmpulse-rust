@@ -65,7 +65,7 @@ pub async fn list_sentiment_categories(configuration: &configuration::Configurat
     }
 }
 
-pub async fn list_sentiment_records(configuration: &configuration::Configuration, project_id: i32, competitor_id: Option<i32>, brand_only: Option<bool>, analysis: Option<&str>, model: Option<&str>, collection_id: Option<models::GetTimeseriesCollectionIdParameter>, country_code: Option<&str>, language_code: Option<&str>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, page: Option<u32>, per_page: Option<u32>) -> Result<(), Error<ListSentimentRecordsError>> {
+pub async fn list_sentiment_records(configuration: &configuration::Configuration, project_id: i32, competitor_id: Option<i32>, brand_only: Option<bool>, analysis: Option<&str>, model: Option<&str>, collection_id: Option<&str>, country_code: Option<&str>, language_code: Option<&str>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, page: Option<u32>, per_page: Option<u32>) -> Result<(), Error<ListSentimentRecordsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_project_id = project_id;
     let p_query_competitor_id = competitor_id;
@@ -97,7 +97,7 @@ pub async fn list_sentiment_records(configuration: &configuration::Configuration
         req_builder = req_builder.query(&[("model", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_collection_id {
-        req_builder = req_builder.query(&[("collection_id", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("collection_id", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_country_code {
         req_builder = req_builder.query(&[("country_code", &param_value.to_string())]);

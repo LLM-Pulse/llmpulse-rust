@@ -33,7 +33,7 @@ pub enum ListShoppingError {
 
 
 /// Paid placements returned inside AI answers. view=advertisers (default) returns one row per advertising domain with its placement count, prompt reach and average and best position; view=ads returns the individual placements with title, snippet, position and the prompt that triggered them. Position 1 is the best slot, so a LOWER average position is better. Requires the Scale plan or above.
-pub async fn list_ads(configuration: &configuration::Configuration, project_id: i32, page: Option<u32>, per_page: Option<u32>, view: Option<&str>, owned: Option<bool>, order: Option<&str>, direction: Option<&str>, query: Option<&str>, model: Option<&str>, collection_id: Option<models::GetTimeseriesCollectionIdParameter>, country_code: Option<&str>, language_code: Option<&str>, prompt: Option<i32>, prompt_type: Option<&str>, brand_kind: Option<&str>, range: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, output: Option<&str>) -> Result<(), Error<ListAdsError>> {
+pub async fn list_ads(configuration: &configuration::Configuration, project_id: i32, page: Option<u32>, per_page: Option<u32>, view: Option<&str>, owned: Option<bool>, order: Option<&str>, direction: Option<&str>, query: Option<&str>, model: Option<&str>, collection_id: Option<&str>, country_code: Option<&str>, language_code: Option<&str>, prompt: Option<i32>, prompt_type: Option<&str>, brand_kind: Option<&str>, range: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, output: Option<&str>) -> Result<(), Error<ListAdsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_project_id = project_id;
     let p_query_page = page;
@@ -84,7 +84,7 @@ pub async fn list_ads(configuration: &configuration::Configuration, project_id: 
         req_builder = req_builder.query(&[("model", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_collection_id {
-        req_builder = req_builder.query(&[("collection_id", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("collection_id", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_country_code {
         req_builder = req_builder.query(&[("country_code", &param_value.to_string())]);
@@ -135,7 +135,7 @@ pub async fn list_ads(configuration: &configuration::Configuration, project_id: 
 }
 
 /// Product cards returned inside AI answers. view=products (default) returns one row per distinct product, merged across executions, with its appearance count, price range, rating and whether it is yours, plus a currency_count saying how many currencies it was priced in (above 1 means the row reports its highest-priced listing and min_price may be another currency); view=merchants returns one row per selling merchant, with a currency field naming the money its price range and average are expressed in (providers price each market in its own currency, so a merchant that sells in more than one reports the currency most of its prices use). Every response also carries a totals block matching the KPI cards in the app, whose avg_price is computed inside the single currency named by avg_price_currency. Requires the Scale plan or above.
-pub async fn list_shopping(configuration: &configuration::Configuration, project_id: i32, page: Option<u32>, per_page: Option<u32>, view: Option<&str>, owned: Option<bool>, order: Option<&str>, direction: Option<&str>, query: Option<&str>, model: Option<&str>, collection_id: Option<models::GetTimeseriesCollectionIdParameter>, country_code: Option<&str>, language_code: Option<&str>, prompt: Option<i32>, prompt_type: Option<&str>, brand_kind: Option<&str>, range: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, output: Option<&str>) -> Result<(), Error<ListShoppingError>> {
+pub async fn list_shopping(configuration: &configuration::Configuration, project_id: i32, page: Option<u32>, per_page: Option<u32>, view: Option<&str>, owned: Option<bool>, order: Option<&str>, direction: Option<&str>, query: Option<&str>, model: Option<&str>, collection_id: Option<&str>, country_code: Option<&str>, language_code: Option<&str>, prompt: Option<i32>, prompt_type: Option<&str>, brand_kind: Option<&str>, range: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, output: Option<&str>) -> Result<(), Error<ListShoppingError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_project_id = project_id;
     let p_query_page = page;
@@ -186,7 +186,7 @@ pub async fn list_shopping(configuration: &configuration::Configuration, project
         req_builder = req_builder.query(&[("model", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_collection_id {
-        req_builder = req_builder.query(&[("collection_id", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("collection_id", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_country_code {
         req_builder = req_builder.query(&[("country_code", &param_value.to_string())]);

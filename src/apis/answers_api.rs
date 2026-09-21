@@ -79,7 +79,7 @@ pub async fn get_answer(configuration: &configuration::Configuration, project_id
 }
 
 /// Successful prompt-execution responses with truncated content (max 10,000 chars). Pass `query` for case-insensitive full-text search inside response texts: `total` becomes the exact count of matching responses and each item returns `snippet` + `match_count` instead of `response`/`response_truncated`.
-pub async fn list_answers(configuration: &configuration::Configuration, project_id: i32, model: Option<&str>, collection_id: Option<models::GetTimeseriesCollectionIdParameter>, country_code: Option<&str>, language_code: Option<&str>, prompt: Option<i32>, mention_filter: Option<&str>, citation_filter: Option<&str>, competitors: Option<&str>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, page: Option<u32>, per_page: Option<u32>, query: Option<&str>, no_result: Option<bool>) -> Result<(), Error<ListAnswersError>> {
+pub async fn list_answers(configuration: &configuration::Configuration, project_id: i32, model: Option<&str>, collection_id: Option<&str>, country_code: Option<&str>, language_code: Option<&str>, prompt: Option<i32>, mention_filter: Option<&str>, citation_filter: Option<&str>, competitors: Option<&str>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, page: Option<u32>, per_page: Option<u32>, query: Option<&str>, no_result: Option<bool>) -> Result<(), Error<ListAnswersError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_project_id = project_id;
     let p_query_model = model;
@@ -105,7 +105,7 @@ pub async fn list_answers(configuration: &configuration::Configuration, project_
         req_builder = req_builder.query(&[("model", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_collection_id {
-        req_builder = req_builder.query(&[("collection_id", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("collection_id", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_country_code {
         req_builder = req_builder.query(&[("country_code", &param_value.to_string())]);
