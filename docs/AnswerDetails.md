@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **brand_entities** | Option<**Vec<serde_json::Value>**> |  | [optional]
 **local_businesses** | Option<**Vec<serde_json::Value>**> |  | [optional]
 **locale** | Option<[**models::AnswerDetailsLocale**](AnswerDetailsLocale.md)> |  | [optional]
+**app_url** | Option<**String**> | Opens this answer in the app. The link names its project, so it opens there for any user with access to that project | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
