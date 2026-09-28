@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **user_instructions** | Option<**String**> |  | [optional]
 **output_language_code** | Option<**String**> |  | [optional]
 **word_count** | Option<**i32**> |  | [optional]
-**result_data** | Option<**serde_json::Value**> | Only present when status='completed' | [optional]
+**result_data** | Option<**serde_json::Value**> | The generated content once status is completed; null before that | [optional]
 **error_message** | Option<**String**> |  | [optional]
 **estimated_time** | Option<**String**> |  | [optional]
 **created_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]

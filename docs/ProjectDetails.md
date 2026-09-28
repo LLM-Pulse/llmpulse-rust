@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | Option<**i32**> |  | [optional]
 **name** | Option<**String**> | Internal project label (sidebar, settings, admin) | [optional]
-**brand_name** | Option<**String**> | LLM-facing brand label (used in prompts and customer-facing charts). Defaults to `name` when not set. | [optional]
+**brand_name** | Option<**String**> | LLM-facing brand label (used in prompts and customer-facing charts). Null when not set, in which case prompts and charts use `name`. | [optional]
 **url** | Option<**String**> |  | [optional]
 **description** | Option<**String**> |  | [optional]
 **matching_names** | Option<**Vec<String>**> |  | [optional]
