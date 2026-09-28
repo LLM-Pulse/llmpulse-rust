@@ -12,23 +12,24 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct Project {
+pub struct ProjectCreateResponseSameDomainProjectsInner {
     #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
     pub id: Option<i32>,
-    /// Internal project label (sidebar, settings, admin)
     #[serde(rename = "name", skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
-    /// LLM-facing brand label (used in prompts and customer-facing charts). Defaults to `name` when not set.
-    #[serde(rename = "brand_name", skip_serializing_if = "Option::is_none")]
-    pub brand_name: Option<String>,
+    #[serde(rename = "country_code", skip_serializing_if = "Option::is_none")]
+    pub country_code: Option<String>,
+    #[serde(rename = "language_code", skip_serializing_if = "Option::is_none")]
+    pub language_code: Option<String>,
 }
 
-impl Project {
-    pub fn new() -> Project {
-        Project {
+impl ProjectCreateResponseSameDomainProjectsInner {
+    pub fn new() -> ProjectCreateResponseSameDomainProjectsInner {
+        ProjectCreateResponseSameDomainProjectsInner {
             id: None,
             name: None,
-            brand_name: None,
+            country_code: None,
+            language_code: None,
         }
     }
 }

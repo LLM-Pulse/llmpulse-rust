@@ -12,21 +12,21 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct UpdateCollectionRequest {
-    #[serde(rename = "project_id")]
-    pub project_id: i32,
+pub struct ProjectCreateResponseCollectionsInner {
+    #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
+    pub id: Option<i32>,
     #[serde(rename = "name", skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
-    #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    #[serde(rename = "prompts_attached", skip_serializing_if = "Option::is_none")]
+    pub prompts_attached: Option<i32>,
 }
 
-impl UpdateCollectionRequest {
-    pub fn new(project_id: i32) -> UpdateCollectionRequest {
-        UpdateCollectionRequest {
-            project_id,
+impl ProjectCreateResponseCollectionsInner {
+    pub fn new() -> ProjectCreateResponseCollectionsInner {
+        ProjectCreateResponseCollectionsInner {
+            id: None,
             name: None,
-            description: None,
+            prompts_attached: None,
         }
     }
 }

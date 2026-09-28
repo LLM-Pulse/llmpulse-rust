@@ -11,25 +11,25 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
+/// SovResponseSample : The period the current shares were computed on (the last one with mentions), same shape as a periods item; null when the window has no mentions.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct SovResponsePeriodsInner {
+pub struct SovResponseSample {
     #[serde(rename = "date", skip_serializing_if = "Option::is_none")]
     pub date: Option<chrono::NaiveDate>,
     #[serde(rename = "mentions", skip_serializing_if = "Option::is_none")]
     pub mentions: Option<i32>,
     #[serde(rename = "partial", skip_serializing_if = "Option::is_none")]
     pub partial: Option<bool>,
-    /// How far the shares of this period can be trusted, from its mentions: none (0), low (under 30), medium (under 100) or high (100 or more).
     #[serde(rename = "confidence", skip_serializing_if = "Option::is_none")]
     pub confidence: Option<String>,
-    /// Worst-case 95% margin of a share in percentage points, 98 / sqrt(mentions); mentions within one answer are not independent, so the real margin is at least this wide. null with no mentions.
     #[serde(rename = "margin_of_error", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub margin_of_error: Option<Option<f64>>,
 }
 
-impl SovResponsePeriodsInner {
-    pub fn new() -> SovResponsePeriodsInner {
-        SovResponsePeriodsInner {
+impl SovResponseSample {
+    /// The period the current shares were computed on (the last one with mentions), same shape as a periods item; null when the window has no mentions.
+    pub fn new() -> SovResponseSample {
+        SovResponseSample {
             date: None,
             mentions: None,
             partial: None,

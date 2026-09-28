@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **plan** | Option<**String**> | Plan key (starter, growth, scale, ...) | [optional]
+**plan_name** | Option<**String**> | Display name of the plan to show people (e.g. Scale++ for the scaleplusplus key) | [optional]
 **tracking_frequency** | Option<**String**> | How often prompts run (weekly, daily, monthly, ...) | [optional]
 **role** | Option<**Role**> | Whether the key belongs to the account owner or a team member (enum: owner, member) | [optional]
 **subscription** | Option<[**models::GetAccount200ResponseSubscription**](GetAccount200ResponseSubscription.md)> |  | [optional]

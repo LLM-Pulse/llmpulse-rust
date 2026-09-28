@@ -5,7 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **project_id** | Option<**i32**> |  | [optional]
-**periods** | Option<[**Vec<models::SovResponsePeriodsInner>**](SovResponsePeriodsInner.md)> | Per-bucket sample size and completeness: mentions is the total the shares were computed on (1-3 mentions produce the 100/50/33.33 low-sample patterns); partial marks buckets still collecting data or clipped by the requested window. | [optional]
+**periods** | Option<[**Vec<models::SovResponsePeriodsInner>**](SovResponsePeriodsInner.md)> | Per-bucket sample size and completeness: mentions is the total the shares were computed on (1-3 mentions produce the 100/50/33.33 low-sample patterns); partial marks buckets still collecting data or clipped by the requested window; confidence and margin_of_error read the sample size. | [optional]
+**sample** | Option<[**models::SovResponseSample**](SovResponseSample.md)> |  | [optional]
 **over_time** | Option<[**Vec<models::SovResponseOverTimeInner>**](SovResponseOverTimeInner.md)> |  | [optional]
 **current** | Option<[**Vec<models::SovResponseCurrentInner>**](SovResponseCurrentInner.md)> |  | [optional]
 **breakdown** | Option<[**Vec<models::SovResponseBreakdownInner>**](SovResponseBreakdownInner.md)> |  | [optional]
