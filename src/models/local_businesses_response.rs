@@ -12,46 +12,31 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct PromptSummaryResponse {
+pub struct LocalBusinessesResponse {
     #[serde(rename = "project_id", skip_serializing_if = "Option::is_none")]
     pub project_id: Option<i32>,
-    #[serde(rename = "from", skip_serializing_if = "Option::is_none")]
-    pub from: Option<chrono::DateTime<chrono::FixedOffset>>,
-    #[serde(rename = "to", skip_serializing_if = "Option::is_none")]
-    pub to: Option<chrono::DateTime<chrono::FixedOffset>>,
-    #[serde(rename = "filters", skip_serializing_if = "Option::is_none")]
-    pub filters: Option<serde_json::Value>,
-    #[serde(rename = "breakdown", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub breakdown: Option<Option<String>>,
-    #[serde(rename = "sort", skip_serializing_if = "Option::is_none")]
-    pub sort: Option<String>,
-    #[serde(rename = "sort_dir", skip_serializing_if = "Option::is_none")]
-    pub sort_dir: Option<String>,
     #[serde(rename = "page", skip_serializing_if = "Option::is_none")]
     pub page: Option<i32>,
     #[serde(rename = "per_page", skip_serializing_if = "Option::is_none")]
     pub per_page: Option<i32>,
     #[serde(rename = "total", skip_serializing_if = "Option::is_none")]
     pub total: Option<i32>,
+    #[serde(rename = "totals", skip_serializing_if = "Option::is_none")]
+    pub totals: Option<Box<models::LocalBusinessesTotals>>,
     #[serde(rename = "data", skip_serializing_if = "Option::is_none")]
-    pub data: Option<Vec<models::PromptSummaryRow>>,
+    pub data: Option<Vec<models::LocalBusiness>>,
     #[serde(rename = "request_id", skip_serializing_if = "Option::is_none")]
     pub request_id: Option<String>,
 }
 
-impl PromptSummaryResponse {
-    pub fn new() -> PromptSummaryResponse {
-        PromptSummaryResponse {
+impl LocalBusinessesResponse {
+    pub fn new() -> LocalBusinessesResponse {
+        LocalBusinessesResponse {
             project_id: None,
-            from: None,
-            to: None,
-            filters: None,
-            breakdown: None,
-            sort: None,
-            sort_dir: None,
             page: None,
             per_page: None,
             total: None,
+            totals: None,
             data: None,
             request_id: None,
         }

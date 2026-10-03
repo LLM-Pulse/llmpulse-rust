@@ -5,6 +5,7 @@ All URIs are relative to *https://api.llmpulse.ai/api/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**list_ads**](ShoppingAdsApi.md#list_ads) | **GET** /dimensions/ads | List AI ad placements
+[**list_local_businesses**](ShoppingAdsApi.md#list_local_businesses) | **GET** /dimensions/local_businesses | List local businesses
 [**list_shopping**](ShoppingAdsApi.md#list_shopping) | **GET** /dimensions/shopping | List shopping results
 
 
@@ -44,6 +45,53 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
  (empty response body)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## list_local_businesses
+
+> models::LocalBusinessesResponse list_local_businesses(project_id, page, per_page, owned, order, direction, query, model, collection_id, country_code, language_code, prompt, prompt_type, brand_kind, range, from, to, output)
+List local businesses
+
+Local businesses (shops, restaurants, services) listed inside AI answers, one row per business: its name at its address, so two locations of a chain are two rows. Each row carries its appearance count, the number of prompts that listed it, its average rating and average position in the list, its review count, and whether it is yours or a tracked competitor. Every response also carries a totals block matching the KPI cards in the app. Local business lists come from a subset of models and only for prompts with local intent. Available on every plan.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**project_id** | **i32** | Project ID | [required] |
+**page** | Option<**u32**> |  |  |[default to 1]
+**per_page** | Option<**u32**> |  |  |[default to 20]
+**owned** | Option<**bool**> | Return only listings identified as the tracked brand's own locations. The totals block stays account-wide. |  |
+**order** | Option<**String**> | Sort field |  |[default to appearances]
+**direction** | Option<**String**> |  |  |[default to desc]
+**query** | Option<**String**> | Case-insensitive substring filter on the business name or address |  |
+**model** | Option<**String**> | Filter by AI model. Models the API key's user has not enabled are silently dropped. |  |
+**collection_id** | Option<**String**> | One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize. |  |
+**country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
+**language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |
+**prompt** | Option<**i32**> | Filter by prompt ID |  |
+**prompt_type** | Option<**String**> | One prompt type or a comma-separated list: informational, navigational, commercial, transactional |  |
+**brand_kind** | Option<**String**> | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. |  |
+**range** | Option<**i32**> | Number of days to look back (alternative to from/to) |  |
+**from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
+**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
+**output** | Option<**String**> | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. |  |
+
+### Return type
+
+[**models::LocalBusinessesResponse**](LocalBusinessesResponse.md)
 
 ### Authorization
 
