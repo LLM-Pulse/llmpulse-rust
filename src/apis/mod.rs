@@ -131,6 +131,7 @@ pub mod search_console_api;
 pub mod sentiments_api;
 pub mod shopping_ads_api;
 pub mod sources_citation_intelligence_api;
+pub mod store_integrations_api;
 pub mod technical_geo_reports_api;
 pub mod webhooks_api;
 

@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **user_instructions** | Option<**String**> |  | [optional]
 **output_language_code** | Option<**String**> |  | [optional]
 **word_count** | Option<**i32**> |  | [optional]
-**result_data** | Option<**serde_json::Value**> | The generated content once status is completed; null before that | [optional]
+**result_data** | Option<**serde_json::Value**> | The generated content once status is completed; null before that. A product_listing task returns title, summary, description_html (p, ul, ol, li, strong, em, h3 and br only), faq (question and answer pairs), seo_title, seo_description, image_alts (image_id and alt), changes (field and reason) and labels | [optional]
 **error_message** | Option<**String**> |  | [optional]
 **estimated_time** | Option<**String**> |  | [optional]
 **created_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
