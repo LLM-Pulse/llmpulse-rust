@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **executed_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
 **duration_ms** | Option<**f64**> | Milliseconds, rounded to one decimal place | [optional]
 **success** | Option<**bool**> | Null while the answer is still pending | [optional]
+**no_result** | Option<**bool**> | True for a sentinel non-answer (the provider returned nothing after retries); excluded from platform metrics | [optional]
 **fan_out_queries** | Option<**Vec<String>**> |  | [optional]
 **mentions** | Option<**Vec<serde_json::Value>**> |  | [optional]
 **citations** | Option<**Vec<serde_json::Value>**> |  | [optional]
@@ -25,6 +26,7 @@ Name | Type | Description | Notes
 **local_businesses** | Option<**Vec<serde_json::Value>**> |  | [optional]
 **locale** | Option<[**models::AnswerDetailsLocale**](AnswerDetailsLocale.md)> |  | [optional]
 **app_url** | Option<**String**> | Opens this answer in the app. The link names its project, so it opens there for any user with access to that project | [optional]
+**request_id** | Option<**String**> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

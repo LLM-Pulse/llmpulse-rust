@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## create_competitor
 
-> create_competitor(create_competitor_request)
+> models::CompetitorCreateResponse create_competitor(create_competitor_request)
 Add a competitor
 
 Adds a competitor with its own citation URL matching rule. Honours the per-plan max competitors cap. Requires a `read_write` scope API key.
@@ -28,7 +28,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::CompetitorCreateResponse**](CompetitorCreateResponse.md)
 
 ### Authorization
 

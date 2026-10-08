@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## create_annotation
 
-> create_annotation(create_annotation_request)
+> models::AnnotationCreateResponse create_annotation(create_annotation_request)
 Create a timeline annotation
 
 Marks a date in the project timeseries with a title + description. Available on every plan. Requires a `read_write` scope API key.
@@ -27,7 +27,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::AnnotationCreateResponse**](AnnotationCreateResponse.md)
 
 ### Authorization
 

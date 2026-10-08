@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **prompts_count** | Option<**i32**> |  | [optional]
+**prompts_by_brand_kind** | Option<[**models::ProjectDetailsAllOfStatsPromptsByBrandKind**](ProjectDetailsAllOfStatsPromptsByBrandKind.md)> |  | [optional]
 **competitors_count** | Option<**i32**> |  | [optional]
 **collections_count** | Option<**i32**> |  | [optional]
 

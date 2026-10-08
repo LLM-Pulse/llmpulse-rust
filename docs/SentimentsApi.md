@@ -42,7 +42,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_sentiment_records
 
-> list_sentiment_records(project_id, competitor_id, brand_only, analysis, model, collection_id, country_code, language_code, from, to, page, per_page)
+> models::SentimentsResponse list_sentiment_records(project_id, competitor_id, brand_only, analysis, model, collection_id, country_code, language_code, from, to, page, per_page)
 List sentiment records (Growth plan or above)
 
 Requires the Growth plan; lower tiers receive ERR_PLAN_REQUIRED.
@@ -67,7 +67,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::SentimentsResponse**](SentimentsResponse.md)
 
 ### Authorization
 

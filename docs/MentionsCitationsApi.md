@@ -93,7 +93,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_citations
 
-> list_citations(project_id, page, per_page, model, collection_id, country_code, language_code, prompt, from, to, output)
+> models::CitationsResponse list_citations(project_id, page, per_page, model, collection_id, country_code, language_code, prompt, from, to, output)
 List brand citations
 
 Includes visible citations and background source references. Background references use position 0, meaning no visible rank.
@@ -117,7 +117,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::CitationsResponse**](CitationsResponse.md)
 
 ### Authorization
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -172,7 +172,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_competitor_mentions
 
-> list_competitor_mentions(project_id, competitors, page, per_page, model, collection_id, prompt, from, to, output)
+> models::CompetitorMentionsResponse list_competitor_mentions(project_id, competitors, page, per_page, model, collection_id, prompt, from, to, output)
 List competitor mentions
 
 ### Parameters
@@ -193,7 +193,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::CompetitorMentionsResponse**](CompetitorMentionsResponse.md)
 
 ### Authorization
 
@@ -202,14 +202,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## list_mentions
 
-> list_mentions(project_id, page, per_page, model, collection_id, country_code, language_code, prompt, from, to, output)
+> models::MentionsResponse list_mentions(project_id, page, per_page, model, collection_id, country_code, language_code, prompt, from, to, output)
 List brand mentions
 
 ### Parameters
@@ -231,7 +231,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::MentionsResponse**](MentionsResponse.md)
 
 ### Authorization
 
@@ -240,7 +240,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

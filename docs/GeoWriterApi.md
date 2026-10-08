@@ -73,7 +73,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_intelligence_tasks
 
-> list_intelligence_tasks(project_id, task_type, status, page, per_page)
+> models::IntelligenceTasksResponse list_intelligence_tasks(project_id, task_type, status, page, per_page)
 List GEO Writer tasks
 
 ### Parameters
@@ -89,7 +89,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::IntelligenceTasksResponse**](IntelligenceTasksResponse.md)
 
 ### Authorization
 
@@ -98,7 +98,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -118,6 +118,7 @@ pub mod annotations_api;
 pub mod answers_api;
 pub mod collections_tags_api;
 pub mod competitors_api;
+pub mod geo_audits_api;
 pub mod geo_writer_api;
 pub mod health_api;
 pub mod mentions_citations_api;

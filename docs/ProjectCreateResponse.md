@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**draft_id** | Option<**String**> | The finalized draft; only present on POST /project_drafts/{id}/finalize | [optional]
 **project** | Option<**serde_json::Value**> | Same shape as GET /dimensions/projects/{id} | [optional]
 **prompts** | Option<[**models::ProjectCreateResponsePrompts**](ProjectCreateResponsePrompts.md)> |  | [optional]
 **competitors** | Option<[**models::ProjectCreateResponseCompetitors**](ProjectCreateResponseCompetitors.md)> |  | [optional]

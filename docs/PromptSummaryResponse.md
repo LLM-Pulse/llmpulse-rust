@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **project_id** | Option<**i32**> |  | [optional]
 **from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
 **to** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
-**filters** | Option<**serde_json::Value**> |  | [optional]
+**filters** | Option<[**models::MetricsFiltersEcho**](MetricsFiltersEcho.md)> |  | [optional]
 **breakdown** | Option<**String**> |  | [optional]
 **sort** | Option<**String**> |  | [optional]
 **sort_dir** | Option<**String**> |  | [optional]

@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **project_id** | Option<**i32**> |  | [optional]
 **from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
 **to** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
-**granularity** | Option<**String**> |  | [optional]
-**filters** | Option<**serde_json::Value**> |  | [optional]
+**granularity** | Option<**String**> | day, week or month | [optional]
+**filters** | Option<[**models::MetricsFiltersEcho**](MetricsFiltersEcho.md)> |  | [optional]
 **series** | Option<[**std::collections::HashMap<String, Vec<models::TimeseriesSeries>>**](Vec.md)> |  | [optional]
 **request_id** | Option<**String**> |  | [optional]
 

@@ -75,7 +75,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_prompt_executions
 
-> list_prompt_executions(project_id, page, per_page, model, collection_id, country_code, language_code, prompt, from, to, mention_filter, citation_filter, competitors, output)
+> models::PromptExecutionsResponse list_prompt_executions(project_id, page, per_page, model, collection_id, country_code, language_code, prompt, from, to, mention_filter, citation_filter, competitors, output)
 List prompt executions
 
 ### Parameters
@@ -100,7 +100,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::PromptExecutionsResponse**](PromptExecutionsResponse.md)
 
 ### Authorization
 
@@ -109,14 +109,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## list_prompts
 
-> list_prompts(project_id, page, per_page, model, collection_id, country_code, language_code, prompt_type, brand_kind, from, to, output)
+> models::PromptsResponse list_prompts(project_id, page, per_page, model, collection_id, country_code, language_code, prompt_type, brand_kind, from, to, output)
 List prompts
 
 ### Parameters
@@ -139,7 +139,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::PromptsResponse**](PromptsResponse.md)
 
 ### Authorization
 
@@ -148,7 +148,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

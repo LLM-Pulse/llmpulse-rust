@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## assign_prompt_tags
 
-> assign_prompt_tags(assign_prompt_tags_request)
+> models::PromptTagsAssignResponse assign_prompt_tags(assign_prompt_tags_request)
 Bulk-attach tags to prompts
 
 Idempotent bulk assignment of tags (Collections) to existing prompts. Tags can be resolved by id or by name (case-insensitive). Use `create_missing: true` to auto-create unknown tag names. Requires a `read_write` scope API key.
@@ -29,7 +29,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::PromptTagsAssignResponse**](PromptTagsAssignResponse.md)
 
 ### Authorization
 
@@ -45,7 +45,7 @@ Name | Type | Description  | Required | Notes
 
 ## create_collection
 
-> create_collection(create_collection_request)
+> models::CollectionCreateResponse create_collection(create_collection_request)
 Create a tag
 
 Creates a tag (Collection) in a project. Optional `prompt_ids` attaches existing prompts in the same call. Tag name must be unique per project (case-insensitive). Requires a `read_write` scope API key.
@@ -59,7 +59,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::CollectionCreateResponse**](CollectionCreateResponse.md)
 
 ### Authorization
 
@@ -106,7 +106,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_collections
 
-> list_collections(project_id, output)
+> models::CollectionsResponse list_collections(project_id, output)
 List tags/collections
 
 ### Parameters
@@ -119,7 +119,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::CollectionsResponse**](CollectionsResponse.md)
 
 ### Authorization
 
@@ -128,14 +128,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## list_tags
 
-> list_tags(project_id, output)
+> models::CollectionsResponse list_tags(project_id, output)
 List tags (alias for /collections)
 
 ### Parameters
@@ -148,7 +148,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::CollectionsResponse**](CollectionsResponse.md)
 
 ### Authorization
 
@@ -157,7 +157,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
