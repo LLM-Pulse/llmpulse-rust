@@ -148,6 +148,7 @@ docs/PromptsCreateRequest.md
 docs/PromptsCreateResponse.md
 docs/PromptsCreateResponseDataInner.md
 docs/PromptsResponse.md
+docs/QueryWebAnalyticsRequest.md
 docs/RecommendationSummary.md
 docs/RecommendationSummarySummary.md
 docs/RecommendationsApi.md
@@ -193,6 +194,9 @@ docs/UpdateCollectionRequest.md
 docs/UpdateCompetitorRequest.md
 docs/UpdateProjectDraftRequest.md
 docs/UpdateProjectRequest.md
+docs/WebAnalyticsQueryResponse.md
+docs/WebAnalyticsQueryResponseColumnsInner.md
+docs/WebAnalyticsSchemaResponse.md
 docs/WebhooksApi.md
 git_push.sh
 src/apis/account_api.rs
@@ -353,6 +357,7 @@ src/models/prompts_create_request.rs
 src/models/prompts_create_response.rs
 src/models/prompts_create_response_data_inner.rs
 src/models/prompts_response.rs
+src/models/query_web_analytics_request.rs
 src/models/recommendation_summary.rs
 src/models/recommendation_summary_summary.rs
 src/models/recommendations_response.rs
@@ -390,3 +395,6 @@ src/models/update_collection_request.rs
 src/models/update_competitor_request.rs
 src/models/update_project_draft_request.rs
 src/models/update_project_request.rs
+src/models/web_analytics_query_response.rs
+src/models/web_analytics_query_response_columns_inner.rs
+src/models/web_analytics_schema_response.rs
