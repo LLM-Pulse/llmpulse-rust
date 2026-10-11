@@ -1,0 +1,33 @@
+# Publishes this SDK when its release tag is pushed. Switched off until the
+# registry's trusted publisher is configured: set the repository variable
+# REGISTRY_PUBLISH=true then. A version already on the registry is skipped.
+name: Publish
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  crates-io:
+    if: vars.REGISTRY_PUBLISH == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - id: version
+        run: |
+          version="$(cargo metadata --no-deps --format-version 1 | jq -r '.packages[0].version')"
+          status="$(curl -s -o /dev/null -w '%{http_code}' -A 'llmpulse-rust publish (info@llmpulse.ai)' "https://crates.io/api/v1/crates/llmpulse/${version}")"
+          echo "publish=$([[ "${status}" == "200" ]] && echo false || echo true)" >> "$GITHUB_OUTPUT"
+      - if: steps.version.outputs.publish == 'true'
+        uses: rust-lang/crates-io-auth-action@v1
+        id: auth
+      - if: steps.version.outputs.publish == 'true'
+        run: cargo publish --allow-dirty
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ steps.auth.outputs.token }}
