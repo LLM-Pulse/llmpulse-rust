@@ -86,7 +86,7 @@ Name | Type | Description  | Required | Notes
 **project_id** | **i32** | Project ID | [required] |
 **page** | Option<**u32**> |  |  |[default to 1]
 **per_page** | Option<**u32**> |  |  |[default to 20]
-**model** | Option<**String**> | Filter by AI model. Models the API key's user has not enabled are silently dropped. |  |
+**model** | Option<**String**> | Filter by one AI model. It must be a model enabled for the API key's user: an unknown value, or a model the user has not enabled, returns 422 ERR_INVALID_PARAM with the valid values in the message. |  |
 **collection_id** | Option<**String**> | One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize. |  |
 **country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
 **language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |
@@ -116,7 +116,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_prompts
 
-> models::PromptsResponse list_prompts(project_id, page, per_page, model, collection_id, country_code, language_code, prompt_type, brand_kind, from, to, output)
+> models::PromptsResponse list_prompts(project_id, page, per_page, model, collection_id, country_code, language_code, prompt, prompt_type, brand_kind, from, to, output)
 List prompts
 
 ### Parameters
@@ -127,10 +127,11 @@ Name | Type | Description  | Required | Notes
 **project_id** | **i32** | Project ID | [required] |
 **page** | Option<**u32**> |  |  |[default to 1]
 **per_page** | Option<**u32**> |  |  |[default to 20]
-**model** | Option<**String**> | Filter by AI model. Models the API key's user has not enabled are silently dropped. |  |
+**model** | Option<**String**> | Keep only the prompts with at least one execution on this AI model, of any outcome and date (the prompts /dimensions/prompt_executions lists for the same model). Prompts have no model of their own, so a prompt with no execution on this model yet (a newly enabled model, or a locale the model does not cover) is left out. An unknown value, or a model the API key's user has not enabled, returns 422 ERR_INVALID_PARAM. from and to still filter prompt creation. |  |
 **collection_id** | Option<**String**> | One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize. |  |
 **country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
 **language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |
+**prompt** | Option<**i32**> | Filter by prompt ID |  |
 **prompt_type** | Option<**String**> | One prompt type or a comma-separated list: informational, navigational, commercial, transactional |  |
 **brand_kind** | Option<**String**> | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. |  |
 **from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
@@ -172,7 +173,7 @@ Name | Type | Description  | Required | Notes
 **order** | Option<**String**> | Sort field; the allowed set depends on view |  |
 **direction** | Option<**String**> |  |  |[default to desc]
 **query** | Option<**String**> | Case-insensitive substring filter on the sub-query text |  |
-**model** | Option<**String**> | Filter by AI model. Models the API key's user has not enabled are silently dropped. |  |
+**model** | Option<**String**> | Filter by one AI model. It must be a model enabled for the API key's user: an unknown value, or a model the user has not enabled, returns 422 ERR_INVALID_PARAM with the valid values in the message. |  |
 **collection_id** | Option<**String**> | One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize. |  |
 **country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
 **language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |

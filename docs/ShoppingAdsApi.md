@@ -30,7 +30,7 @@ Name | Type | Description  | Required | Notes
 **order** | Option<**String**> | Sort field; the allowed set depends on view |  |
 **direction** | Option<**String**> | Sort direction for view=advertisers. Defaults to desc, except avg_position and domain which default to asc. |  |
 **query** | Option<**String**> | Case-insensitive substring filter on the ad title, domain or snippet |  |
-**model** | Option<**String**> | Filter by AI model. Models the API key's user has not enabled are silently dropped. |  |
+**model** | Option<**String**> | Filter by one AI model. It must be a model enabled for the API key's user: an unknown value, or a model the user has not enabled, returns 422 ERR_INVALID_PARAM with the valid values in the message. |  |
 **collection_id** | Option<**String**> | One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize. |  |
 **country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
 **language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |
@@ -77,7 +77,7 @@ Name | Type | Description  | Required | Notes
 **order** | Option<**String**> | Sort field |  |[default to appearances]
 **direction** | Option<**String**> |  |  |[default to desc]
 **query** | Option<**String**> | Case-insensitive substring filter on the business name or address |  |
-**model** | Option<**String**> | Filter by AI model. Models the API key's user has not enabled are silently dropped. |  |
+**model** | Option<**String**> | Filter by one AI model. It must be a model enabled for the API key's user: an unknown value, or a model the user has not enabled, returns 422 ERR_INVALID_PARAM with the valid values in the message. |  |
 **collection_id** | Option<**String**> | One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize. |  |
 **country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
 **language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |
@@ -125,7 +125,7 @@ Name | Type | Description  | Required | Notes
 **order** | Option<**String**> | Sort field; the allowed set depends on view |  |
 **direction** | Option<**String**> |  |  |[default to desc]
 **query** | Option<**String**> | Case-insensitive substring filter on the product title |  |
-**model** | Option<**String**> | Filter by AI model. Models the API key's user has not enabled are silently dropped. |  |
+**model** | Option<**String**> | Filter by one AI model. It must be a model enabled for the API key's user: an unknown value, or a model the user has not enabled, returns 422 ERR_INVALID_PARAM with the valid values in the message. |  |
 **collection_id** | Option<**String**> | One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize. |  |
 **country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
 **language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |

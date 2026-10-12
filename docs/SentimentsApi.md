@@ -56,7 +56,7 @@ Name | Type | Description  | Required | Notes
 **competitor_id** | Option<**i32**> |  |  |
 **brand_only** | Option<**bool**> |  |  |
 **analysis** | Option<**String**> | One sentiment level or a comma-separated list: very_positive, positive, neutral, negative, very_negative |  |
-**model** | Option<**String**> | Filter by AI model. Models the API key's user has not enabled are silently dropped. |  |
+**model** | Option<**String**> | Filter by one AI model. Here an unknown value, or a model the API key's user has not enabled, is ignored rather than rejected: the request succeeds and returns the records of every enabled model, as if model were omitted. |  |
 **collection_id** | Option<**String**> | One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize. |  |
 **country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
 **language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |

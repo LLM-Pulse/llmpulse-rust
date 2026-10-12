@@ -141,6 +141,8 @@ docs/ProjectDetailsAllOfDataCoverage.md
 docs/ProjectDetailsAllOfSearchConsole.md
 docs/ProjectDetailsAllOfStats.md
 docs/ProjectDetailsAllOfStatsPromptsByBrandKind.md
+docs/ProjectProfile.md
+docs/ProjectUpdateResponse.md
 docs/ProjectsApi.md
 docs/PromptExecutionRecord.md
 docs/PromptExecutionsResponse.md
@@ -374,6 +376,8 @@ src/models/project_details_all_of_data_coverage.rs
 src/models/project_details_all_of_search_console.rs
 src/models/project_details_all_of_stats.rs
 src/models/project_details_all_of_stats_prompts_by_brand_kind.rs
+src/models/project_profile.rs
+src/models/project_update_response.rs
 src/models/prompt_execution_record.rs
 src/models/prompt_executions_response.rs
 src/models/prompt_record.rs

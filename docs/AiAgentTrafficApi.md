@@ -126,7 +126,7 @@ Static catalog of AI bots that Agent Analytics can identify. Useful for renderin
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**project_id** | **i32** | Project ID | [required] |
+**project_id** | **i32** | Accepted for compatibility and ignored. The catalog is the same for every project, so any value returns the same list and the project is not checked. | [required] |
 **output** | Option<**String**> | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. |  |
 
 ### Return type
