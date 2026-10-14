@@ -108,7 +108,7 @@ Name | Type | Description  | Required | Notes
 > models::IntelligenceTask revert_intelligence_task_content(project_id, id)
 Revert GEO Writer task content
 
-Discards every manual edit on the task and restores the output exactly as it was generated. Returns ERR_INVALID_PARAM when the task has no manual edits. Requires a `read_write` scope API key and, for team members, update permission on GEO Writer.
+Discards every manual edit on the task and restores the output as it was generated. On a product_listing task, description_html comes back with only p, ul, ol, li, strong, em, h3 and br and no attributes, cleaned like an edit. Returns ERR_INVALID_PARAM when the task has no manual edits. Requires a `read_write` scope API key and, for team members, update permission on GEO Writer.
 
 ### Parameters
 
@@ -139,7 +139,7 @@ Name | Type | Description  | Required | Notes
 > models::IntelligenceTaskUpdateResponse update_intelligence_task_content(id, intelligence_task_update_request)
 Edit GEO Writer task content
 
-Edits the text of a completed task in place. `edits` maps dotted paths into result_data (for example `title` or `sections.0.content`) to replacement text. Only string fields that already exist can change: a path that does not resolve to text, a blank `title`, a value over 20,000 characters or an empty `edits` object is rejected with ERR_INVALID_PARAM and nothing is written. Send the `result_version` you last read with the edits: when the task was regenerated since, the request is refused with ERR_STALE_CONTENT (409), nothing is written and `error.meta.result_version` holds the current token. Without `result_version` the edits apply to whatever the task holds now. Values identical to the stored text are ignored, and the response lists the paths that actually changed. The first edit keeps a copy of the generated output so POST /intelligence_tasks/{id}/revert can restore it; regenerating the task replaces the edited content. Requires a `read_write` scope API key and, for team members, update permission on GEO Writer.
+Edits the text of a completed task in place. `edits` maps dotted paths into result_data (for example `title` or `sections.0.content`) to replacement text. Only string fields that already exist can change: a path that does not resolve to text, a blank `title`, a value over 20,000 characters or an empty `edits` object is rejected with ERR_INVALID_PARAM and nothing is written. Send the `result_version` you last read with the edits: when the task was regenerated since, the request is refused with ERR_STALE_CONTENT (409), nothing is written and `error.meta.result_version` holds the current token. Without `result_version` the edits apply to whatever the task holds now. Values identical to the stored text are ignored, and the response lists the paths that actually changed. The first edit keeps a copy of the generated output so POST /intelligence_tasks/{id}/revert can restore it; regenerating the task replaces the edited content. Requires a `read_write` scope API key and, for team members, update permission on GEO Writer. On a product_listing task, description_html keeps only p, ul, ol, li, strong, em, h3 and br, with no attributes: other markup is stripped, not refused, so read the stored value from the response. A revert restores the generated description cleaned the same way.
 
 ### Parameters
 

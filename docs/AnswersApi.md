@@ -67,7 +67,7 @@ Name | Type | Description  | Required | Notes
 **page** | Option<**u32**> |  |  |[default to 1]
 **per_page** | Option<**u32**> |  |  |[default to 20]
 **query** | Option<**String**> | Case-insensitive full-text search inside AI response texts. Switches items to snippet + match_count mode. |  |
-**no_result** | Option<**bool**> | Filter sentinel non-answers (provider returned nothing after retries; excluded from platform metrics). false = only real answers, true = only sentinels, omit = both. Every item carries its own no_result flag. |  |
+**no_result** | Option<**bool**> | Filter sentinel non-answers (the provider returned nothing after all retries, or the model declined to answer, today only Gemini; excluded from platform metrics). false = only real answers, true = only sentinels, omit = both. Every item carries its own no_result flag. |  |
 
 ### Return type
 

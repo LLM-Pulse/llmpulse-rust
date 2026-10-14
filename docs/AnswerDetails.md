@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **executed_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
 **duration_ms** | Option<**f64**> | Milliseconds, rounded to one decimal place | [optional]
 **success** | Option<**bool**> | Null while the answer is still pending | [optional]
-**no_result** | Option<**bool**> | True for a sentinel non-answer (the provider returned nothing after retries); excluded from platform metrics | [optional]
+**no_result** | Option<**bool**> | True for a sentinel non-answer (the provider returned nothing after all retries, or the model declined to answer, today only Gemini); excluded from platform metrics | [optional]
 **fan_out_queries** | Option<**Vec<String>**> |  | [optional]
 **mentions** | Option<**Vec<serde_json::Value>**> |  | [optional]
 **citations** | Option<**Vec<serde_json::Value>**> |  | [optional]
