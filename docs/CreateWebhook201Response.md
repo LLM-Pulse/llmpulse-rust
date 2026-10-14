@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **failure_count** | Option<**i32**> |  | [optional]
 **last_delivered_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
 **created_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
-**secret** | Option<**String**> | HMAC signing secret (whsec_...). Only returned on create. | [optional]
+**secret** | Option<**String**> | HMAC signing secret (whsec_...). Returned when the subscription is created, and on a re-post only to the API key or OAuth connection that created it; absent for any other credential. | [optional]
 **request_id** | Option<**String**> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
