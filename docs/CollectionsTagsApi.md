@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**delete_collection**](CollectionsTagsApi.md#delete_collection) | **DELETE** /collections/{id} | Delete a tag
 [**list_collections**](CollectionsTagsApi.md#list_collections) | **GET** /dimensions/collections | List tags/collections
 [**list_tags**](CollectionsTagsApi.md#list_tags) | **GET** /dimensions/tags | List tags (alias for /collections)
+[**remove_prompt_tags**](CollectionsTagsApi.md#remove_prompt_tags) | **POST** /prompts/remove_tags | Bulk-detach tags from prompts
 [**update_collection**](CollectionsTagsApi.md#update_collection) | **PATCH** /collections/{id} | Update a tag
 
 
@@ -157,6 +158,36 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## remove_prompt_tags
+
+> models::PromptTagsRemoveResponse remove_prompt_tags(remove_prompt_tags_request)
+Bulk-detach tags from prompts
+
+Idempotent bulk removal of tags (Collections) from existing prompts: up to 500 prompt_ids and 50 tags, resolved by id or by name (case-insensitive). Only the prompt-tag links are removed; tags and prompts stay. Links that did not exist are counted in skipped_not_linked. Requires a `read_write` scope API key and, for team members, update access to Prompts.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**remove_prompt_tags_request** | [**RemovePromptTagsRequest**](RemovePromptTagsRequest.md) |  | [required] |
+
+### Return type
+
+[**models::PromptTagsRemoveResponse**](PromptTagsRemoveResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

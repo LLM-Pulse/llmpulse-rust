@@ -4,12 +4,79 @@ All URIs are relative to *https://api.llmpulse.ai/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**accept_suggested_prompts**](PromptsApi.md#accept_suggested_prompts) | **POST** /suggested_prompts/accept | Accept suggested prompts
+[**create_prompt_generation**](PromptsApi.md#create_prompt_generation) | **POST** /prompt_generations | Generate prompt suggestions
 [**create_prompts**](PromptsApi.md#create_prompts) | **POST** /prompts | Bulk-create prompts
 [**delete_prompt**](PromptsApi.md#delete_prompt) | **DELETE** /prompts/{id} | Delete a prompt
+[**get_prompt_generation**](PromptsApi.md#get_prompt_generation) | **GET** /prompt_generations/{id} | Get a prompt generation run
+[**import_prompts**](PromptsApi.md#import_prompts) | **POST** /prompts/import | Import prompts
 [**list_prompt_executions**](PromptsApi.md#list_prompt_executions) | **GET** /dimensions/prompt_executions | List prompt executions
 [**list_prompts**](PromptsApi.md#list_prompts) | **GET** /dimensions/prompts | List prompts
 [**list_query_fan_outs**](PromptsApi.md#list_query_fan_outs) | **GET** /dimensions/query_fan_outs | List query fan-out
+[**list_suggested_prompts**](PromptsApi.md#list_suggested_prompts) | **GET** /suggested_prompts | List suggested prompts
+[**reject_suggested_prompts**](PromptsApi.md#reject_suggested_prompts) | **POST** /suggested_prompts/reject | Reject suggested prompts
+[**update_prompt**](PromptsApi.md#update_prompt) | **PATCH** /prompts/{id} | Edit a prompt's categorization
 
+
+
+## accept_suggested_prompts
+
+> models::SuggestedPromptsAcceptResponse accept_suggested_prompts(suggested_prompts_accept_request)
+Accept suggested prompts
+
+Starts tracking up to 100 pending suggestions: each becomes a prompt in its own country and language, optionally put in one tag (tag_ids or tag_names; create_missing creates a missing name when the team member may create tags). Suggestions that are no longer pending come back in skipped. When the new prompts would exceed the plan the call returns ERR_LIMIT_REACHED and accepts nothing. Requires a `read_write` scope API key and, for team members, create access to Prompts.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**suggested_prompts_accept_request** | [**SuggestedPromptsAcceptRequest**](SuggestedPromptsAcceptRequest.md) |  | [required] |
+
+### Return type
+
+[**models::SuggestedPromptsAcceptResponse**](SuggestedPromptsAcceptResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## create_prompt_generation
+
+> models::PromptGenerationResponse create_prompt_generation(prompt_generation_request)
+Generate prompt suggestions
+
+Starts a suggestion run with one of the generators behind the app's Add prompts wizards and answers 202 with the run. website writes suggestions from the scraped website (80% non-brand, 20% brand), keyword from a keyword or the project profile (optionally around a competitor), topic from a topic, reddit from Reddit discussions of a topic or brand, paa from Google People Also Ask (up to 5 keywords, counted against the account's 24-hour lookup allowance), reputational from brand reputation questions, translate from the project's prompts of another locale, search_console from the connected property's top queries of the last 28 days (Growth plan or above, ERR_PLAN_REQUIRED). The suggestions land in the Suggested prompts queue; poll GET /prompt_generations/{id}, then accept the ones you want with POST /suggested_prompts/accept. Nothing is tracked until accepted. The request is validated before the run starts, and refused with ERR_LIMIT_REACHED when the plan has no prompt slot left. Requires a `read_write` scope API key and, for team members, create access to Prompts.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**prompt_generation_request** | [**PromptGenerationRequest**](PromptGenerationRequest.md) |  | [required] |
+
+### Return type
+
+[**models::PromptGenerationResponse**](PromptGenerationResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## create_prompts
@@ -68,6 +135,67 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_prompt_generation
+
+> models::PromptGenerationResponse get_prompt_generation(project_id, id)
+Get a prompt generation run
+
+Returns a run started with POST /prompt_generations: processing while the generator works, then completed with the suggestions it saved to the Suggested prompts queue, or failed with an error code and message. Poll every few seconds; most runs finish within a minute. Runs are kept for 24 hours, their suggestions stay in the queue.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**project_id** | **i32** | Project ID | [required] |
+**id** | **uuid::Uuid** |  | [required] |
+
+### Return type
+
+[**models::PromptGenerationResponse**](PromptGenerationResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## import_prompts
+
+> models::PromptsImportResponse import_prompts(prompts_import_request)
+Import prompts
+
+The app's CSV import as JSON: up to 500 rows, each with its own prompt, country_code, language_code (codes or names; both default to the project's) and tags, created when missing. Duplicates are skipped and existing prompts still get the row's tags. The prompt limits are checked before anything is written: when the new prompts would exceed the plan the call returns ERR_LIMIT_REACHED and imports nothing. Rows with an unknown country or language come back in row_errors. Responds 201 when it created prompts, 200 otherwise. Requires a `read_write` scope API key and, for team members, create access to Prompts.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**prompts_import_request** | [**PromptsImportRequest**](PromptsImportRequest.md) |  | [required] |
+
+### Return type
+
+[**models::PromptsImportResponse**](PromptsImportResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -196,6 +324,101 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## list_suggested_prompts
+
+> models::SuggestedPromptsResponse list_suggested_prompts(project_id, source, status, page, per_page)
+List suggested prompts
+
+Lists the project's Suggested prompts queue, the same list the app's Suggested Prompts tab shows, oldest first. It holds the suggestions of every generator (website, magic for keyword runs, topic, reddit, paa, reputational, translate, gsc for Search Console, catalog). Pending suggestions by default; status=all also returns accepted (with the prompt they became) and rejected ones. Team members need create access to Prompts, like the app's tab.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**project_id** | **i32** | Project ID | [required] |
+**source** | Option<**String**> | Only suggestions from this generator |  |
+**status** | Option<**String**> | Only suggestions in this status |  |[default to pending]
+**page** | Option<**u32**> |  |  |[default to 1]
+**per_page** | Option<**u32**> |  |  |[default to 50]
+
+### Return type
+
+[**models::SuggestedPromptsResponse**](SuggestedPromptsResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## reject_suggested_prompts
+
+> models::SuggestedPromptsRejectResponse reject_suggested_prompts(suggested_prompt_ids_request)
+Reject suggested prompts
+
+Marks up to 100 pending suggestions as rejected, so they leave the pending list; suggestions that are no longer pending stay as they are. Tracks and deletes nothing. Requires a `read_write` scope API key and, for team members, create access to Prompts.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**suggested_prompt_ids_request** | [**SuggestedPromptIdsRequest**](SuggestedPromptIdsRequest.md) |  | [required] |
+
+### Return type
+
+[**models::SuggestedPromptsRejectResponse**](SuggestedPromptsRejectResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## update_prompt
+
+> models::PromptCategorizationResponse update_prompt(id, update_prompt_request)
+Edit a prompt's categorization
+
+Manual categorization, exactly like editing the intent and brand badges on the prompt page: send `prompt_type`, `brand_kind` or both. The prompt is marked as manually categorized (`categorization_source` becomes `manual`), so automatic categorization no longer changes it; the prompt page can revert it to automatic. Any other field returns ERR_INVALID_PARAM. Not available from a white-label portal (ERR_INTEGRATION_UNAVAILABLE), where the page hides the editor. Requires a `read_write` scope API key and, for team members, update permission on Prompts.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **i32** |  | [required] |
+**update_prompt_request** | [**UpdatePromptRequest**](UpdatePromptRequest.md) |  | [required] |
+
+### Return type
+
+[**models::PromptCategorizationResponse**](PromptCategorizationResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

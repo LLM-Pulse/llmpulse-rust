@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**get_recommendation**](RecommendationsApi.md#get_recommendation) | **GET** /recommendations/{id} | Get recommendation run with items
 [**launch_recommendations**](RecommendationsApi.md#launch_recommendations) | **POST** /recommendations | Launch a recommendations generation
 [**list_recommendations**](RecommendationsApi.md#list_recommendations) | **GET** /recommendations | List recommendation runs
+[**update_recommendation_item**](RecommendationsApi.md#update_recommendation_item) | **PATCH** /recommendations/{id}/items/{item_id} | Complete, archive or restore a recommendation item
 
 
 
@@ -98,6 +99,38 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## update_recommendation_item
+
+> models::RecommendationItemUpdateResponse update_recommendation_item(id, item_id, update_recommendation_item_request)
+Complete, archive or restore a recommendation item
+
+Moves one item of a recommendation run between `active`, `completed` and `archived`, exactly like the complete, archive and restore buttons on the Recommendations page, and stamps `status_changed_at`. Returns the item in the shape `GET /recommendations/{id}` lists items. Requires a `read_write` scope API key and, for team members, create permission on Recommendations (the permission the page uses for these buttons).
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **i32** | Recommendation run id | [required] |
+**item_id** | **i32** | Item id, from the items of GET /recommendations/{id} | [required] |
+**update_recommendation_item_request** | [**UpdateRecommendationItemRequest**](UpdateRecommendationItemRequest.md) |  | [required] |
+
+### Return type
+
+[**models::RecommendationItemUpdateResponse**](RecommendationItemUpdateResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

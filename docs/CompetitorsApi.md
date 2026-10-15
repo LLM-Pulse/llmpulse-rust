@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**create_competitor**](CompetitorsApi.md#create_competitor) | **POST** /competitors | Add a competitor
 [**delete_competitor**](CompetitorsApi.md#delete_competitor) | **DELETE** /competitors/{id} | Delete a competitor
 [**get_competitor_details**](CompetitorsApi.md#get_competitor_details) | **GET** /dimensions/competitors/{id} | Competitor details
+[**list_competitor_suggestions**](CompetitorsApi.md#list_competitor_suggestions) | **GET** /competitors/suggestions | List competitor suggestions
 [**list_competitors**](CompetitorsApi.md#list_competitors) | **GET** /dimensions/competitors | List competitors
 [**update_competitor**](CompetitorsApi.md#update_competitor) | **PATCH** /competitors/{id} | Update a competitor
 
@@ -89,6 +90,41 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::CompetitorDetails**](CompetitorDetails.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## list_competitor_suggestions
+
+> models::CompetitorSuggestionsResponse list_competitor_suggestions(project_id, basis, query, page, per_page, output)
+List competitor suggestions
+
+The two lists of the Suggested tab of the Competitors page. `basis=brands` (default) returns the competing brands the AI discovery proposed that are not tracked or rejected yet, with the names it would match and, when counted, how many answers name it (`mentions`). `basis=citations` returns the domains AI answers cite most that are not your own or tracked yet, with how many answers cite each (`citations`). `discovery` tells whether a discovery run is still loading. Read-only: it never starts a discovery run, which the page starts from its Discover button. Add a suggestion with POST /competitors.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**project_id** | **i32** | Project ID | [required] |
+**basis** | Option<**String**> |  |  |[default to brands]
+**query** | Option<**String**> | Only suggestions whose brand name or domain contains this text |  |
+**page** | Option<**u32**> |  |  |[default to 1]
+**per_page** | Option<**u32**> |  |  |[default to 20]
+**output** | Option<**String**> | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. |  |
+
+### Return type
+
+[**models::CompetitorSuggestionsResponse**](CompetitorSuggestionsResponse.md)
 
 ### Authorization
 
