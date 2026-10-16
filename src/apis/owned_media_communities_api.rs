@@ -38,6 +38,7 @@ pub enum GetOwnedMediaSummaryError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ListOwnedMediaError {
+    Status403(models::ApiError),
     Status422(models::ApiError),
     UnknownValue(serde_json::Value),
 }
@@ -186,7 +187,7 @@ pub async fn get_owned_media_summary(configuration: &configuration::Configuratio
     }
 }
 
-/// Which owned-media content AI answers cite, by platform. `provider` is required. Each row carries a `yours` flag so you can compare your own presence against everyone else cited on the same platform. Video, post, channel and profile rows also carry their image (thumbnail_url or avatar_url, our cached copy where one exists), their average position in the answers and, on YouTube, the video id, the channel handle and URL, and the channel key that /dimensions/owned_media/citing_prompts accepts. view=own_citations returns the raw citations of the connected profile only and stays empty until a profile is connected. For Reddit use /dimensions/reddit. Requires the Growth plan or above.
+/// Which owned-media content AI answers cite, by platform. `provider` is required. Each row carries a `yours` flag so you can compare your own presence against everyone else cited on the same platform. Video, post, channel and profile rows also carry their image (thumbnail_url or avatar_url, our cached copy where one exists), their average position in the answers and, on YouTube, the video id, the channel handle and URL, and the channel key that /dimensions/owned_media/citing_prompts accepts. view=own_citations returns the raw citations of the connected profile only and stays empty until a profile is connected. For Reddit use /dimensions/reddit. A team member also needs the YouTube Intelligence permission for provider=youtube. Requires the Growth plan or above.
 pub async fn list_owned_media(configuration: &configuration::Configuration, project_id: i32, provider: &str, page: Option<u32>, per_page: Option<u32>, view: Option<&str>, store: Option<&str>, owned: Option<bool>, model: Option<&str>, collection_id: Option<&str>, country_code: Option<&str>, language_code: Option<&str>, brand_kind: Option<&str>, range: Option<i32>, from: Option<chrono::DateTime<chrono::FixedOffset>>, to: Option<chrono::DateTime<chrono::FixedOffset>>, output: Option<&str>) -> Result<models::OwnedMediaListResponse, Error<ListOwnedMediaError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_project_id = project_id;
