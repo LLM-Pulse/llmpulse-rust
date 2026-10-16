@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **google_play_id** | Option<**String**> |  | [optional]
 **app_store_id** | Option<**String**> |  | [optional]
 **created_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
+**prompt_limit** | Option<**i32**> | Maximum number of active prompts this project may hold, set by the account owner or a co-owner in Account Settings > Prompt Limits; null when the project has no limit of its own and only the account quota applies | [optional]
 **stats** | Option<[**models::ProjectDetailsAllOfStats**](ProjectDetailsAllOfStats.md)> |  | [optional]
 **data_coverage** | Option<[**models::ProjectDetailsAllOfDataCoverage**](ProjectDetailsAllOfDataCoverage.md)> |  | [optional]
 **search_console** | Option<[**models::ProjectDetailsAllOfSearchConsole**](ProjectDetailsAllOfSearchConsole.md)> |  | [optional]

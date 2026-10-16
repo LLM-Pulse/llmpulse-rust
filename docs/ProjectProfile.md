@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **goals** | Option<**String**> |  | [optional]
 **matching_names** | **Vec<String>** |  | 
 **additional_owned_domains** | **Vec<String>** | Other domains the brand owns (at most 10, each a website's own domain covering its subdomains), whose citations count as owned like the project website. Empty when none | 
+**prompt_limit** | Option<**i32**> | Maximum number of active prompts this project may hold; null when only the account quota applies | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
