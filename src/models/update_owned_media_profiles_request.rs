@@ -31,7 +31,7 @@ pub struct UpdateOwnedMediaProfilesRequest {
     /// The main TikTok profile URL. An empty string or null clears it
     #[serde(rename = "tiktok_profile_url", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub tiktok_profile_url: Option<Option<String>>,
-    /// The main LinkedIn Company Page URL (/company/...). An empty string or null clears it
+    /// The main LinkedIn page URL: a company (/company/...), school (/school/...) or showcase (/showcase/...) page. An empty string or null clears it
     #[serde(rename = "linkedin_company_url", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub linkedin_company_url: Option<Option<String>>,
     /// FULL replacement list of extra YouTube channel URLs (at most 10); [] clears it
@@ -49,7 +49,7 @@ pub struct UpdateOwnedMediaProfilesRequest {
     /// FULL replacement list of extra TikTok profile URLs (at most 10); [] clears it
     #[serde(rename = "tiktok_extra_profile_urls", skip_serializing_if = "Option::is_none")]
     pub tiktok_extra_profile_urls: Option<Vec<String>>,
-    /// FULL replacement list of extra LinkedIn Company Page URLs (at most 10); [] clears it
+    /// FULL replacement list of extra LinkedIn company, school or showcase page URLs (at most 10); [] clears it
     #[serde(rename = "linkedin_extra_profile_urls", skip_serializing_if = "Option::is_none")]
     pub linkedin_extra_profile_urls: Option<Vec<String>>,
     /// FULL replacement list (at most 10) of subreddit names the brand owns, without r/; [] clears it

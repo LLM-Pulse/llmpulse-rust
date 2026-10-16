@@ -43,7 +43,7 @@ pub struct ProjectProfile {
     /// Other domains the brand owns (at most 10, each a website's own domain covering its subdomains), whose citations count as owned like the project website. Empty when none
     #[serde(rename = "additional_owned_domains")]
     pub additional_owned_domains: Vec<String>,
-    /// Maximum number of active prompts this project may hold; null when only the account quota applies
+    /// The most prompts this project can hold, set by the account owner or a co-owner (Account Settings > Prompt Limits). Null when the project has no limit of its own; the account's plan allowance applies either way
     #[serde(rename = "prompt_limit", deserialize_with = "Option::deserialize")]
     pub prompt_limit: Option<i32>,
 }

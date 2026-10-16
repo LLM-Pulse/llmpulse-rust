@@ -21,7 +21,7 @@ pub struct ProjectUpdateResponse {
     /// True when a matching_names or additional_owned_domains change started a background recalculation of past answers; further edits are rejected until it finishes
     #[serde(rename = "rematching")]
     pub rematching: bool,
-    /// What the change does to mention detection, citation ownership, historical numbers and the prompts the project can hold
+    /// What the change does to mention detection, citation ownership and historical numbers, and, when prompt_limit was sent, how many prompts the project holds and how many more can be added
     #[serde(rename = "note")]
     pub note: String,
     #[serde(rename = "request_id")]

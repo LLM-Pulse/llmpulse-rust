@@ -13,28 +13,27 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ProjectDetailsAllOfStats {
-    /// Active prompts in the project
     #[serde(rename = "prompts_count", skip_serializing_if = "Option::is_none")]
     pub prompts_count: Option<i32>,
-    /// Prompts that can still be added to this project, the lower of its free slots under prompt_limit and the prompts left in the account quota; null when neither caps it
-    #[serde(rename = "prompts_available", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub prompts_available: Option<Option<i32>>,
     #[serde(rename = "prompts_by_brand_kind", skip_serializing_if = "Option::is_none")]
     pub prompts_by_brand_kind: Option<Box<models::ProjectDetailsAllOfStatsPromptsByBrandKind>>,
     #[serde(rename = "competitors_count", skip_serializing_if = "Option::is_none")]
     pub competitors_count: Option<i32>,
     #[serde(rename = "collections_count", skip_serializing_if = "Option::is_none")]
     pub collections_count: Option<i32>,
+    /// How many prompts can still be added to this project now, the same number the Prompts page offers. The lower of the project's free slots under prompt_limit and the account's remaining prompts; 0 when either is full (a project over its limit keeps its prompts). Null when neither caps it
+    #[serde(rename = "prompts_available", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub prompts_available: Option<Option<i32>>,
 }
 
 impl ProjectDetailsAllOfStats {
     pub fn new() -> ProjectDetailsAllOfStats {
         ProjectDetailsAllOfStats {
             prompts_count: None,
-            prompts_available: None,
             prompts_by_brand_kind: None,
             competitors_count: None,
             collections_count: None,
+            prompts_available: None,
         }
     }
 }

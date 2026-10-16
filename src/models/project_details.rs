@@ -58,7 +58,7 @@ pub struct ProjectDetails {
     pub app_store_id: Option<Option<String>>,
     #[serde(rename = "created_at", skip_serializing_if = "Option::is_none")]
     pub created_at: Option<chrono::DateTime<chrono::FixedOffset>>,
-    /// Maximum number of active prompts this project may hold, set by the account owner or a co-owner in Account Settings > Prompt Limits; null when the project has no limit of its own and only the account quota applies
+    /// The most prompts this project can hold, set by the account owner or a co-owner (Account Settings > Prompt Limits). Null when the project has no limit of its own; the account's plan allowance applies either way
     #[serde(rename = "prompt_limit", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub prompt_limit: Option<Option<i32>>,
     #[serde(rename = "stats", skip_serializing_if = "Option::is_none")]

@@ -102,7 +102,7 @@ Class | Method | HTTP request | Description
 *ProjectsApi* | [**list_locales**](docs/ProjectsApi.md#list_locales) | **GET** /dimensions/locales | List locales with data
 *ProjectsApi* | [**list_models**](docs/ProjectsApi.md#list_models) | **GET** /dimensions/models | List models with data
 *ProjectsApi* | [**list_projects**](docs/ProjectsApi.md#list_projects) | **GET** /dimensions/projects | List projects
-*ProjectsApi* | [**update_project**](docs/ProjectsApi.md#update_project) | **PATCH** /projects/{id} | Update a project profile (Brand Book) or prompt limit
+*ProjectsApi* | [**update_project**](docs/ProjectsApi.md#update_project) | **PATCH** /projects/{id} | Update a project profile (Brand Book)
 *ProjectsApi* | [**update_project_draft**](docs/ProjectsApi.md#update_project_draft) | **PATCH** /project_drafts/{id} | Submit a wizard step
 *PromptsApi* | [**accept_suggested_prompts**](docs/PromptsApi.md#accept_suggested_prompts) | **POST** /suggested_prompts/accept | Accept suggested prompts
 *PromptsApi* | [**create_prompt_generation**](docs/PromptsApi.md#create_prompt_generation) | **POST** /prompt_generations | Generate prompt suggestions
