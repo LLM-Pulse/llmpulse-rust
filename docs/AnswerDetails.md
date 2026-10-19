@@ -19,12 +19,13 @@ Name | Type | Description | Notes
 **citations** | Option<**Vec<serde_json::Value>**> |  | [optional]
 **competitor_mentions** | Option<**Vec<serde_json::Value>**> |  | [optional]
 **competitor_citations** | Option<**Vec<serde_json::Value>**> |  | [optional]
-**sentiments** | Option<**Vec<serde_json::Value>**> |  | [optional]
+**sentiments** | Option<**Vec<serde_json::Value>**> | Needs the Growth plan or above; left out below it and named in plan_required_fields | [optional]
 **sources** | Option<**Vec<serde_json::Value>**> |  | [optional]
-**shopping_products** | Option<**Vec<serde_json::Value>**> |  | [optional]
+**shopping_products** | Option<**Vec<serde_json::Value>**> | Needs the Scale plan or above; left out below it and named in plan_required_fields | [optional]
 **brand_entities** | Option<**Vec<serde_json::Value>**> |  | [optional]
 **local_businesses** | Option<**Vec<serde_json::Value>**> |  | [optional]
 **locale** | Option<[**models::AnswerDetailsLocale**](AnswerDetailsLocale.md)> |  | [optional]
+**plan_required_fields** | **Vec<String>** | The fields left out of this answer because the account's plan does not include them (sentiments below Growth, shopping_products below Scale). Always present, empty when nothing is left out | 
 **app_url** | Option<**String**> | Opens this answer in the app. The link names its project, so it opens there for any user with access to that project | [optional]
 **request_id** | Option<**String**> |  | [optional]
 
