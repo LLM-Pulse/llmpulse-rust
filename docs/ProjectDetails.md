@@ -28,6 +28,8 @@ Name | Type | Description | Notes
 **stats** | Option<[**models::ProjectDetailsAllOfStats**](ProjectDetailsAllOfStats.md)> |  | [optional]
 **data_coverage** | Option<[**models::ProjectDetailsAllOfDataCoverage**](ProjectDetailsAllOfDataCoverage.md)> |  | [optional]
 **search_console** | Option<[**models::ProjectDetailsAllOfSearchConsole**](ProjectDetailsAllOfSearchConsole.md)> |  | [optional]
+**ai_traffic** | Option<[**models::ProjectDetailsAllOfAiTraffic**](ProjectDetailsAllOfAiTraffic.md)> |  | [optional]
+**agent_traffic** | Option<[**models::ProjectDetailsAllOfAgentTraffic**](ProjectDetailsAllOfAgentTraffic.md)> |  | [optional]
 **request_id** | Option<**String**> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | Option<**Code**> |  (enum: ERR_MISSING_AUTH, ERR_INVALID_API_KEY, ERR_REVOKED_API_KEY, ERR_INSUFFICIENT_SCOPE, ERR_INSUFFICIENT_PERMISSION, ERR_KEY_PROJECT_SCOPED, ERR_PLAN_REQUIRED, ERR_INTEGRATION_UNAVAILABLE, ERR_GENERATION_FAILED, ERR_ACCOUNT_INACTIVE, ERR_DRAFT_NOT_FOUND, ERR_DRAFT_STATE, ERR_PROJECT_NOT_FOUND, ERR_NOT_FOUND, ERR_SEARCH_CONSOLE_NOT_CONNECTED, ERR_SEARCH_CONSOLE_ACCESS_REVOKED, ERR_SEARCH_CONSOLE_UPSTREAM, ERR_AI_TRAFFIC_NOT_CONNECTED, ERR_WEB_ANALYTICS_NOT_CONNECTED, ERR_WEB_ANALYTICS_INVALID_QUERY, ERR_WEB_ANALYTICS_ACCESS_REVOKED, ERR_WEB_ANALYTICS_UPSTREAM, ERR_AGENT_TRAFFIC_NOT_CONNECTED, ERR_INVALID_PARAM, ERR_INVALID_RANGE, ERR_LIMIT_REACHED, ERR_QUOTA_EXCEEDED, ERR_STALE_CONTENT, ERR_RATE_LIMITED) | [optional]
 **message** | Option<**String**> |  | [optional]
-**meta** | Option<**serde_json::Value**> |  | [optional]
+**meta** | Option<**serde_json::Value**> | Extra detail for some codes. A not-connected or access-revoked error from the Search Console, AI traffic, web analytics or agent traffic endpoints carries connect_url, the in-app page where the user connects or reconnects the source. | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
