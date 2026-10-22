@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **source_language_code** | Option<**String**> | translate: language of the prompts to translate | [optional]
 **min_words** | Option<**u32**> | search_console: skip queries shorter than this many words | [optional][default to 0]
 **all_countries** | Option<**bool**> | search_console: include queries from every country instead of country_code only | [optional][default to false]
+**property** | Option<**String**> | search_console: the property id to read queries from (GET /search_console/properties lists them); the primary property when omitted | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
