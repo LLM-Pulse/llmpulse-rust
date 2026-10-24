@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## list_all_citations
 
-> list_all_citations(project_id, competitors, page, per_page, model, collection_id, prompt, from, to, output)
+> list_all_citations(project_id, competitors, page, per_page, model, collection_id, prompt, from, to, output, country_code, language_code, prompt_type, brand_kind, range)
 List all citations (brand + competitor)
 
 Unified citations stream with an `actor_type` field on each record. Includes visible citations and background source references; background references use position 0, meaning no visible rank.
@@ -35,6 +35,11 @@ Name | Type | Description  | Required | Notes
 **from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
 **to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
 **output** | Option<**String**> | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. |  |
+**country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
+**language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |
+**prompt_type** | Option<**String**> | One prompt type or a comma-separated list: informational, navigational, commercial, transactional |  |
+**brand_kind** | Option<**String**> | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. |  |
+**range** | Option<**i32**> | Number of days to look back (alternative to from/to) |  |
 
 ### Return type
 
@@ -54,7 +59,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_all_mentions
 
-> list_all_mentions(project_id, competitors, page, per_page, model, collection_id, prompt, from, to, output)
+> list_all_mentions(project_id, competitors, page, per_page, model, collection_id, prompt, from, to, output, country_code, language_code, prompt_type, brand_kind, range)
 List all mentions (brand + competitor)
 
 Unified mentions stream. Each record has an `actor_type` field (`project` or `competitor`) so the same payload covers both.
@@ -74,6 +79,11 @@ Name | Type | Description  | Required | Notes
 **from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
 **to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
 **output** | Option<**String**> | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. |  |
+**country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
+**language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |
+**prompt_type** | Option<**String**> | One prompt type or a comma-separated list: informational, navigational, commercial, transactional |  |
+**brand_kind** | Option<**String**> | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. |  |
+**range** | Option<**i32**> | Number of days to look back (alternative to from/to) |  |
 
 ### Return type
 
@@ -93,7 +103,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_citations
 
-> models::CitationsResponse list_citations(project_id, page, per_page, model, collection_id, country_code, language_code, prompt, from, to, output)
+> models::CitationsResponse list_citations(project_id, page, per_page, model, collection_id, country_code, language_code, prompt, from, to, output, prompt_type, brand_kind, range)
 List brand citations
 
 Includes visible citations and background source references. Background references use position 0, meaning no visible rank.
@@ -114,6 +124,9 @@ Name | Type | Description  | Required | Notes
 **from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
 **to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
 **output** | Option<**String**> | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. |  |
+**prompt_type** | Option<**String**> | One prompt type or a comma-separated list: informational, navigational, commercial, transactional |  |
+**brand_kind** | Option<**String**> | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. |  |
+**range** | Option<**i32**> | Number of days to look back (alternative to from/to) |  |
 
 ### Return type
 
@@ -133,7 +146,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_competitor_citations
 
-> list_competitor_citations(project_id, competitors, page, per_page, model, collection_id, prompt, from, to, output)
+> list_competitor_citations(project_id, competitors, page, per_page, model, collection_id, prompt, from, to, output, country_code, language_code, prompt_type, brand_kind, range)
 List competitor citations
 
 Includes visible citations and background source references. Background references use position 0, meaning no visible rank.
@@ -153,6 +166,11 @@ Name | Type | Description  | Required | Notes
 **from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
 **to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
 **output** | Option<**String**> | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. |  |
+**country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
+**language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |
+**prompt_type** | Option<**String**> | One prompt type or a comma-separated list: informational, navigational, commercial, transactional |  |
+**brand_kind** | Option<**String**> | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. |  |
+**range** | Option<**i32**> | Number of days to look back (alternative to from/to) |  |
 
 ### Return type
 
@@ -172,7 +190,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_competitor_mentions
 
-> models::CompetitorMentionsResponse list_competitor_mentions(project_id, competitors, page, per_page, model, collection_id, prompt, from, to, output)
+> models::CompetitorMentionsResponse list_competitor_mentions(project_id, competitors, page, per_page, model, collection_id, prompt, from, to, output, country_code, language_code, prompt_type, brand_kind, range)
 List competitor mentions
 
 ### Parameters
@@ -190,6 +208,11 @@ Name | Type | Description  | Required | Notes
 **from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
 **to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
 **output** | Option<**String**> | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. |  |
+**country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
+**language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |
+**prompt_type** | Option<**String**> | One prompt type or a comma-separated list: informational, navigational, commercial, transactional |  |
+**brand_kind** | Option<**String**> | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. |  |
+**range** | Option<**i32**> | Number of days to look back (alternative to from/to) |  |
 
 ### Return type
 
@@ -209,7 +232,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_mentions
 
-> models::MentionsResponse list_mentions(project_id, page, per_page, model, collection_id, country_code, language_code, prompt, from, to, output)
+> models::MentionsResponse list_mentions(project_id, page, per_page, model, collection_id, country_code, language_code, prompt, from, to, output, prompt_type, brand_kind, range)
 List brand mentions
 
 ### Parameters
@@ -228,6 +251,9 @@ Name | Type | Description  | Required | Notes
 **from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
 **to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
 **output** | Option<**String**> | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. |  |
+**prompt_type** | Option<**String**> | One prompt type or a comma-separated list: informational, navigational, commercial, transactional |  |
+**brand_kind** | Option<**String**> | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. |  |
+**range** | Option<**i32**> | Number of days to look back (alternative to from/to) |  |
 
 ### Return type
 

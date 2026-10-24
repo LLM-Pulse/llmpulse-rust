@@ -60,7 +60,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_share_of_voice
 
-> models::SovResponse get_share_of_voice(project_id, range, from, to, granularity, competitors, model, collection_id, prompt, prompt_type, brand_kind, output, view)
+> models::SovResponse get_share_of_voice(project_id, range, from, to, granularity, competitors, model, collection_id, prompt, prompt_type, brand_kind, output, view, country_code, language_code, include_project)
 Share of Voice
 
 Share of Voice breakdown comparing your project to competitors. Returns over_time, current snapshot, and a Top-4 + Others breakdown.
@@ -83,6 +83,9 @@ Name | Type | Description  | Required | Notes
 **brand_kind** | Option<**String**> | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. |  |
 **output** | Option<**String**> | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. |  |
 **view** | Option<**String**> | Which Share of Voice projection to flatten. Only valid together with 'output'. 'over_time' (default) is one row per date and actor, 'current' the ranked snapshot, 'breakdown' the Top 4 plus Others. |  |[default to over_time]
+**country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
+**language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |
+**include_project** | Option<**bool**> |  |  |[default to true]
 
 ### Return type
 
@@ -102,7 +105,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_summary
 
-> models::SummaryResponse get_summary(project_id, metrics, granularity, range, from, to, competitors, model, collection_id, prompt, prompt_type, brand_kind, output)
+> models::SummaryResponse get_summary(project_id, metrics, granularity, range, from, to, competitors, model, collection_id, prompt, prompt_type, brand_kind, output, country_code, language_code, include_project)
 Aggregated metrics summary
 
 Same as /metrics/timeseries but adds a `summary` block with total/min/max/last per metric per actor, plus a `position_distribution` block (Position 1, Position 2, Position 3+). Citations and citation rate include visible citations and background source references. Background references use position 0 and are excluded from avg_position and position distributions. `total` is a SUM for count metrics (mentions, citations, responses) and an AVERAGE across periods for rate/percentage and average metrics (visibility/mention_rate, citation_rate, ai_visibility_score, sentiment shares, avg_position, avg_mention_position, net_sentiment); rates are never summed. Each summary row carries an `aggregation` field (`sum` or `average`).
@@ -125,6 +128,9 @@ Name | Type | Description  | Required | Notes
 **prompt_type** | Option<**String**> | One prompt type or a comma-separated list: informational, navigational, commercial, transactional |  |
 **brand_kind** | Option<**String**> | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. |  |
 **output** | Option<**String**> | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. |  |
+**country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
+**language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |
+**include_project** | Option<**bool**> |  |  |[default to true]
 
 ### Return type
 
@@ -189,7 +195,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_top_sources
 
-> models::TopSourcesResponse get_top_sources(project_id, range, from, to, model, collection_id, country_code, language_code, prompt, prompt_type, brand_kind, sort, query, page, per_page, output)
+> models::TopSourcesResponse get_top_sources(project_id, range, from, to, model, collection_id, country_code, language_code, prompt, prompt_type, brand_kind, sort, query, page, per_page, output, collection_ids, domains)
 Top cited sources
 
 Registrable domains most frequently cited in AI responses for the project, including visible citations and background source references. This endpoint remains a domain rollup when exact-subdomain matching is enabled. Results can be sorted by total responses, average mention rate, or average visibility.
@@ -215,6 +221,8 @@ Name | Type | Description  | Required | Notes
 **page** | Option<**u32**> |  |  |[default to 1]
 **per_page** | Option<**u32**> |  |  |[default to 20]
 **output** | Option<**String**> | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. |  |
+**collection_ids** | Option<[**Vec<i32>**](I32.md)> | Tags (collections) to include at once, as a union: one ID or a comma-separated list, e.g. collection_ids=12,15 (collection_ids[]=12&collection_ids[]=15 is also accepted). Combines with collection_id. An ID outside the project returns 422 ERR_INVALID_PARAM. |  |
+**domains** | Option<[**Vec<String>**](String.md)> | Restrict the result to these exact domains, case-insensitive: one domain or a comma-separated list, e.g. domains=wikipedia.org,reddit.com. The bracket form domains[]=wikipedia.org&domains[]=reddit.com is also accepted. |  |
 
 ### Return type
 

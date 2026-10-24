@@ -83,7 +83,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **project_id** | **i32** | Project ID | [required] |
 **task_type** | Option<**String**> |  |  |
-**status** | Option<**String**> |  |  |
+**status** | Option<**String**> | Keep only the tasks in this status. Discarded tasks are never listed, so discarded returns an empty page. |  |
 **page** | Option<**u32**> |  |  |[default to 1]
 **per_page** | Option<**u32**> |  |  |[default to 20]
 

@@ -203,7 +203,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_prompt_executions
 
-> models::PromptExecutionsResponse list_prompt_executions(project_id, page, per_page, model, collection_id, country_code, language_code, prompt, from, to, mention_filter, citation_filter, competitors, output)
+> models::PromptExecutionsResponse list_prompt_executions(project_id, page, per_page, model, collection_id, country_code, language_code, prompt, from, to, mention_filter, citation_filter, competitors, output, prompt_type, brand_kind)
 List prompt executions
 
 ### Parameters
@@ -225,6 +225,8 @@ Name | Type | Description  | Required | Notes
 **citation_filter** | Option<**String**> | Same two-axis matrix applied to the domains cited in the answer instead of the brands named in it. Independent of mention_filter; pass both to intersect them (e.g. mentions_you + not_cites_you finds answers that talk about you without linking to you). |  |
 **competitors** | Option<**String**> | Comma-separated competitor IDs (unknown IDs return ERR_INVALID_PARAM) |  |
 **output** | Option<**String**> | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. |  |
+**prompt_type** | Option<**String**> | One prompt type or a comma-separated list: informational, navigational, commercial, transactional |  |
+**brand_kind** | Option<**String**> | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. |  |
 
 ### Return type
 
