@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **status** | **Status** |  (enum: active, completed, archived) | 
 **status_changed_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
 **position** | **i32** |  | 
-**metadata** | Option<**std::collections::HashMap<String, serde_json::Value>**> |  | [optional]
+**metadata** | Option<**std::collections::HashMap<String, serde_json::Value>**> | Free-form details. Carries effort (low, medium or high) when the generator rated it, archive_reason (not_relevant, too_complex or competitor) on an item archived with a reason, and domain on PR & Citation Building items. | [optional]
 **created_at** | **chrono::DateTime<chrono::FixedOffset>** |  | 
 **updated_at** | **chrono::DateTime<chrono::FixedOffset>** |  | 
 **resolved_source_refs** | Option<**Vec<std::collections::HashMap<String, serde_json::Value>>**> | The evidence each source_refs code points to (prompt, citation or own page) | [optional]
