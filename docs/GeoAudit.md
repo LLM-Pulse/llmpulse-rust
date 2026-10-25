@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **country_code** | Option<**String**> |  | [optional]
 **cadence** | Option<**Cadence**> |  (enum: once, weekly, monthly) | [optional]
 **status** | Option<**Status**> |  (enum: active, paused, archived) | [optional]
-**paused_reason** | Option<**String**> | user, or unreachable when three runs in a row could not reach the site | [optional]
+**paused_reason** | Option<**String**> | Null unless status is paused. user (paused by hand), unreachable (three runs in a row could not reach the site) or quota (the account has more active recurring audits than its plan allows; resume it once there is room) | [optional]
 **schedule** | Option<[**models::GeoAuditSchedule**](GeoAuditSchedule.md)> |  | [optional]
 **next_run_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
 **email_alerts** | Option<**bool**> |  | [optional]

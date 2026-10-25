@@ -46,7 +46,7 @@ Name | Type | Description  | Required | Notes
 > models::DeleteWebhook200Response delete_webhook(id)
 Delete a webhook subscription
 
-Deletes a webhook subscription; the target URL stops receiving events immediately. Requires a `read_write` scope API key and the Scale plan or above.
+Deletes a webhook subscription; the target URL stops receiving events immediately. Requires a `read_write` scope API key. Works on every plan, with an API key created on Scale too, so a subscription paused below Scale can still be removed.
 
 ### Parameters
 
@@ -76,7 +76,7 @@ Name | Type | Description  | Required | Notes
 > models::ListWebhooks200Response list_webhooks(project_id, page, per_page)
 List webhook subscriptions
 
-Lists active webhook subscriptions for the account, optionally filtered by project. A read-only API key receives each `target_url` masked to its scheme, host and any non-default port followed by `/…`, because the full URL can let anyone post to the receiver; a `read_write` scope key receives the full URL. Requires the Scale plan or above.
+Lists active webhook subscriptions for the account, optionally filtered by project. A read-only API key receives each `target_url` masked to its scheme, host and any non-default port followed by `/…`, because the full URL can let anyone post to the receiver; a `read_write` scope key receives the full URL. Works on every plan, with an API key created on Scale too. Below Scale the subscriptions are kept but deliver nothing, and they can still be listed and deleted.
 
 ### Parameters
 
