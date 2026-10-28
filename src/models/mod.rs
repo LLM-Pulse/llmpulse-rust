@@ -318,6 +318,8 @@ pub mod project_create_response_prompts;
 pub use self::project_create_response_prompts::ProjectCreateResponsePrompts;
 pub mod project_create_response_same_domain_projects_inner;
 pub use self::project_create_response_same_domain_projects_inner::ProjectCreateResponseSameDomainProjectsInner;
+pub mod project_delete_response;
+pub use self::project_delete_response::ProjectDeleteResponse;
 pub mod project_details;
 pub use self::project_details::ProjectDetails;
 pub mod project_details_all_of_agent_traffic;
