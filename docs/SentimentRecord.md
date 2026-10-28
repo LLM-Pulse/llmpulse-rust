@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **id** | **i32** |  | 
 **prompt_execution_id** | **i32** |  | 
 **prompt_text** | **String** |  | 
-**model** | **Model** |  (enum: chatgpt, perplexity, ai_mode, ai_overview, gemini, copilot, amazon_rufus, claude, grok, deepseek, naver_ai, baidu_ai, meta_ai) | 
+**model** | **Model** |  (enum: chatgpt, perplexity, ai_mode, ai_overview, gemini, copilot, amazon_rufus, claude, grok, deepseek, naver_ai, baidu_ai, meta_ai, naver_ai_tab, qwen, doubao) | 
 **analysis** | **Analysis** |  (enum: very_positive, positive, neutral, negative, very_negative) | 
 **score** | Option<**f64**> | From -1 (very negative) to 1 (very positive) | 
 **comment** | Option<**String**> |  | 

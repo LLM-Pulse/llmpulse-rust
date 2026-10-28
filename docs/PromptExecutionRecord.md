@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **executed_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> | Null while the answer is still pending | 
 **duration_ms** | Option<**f64**> |  | 
 **success** | Option<**bool**> | Null while the answer is still pending | 
-**model** | **Model** |  (enum: chatgpt, perplexity, ai_mode, ai_overview, gemini, copilot, amazon_rufus, claude, grok, deepseek, naver_ai, baidu_ai, meta_ai) | 
+**model** | **Model** |  (enum: chatgpt, perplexity, ai_mode, ai_overview, gemini, copilot, amazon_rufus, claude, grok, deepseek, naver_ai, baidu_ai, meta_ai, naver_ai_tab, qwen, doubao) | 
 **fan_out_queries** | Option<**Vec<String>**> | Sub-queries the model issued while answering; null when the model reports none | 
 **has_mention** | **bool** |  | 
 **has_citation** | **bool** |  | 

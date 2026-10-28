@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**models** | Option<**Vec<Models>**> |  (enum: chatgpt, perplexity, ai_mode, ai_overview, gemini, copilot, amazon_rufus, claude, grok, deepseek, naver_ai, baidu_ai, meta_ai) | [optional]
+**models** | Option<**Vec<Models>**> |  (enum: chatgpt, perplexity, ai_mode, ai_overview, gemini, copilot, amazon_rufus, claude, grok, deepseek, naver_ai, baidu_ai, meta_ai, naver_ai_tab, qwen, doubao) | [optional]
 **countries** | Option<**Vec<String>**> |  | [optional]
 **languages** | Option<**Vec<String>**> |  | [optional]
 
