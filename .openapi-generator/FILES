@@ -27,6 +27,8 @@ docs/AnswerDetailsLocale.md
 docs/AnswersApi.md
 docs/ApiError.md
 docs/ApiErrorError.md
+docs/ApiKeyInfo.md
+docs/ApiKeysApi.md
 docs/AssignPromptTagsRequest.md
 docs/CatalogProduct.md
 docs/CatalogPromptSuggestion.md
@@ -57,6 +59,8 @@ docs/CompetitorSuggestion.md
 docs/CompetitorSuggestionsResponse.md
 docs/CompetitorsApi.md
 docs/CreateAnnotationRequest.md
+docs/CreateApiKey201Response.md
+docs/CreateApiKeyRequest.md
 docs/CreateCollectionRequest.md
 docs/CreateCompetitorRequest.md
 docs/CreateProjectDraftRequest.md
@@ -117,6 +121,7 @@ docs/IntelligenceTaskUpdateRequest.md
 docs/IntelligenceTaskUpdateResponse.md
 docs/IntelligenceTasksResponse.md
 docs/LaunchRecommendationsRequest.md
+docs/ListApiKeys200Response.md
 docs/ListCompetitors200Response.md
 docs/ListProjects200Response.md
 docs/ListTeamInvitations200Response.md
@@ -215,6 +220,7 @@ docs/RecommendationsResponse.md
 docs/RemovePromptTagsRequest.md
 docs/RemoveTeamMember200Response.md
 docs/ReputationStudiesApi.md
+docs/RevokeApiKey200Response.md
 docs/RevokeTeamInvitation200Response.md
 docs/SampleWebhookPayloads200Response.md
 docs/SampleWebhookPayloads200ResponseDataInner.md
@@ -302,6 +308,7 @@ src/apis/ai_agent_traffic_api.rs
 src/apis/ai_model_insights_api.rs
 src/apis/annotations_api.rs
 src/apis/answers_api.rs
+src/apis/api_keys_api.rs
 src/apis/collections_tags_api.rs
 src/apis/competitors_api.rs
 src/apis/configuration.rs
@@ -345,6 +352,7 @@ src/models/answer_details.rs
 src/models/answer_details_locale.rs
 src/models/api_error.rs
 src/models/api_error_error.rs
+src/models/api_key_info.rs
 src/models/assign_prompt_tags_request.rs
 src/models/catalog_product.rs
 src/models/catalog_prompt_suggestion.rs
@@ -373,6 +381,8 @@ src/models/competitor_mentions_response.rs
 src/models/competitor_suggestion.rs
 src/models/competitor_suggestions_response.rs
 src/models/create_annotation_request.rs
+src/models/create_api_key_201_response.rs
+src/models/create_api_key_request.rs
 src/models/create_collection_request.rs
 src/models/create_competitor_request.rs
 src/models/create_project_draft_request.rs
@@ -429,6 +439,7 @@ src/models/intelligence_task_update_request.rs
 src/models/intelligence_task_update_response.rs
 src/models/intelligence_tasks_response.rs
 src/models/launch_recommendations_request.rs
+src/models/list_api_keys_200_response.rs
 src/models/list_competitors_200_response.rs
 src/models/list_projects_200_response.rs
 src/models/list_team_invitations_200_response.rs
@@ -521,6 +532,7 @@ src/models/recommendation_summary_summary.rs
 src/models/recommendations_response.rs
 src/models/remove_prompt_tags_request.rs
 src/models/remove_team_member_200_response.rs
+src/models/revoke_api_key_200_response.rs
 src/models/revoke_team_invitation_200_response.rs
 src/models/sample_webhook_payloads_200_response.rs
 src/models/sample_webhook_payloads_200_response_data_inner.rs

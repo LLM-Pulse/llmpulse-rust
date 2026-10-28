@@ -113,6 +113,7 @@ impl From<&str> for ContentType {
 
 pub mod ai_agent_traffic_api;
 pub mod ai_model_insights_api;
+pub mod api_keys_api;
 pub mod account_api;
 pub mod annotations_api;
 pub mod answers_api;
