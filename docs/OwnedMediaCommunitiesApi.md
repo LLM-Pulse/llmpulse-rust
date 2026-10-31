@@ -176,7 +176,7 @@ Name | Type | Description  | Required | Notes
 > list_reddit_citations(project_id, page, per_page, view, subreddit, author, status, owned, brand, order, direction, model, collection_id, country_code, language_code, brand_kind, range, from, to, output)
 List cited Reddit content
 
-Which Reddit content AI answers cite for your tracked prompts. view=subreddits (default) returns one row per subreddit with its citation count, unique authors and positive/negative sentiment split; view=authors returns one row per author; view=threads returns the individual cited threads with upvotes, comments, average position and dominant sentiment. Requires the Growth plan or above.
+Which Reddit content AI answers cite for your tracked prompts. view=subreddits (default) returns one row per subreddit with its citation count, unique authors and positive/negative sentiment split; view=authors returns one row per author; view=threads returns the individual cited threads with upvotes, comments, average position and dominant sentiment. view=breakdowns returns the figures behind Reddit Intelligence > Sentiment and breakdowns: citations is the number of Reddit citations after the filters, and each row is one slice, with breakdown (sentiment, model or country), key, count and pct, the share within its breakdown as the page charts it. Sentiment is that of the AI answer that cited Reddit, with all five labels (very_positive to very_negative) listed, zero included; order and direction do not apply. Requires the Growth plan or above.
 
 ### Parameters
 
@@ -192,7 +192,7 @@ Name | Type | Description  | Required | Notes
 **status** | Option<**String**> | view=threads only |  |
 **owned** | Option<**bool**> | Return only subreddits/authors the account has claimed as its own |  |
 **brand** | Option<**String**> | Filter to citations whose scraped Reddit content mentions a brand: 'brand' for the tracked brand, or a competitor id. Reads the page content, not the AI answer. |  |
-**order** | Option<**String**> | Sort field; the allowed set depends on view |  |
+**order** | Option<**String**> | Sort field; the allowed set depends on view, and view=breakdowns accepts none |  |
 **direction** | Option<**String**> |  |  |[default to desc]
 **model** | Option<**String**> | Filter by one AI model. It must be a model enabled for the API key's user: an unknown value, or a model the user has not enabled, returns 422 ERR_INVALID_PARAM with the valid values in the message. |  |
 **collection_id** | Option<**String**> | One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize. |  |
