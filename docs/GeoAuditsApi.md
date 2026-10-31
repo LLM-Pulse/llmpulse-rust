@@ -86,7 +86,7 @@ Name | Type | Description  | Required | Notes
 > models::GeoAuditArchived delete_geo_audit(project_id, id)
 Delete (archive) a GEO audit
 
-Archives the audit. Requires a `read_write` scope API key and, for team members, delete permission on GEO Optimization.
+Archives the audit. Requires a `read_write` scope API key and, for team members, delete permission on GEO Audits.
 
 ### Parameters
 
@@ -370,7 +370,7 @@ Name | Type | Description  | Required | Notes
 > models::GeoAuditResponse update_geo_audit(id, geo_audit_update_request)
 Update a GEO audit
 
-Updates the schedule, the email alerts or the status. Making an audit recurring or resuming it counts against the plan limit of active recurring audits (ERR_LIMIT_REACHED). Requires a `read_write` scope API key and, for team members, update permission on GEO Optimization.
+Updates the schedule, the email alerts or the status. Making an audit recurring or resuming it counts against the plan limit of active recurring audits (ERR_LIMIT_REACHED). Requires a `read_write` scope API key and, for team members, update permission on GEO Audits.
 
 ### Parameters
 
@@ -401,7 +401,7 @@ Name | Type | Description  | Required | Notes
 > models::GeoAuditIssueResponse update_geo_audit_issue(geo_audit_id, id, geo_audit_issue_update_request)
 Accept or reopen a GEO audit issue
 
-Requires a `read_write` scope API key and, for team members, update permission on GEO Optimization.
+Requires a `read_write` scope API key and, for team members, update permission on GEO Audits.
 
 ### Parameters
 
