@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **length_warning** | Option<**String**> | Which tracked AI models will skip new prompts that are too long for them | 
 **prompts_available** | Option<**i32**> | Prompt slots left on the plan; null when unlimited | 
 **tracked** | **bool** | Whether scheduled runs include the project the prompts were imported into. False when it is paused or beyond the plan's project limit, so the new prompts do not run until that changes | 
-**untracked_reason** | Option<**String**> | Why tracked is false: paused or project_limit. Null when tracked | 
+**untracked_reason** | Option<**String**> | Why tracked is false: pitch_project, paused or project_limit. Null when tracked | 
 **warning** | Option<**String**> | What to do when tracked is false. Null when tracked | 
 **request_id** | **String** |  | 
 

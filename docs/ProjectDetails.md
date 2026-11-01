@@ -7,8 +7,10 @@ Name | Type | Description | Notes
 **id** | Option<**i32**> |  | [optional]
 **name** | Option<**String**> | Internal project label (sidebar, settings, admin) | [optional]
 **brand_name** | Option<**String**> | LLM-facing brand label (used in prompts and customer-facing charts). Null when not set, in which case prompts and charts use `name`. | [optional]
-**tracked** | **bool** | Whether scheduled runs include this project. False when it is paused, or when the plan's project limit leaves it out (the oldest projects up to the limit run), so its prompts do not run | 
-**untracked_reason** | Option<**String**> | Why tracked is false: paused or project_limit. Null when tracked | 
+**tracked** | **bool** | Whether scheduled runs include this project. False when it is a pitch project, which runs once, when it is paused, or when the plan's project limit leaves it out (the oldest projects up to the limit run), so its prompts do not run | 
+**untracked_reason** | Option<**String**> | Why tracked is false: pitch_project, paused or project_limit. Null when tracked | 
+**pitch** | Option<**bool**> | Whether this is a pitch project, a one-off snapshot that runs its prompts once, takes no project slot and is deleted at pitch_expires_at unless it is converted (PATCH /projects/{id} with pitch false) | [optional]
+**pitch_expires_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> | When a pitch project is deleted, with its data, unless it is converted first. Null for a tracked project | [optional]
 **url** | Option<**String**> |  | [optional]
 **description** | Option<**String**> |  | [optional]
 **matching_names** | Option<**Vec<String>**> |  | [optional]
@@ -28,6 +30,7 @@ Name | Type | Description | Notes
 **created_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
 **prompt_limit** | Option<**i32**> | The most prompts this project can hold, set by the account owner or a co-owner (Account Settings > Prompt Limits). Null when the project has no limit of its own; the account's plan allowance applies either way | [optional]
 **stats** | Option<[**models::ProjectDetailsAllOfStats**](ProjectDetailsAllOfStats.md)> |  | [optional]
+**pitch_run** | Option<[**models::ProjectDetailsAllOfPitchRun**](ProjectDetailsAllOfPitchRun.md)> |  | [optional]
 **data_coverage** | Option<[**models::ProjectDetailsAllOfDataCoverage**](ProjectDetailsAllOfDataCoverage.md)> |  | [optional]
 **search_console** | Option<[**models::ProjectDetailsAllOfSearchConsole**](ProjectDetailsAllOfSearchConsole.md)> |  | [optional]
 **ai_traffic** | Option<[**models::ProjectDetailsAllOfAiTraffic**](ProjectDetailsAllOfAiTraffic.md)> |  | [optional]

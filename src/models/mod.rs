@@ -1,5 +1,7 @@
 pub mod account_capacity;
 pub use self::account_capacity::AccountCapacity;
+pub mod account_pitch_quota;
+pub use self::account_pitch_quota::AccountPitchQuota;
 pub mod account_quota;
 pub use self::account_quota::AccountQuota;
 pub mod actor;
@@ -328,6 +330,8 @@ pub mod project_details_all_of_ai_traffic;
 pub use self::project_details_all_of_ai_traffic::ProjectDetailsAllOfAiTraffic;
 pub mod project_details_all_of_data_coverage;
 pub use self::project_details_all_of_data_coverage::ProjectDetailsAllOfDataCoverage;
+pub mod project_details_all_of_pitch_run;
+pub use self::project_details_all_of_pitch_run::ProjectDetailsAllOfPitchRun;
 pub mod project_details_all_of_search_console;
 pub use self::project_details_all_of_search_console::ProjectDetailsAllOfSearchConsole;
 pub mod project_details_all_of_stats;

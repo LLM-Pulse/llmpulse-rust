@@ -5,6 +5,7 @@ Cargo.toml
 README.md
 docs/AccountApi.md
 docs/AccountCapacity.md
+docs/AccountPitchQuota.md
 docs/AccountQuota.md
 docs/Actor.md
 docs/AgentBot.md
@@ -183,6 +184,7 @@ docs/ProjectDetails.md
 docs/ProjectDetailsAllOfAgentTraffic.md
 docs/ProjectDetailsAllOfAiTraffic.md
 docs/ProjectDetailsAllOfDataCoverage.md
+docs/ProjectDetailsAllOfPitchRun.md
 docs/ProjectDetailsAllOfSearchConsole.md
 docs/ProjectDetailsAllOfStats.md
 docs/ProjectDetailsAllOfStatsPromptsByBrandKind.md
@@ -335,6 +337,7 @@ src/apis/technical_geo_reports_api.rs
 src/apis/webhooks_api.rs
 src/lib.rs
 src/models/account_capacity.rs
+src/models/account_pitch_quota.rs
 src/models/account_quota.rs
 src/models/actor.rs
 src/models/agent_bot.rs
@@ -500,6 +503,7 @@ src/models/project_details.rs
 src/models/project_details_all_of_agent_traffic.rs
 src/models/project_details_all_of_ai_traffic.rs
 src/models/project_details_all_of_data_coverage.rs
+src/models/project_details_all_of_pitch_run.rs
 src/models/project_details_all_of_search_console.rs
 src/models/project_details_all_of_stats.rs
 src/models/project_details_all_of_stats_prompts_by_brand_kind.rs
