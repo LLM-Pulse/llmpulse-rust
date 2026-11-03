@@ -1,0 +1,16 @@
+# SearchConsoleCannibalizationResponseDataInnerPagesInner
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**page** | Option<**String**> |  | [optional]
+**share** | Option<**f64**> | The page's fraction (0..1) of the query's impressions | [optional]
+**impressions** | Option<**i32**> |  | [optional]
+**clicks** | Option<**i32**> |  | [optional]
+**ctr** | Option<**f64**> | 0..1 fraction | [optional]
+**position** | Option<**f64**> | Impression-weighted average position | [optional]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
