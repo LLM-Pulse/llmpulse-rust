@@ -67,6 +67,13 @@ docs/CatalogPromptSuggestionsResponse.md
 docs/CitationMatchMode.md
 docs/CitationRecord.md
 docs/CitationsResponse.md
+docs/CmsContentItem.md
+docs/CmsContentItemResponse.md
+docs/CmsContentListResponse.md
+docs/CmsContentSummary.md
+docs/CmsPublication.md
+docs/CmsSendResponse.md
+docs/CmsSite.md
 docs/CollectionCreateResponse.md
 docs/CollectionCreateResponseCollection.md
 docs/CollectionsResponse.md
@@ -427,6 +434,13 @@ src/models/catalog_prompt_suggestions_response.rs
 src/models/citation_match_mode.rs
 src/models/citation_record.rs
 src/models/citations_response.rs
+src/models/cms_content_item.rs
+src/models/cms_content_item_response.rs
+src/models/cms_content_list_response.rs
+src/models/cms_content_summary.rs
+src/models/cms_publication.rs
+src/models/cms_send_response.rs
+src/models/cms_site.rs
 src/models/collection_create_response.rs
 src/models/collection_create_response_collection.rs
 src/models/collections_response.rs
