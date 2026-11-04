@@ -182,6 +182,7 @@ docs/OwnedMediaKpiChanges.md
 docs/OwnedMediaKpis.md
 docs/OwnedMediaListResponse.md
 docs/OwnedMediaModelShare.md
+docs/OwnedMediaPlatformActivityPeriod.md
 docs/OwnedMediaPlatformProfiles.md
 docs/OwnedMediaPlatformRollup.md
 docs/OwnedMediaPlatformRollupWeeklyInner.md
@@ -191,6 +192,7 @@ docs/OwnedMediaProfilesResponse.md
 docs/OwnedMediaProfilesUpdateResponse.md
 docs/OwnedMediaRow.md
 docs/OwnedMediaStoreTotals.md
+docs/OwnedMediaSummaryActivityPeriod.md
 docs/OwnedMediaSummaryResponse.md
 docs/OwnedMediaSummaryResponsePrevious.md
 docs/OwnedMediaWeek.md
@@ -249,6 +251,9 @@ docs/RecommendationSummary.md
 docs/RecommendationSummarySummary.md
 docs/RecommendationsApi.md
 docs/RecommendationsResponse.md
+docs/RedditBrandShare.md
+docs/RedditPositionShare.md
+docs/RedditSubredditActivityPeriod.md
 docs/RemovePromptTagsRequest.md
 docs/RemoveTeamMember200Response.md
 docs/ReputationStudiesApi.md
@@ -541,6 +546,7 @@ src/models/owned_media_kpi_changes.rs
 src/models/owned_media_kpis.rs
 src/models/owned_media_list_response.rs
 src/models/owned_media_model_share.rs
+src/models/owned_media_platform_activity_period.rs
 src/models/owned_media_platform_profiles.rs
 src/models/owned_media_platform_rollup.rs
 src/models/owned_media_platform_rollup_weekly_inner.rs
@@ -550,6 +556,7 @@ src/models/owned_media_profiles_response.rs
 src/models/owned_media_profiles_update_response.rs
 src/models/owned_media_row.rs
 src/models/owned_media_store_totals.rs
+src/models/owned_media_summary_activity_period.rs
 src/models/owned_media_summary_response.rs
 src/models/owned_media_summary_response_previous.rs
 src/models/owned_media_week.rs
@@ -605,6 +612,9 @@ src/models/recommendation_item_update_response.rs
 src/models/recommendation_summary.rs
 src/models/recommendation_summary_summary.rs
 src/models/recommendations_response.rs
+src/models/reddit_brand_share.rs
+src/models/reddit_position_share.rs
+src/models/reddit_subreddit_activity_period.rs
 src/models/remove_prompt_tags_request.rs
 src/models/remove_team_member_200_response.rs
 src/models/revoke_api_key_200_response.rs

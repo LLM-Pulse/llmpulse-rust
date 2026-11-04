@@ -1,0 +1,14 @@
+# RedditSubredditActivityPeriod
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**date** | **chrono::NaiveDate** | Start date of the actual reporting period | 
+**subreddit** | Option<**String**> | Subreddit name, or null for the Others aggregate | 
+**is_others** | **bool** |  | 
+**citations** | **i32** |  | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

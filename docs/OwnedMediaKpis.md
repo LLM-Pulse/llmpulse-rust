@@ -9,6 +9,9 @@ Name | Type | Description | Notes
 **your_profile** | Option<**i32**> | Citations of your profile or channel pages. Null for mobile_apps and overview | [optional]
 **your_content** | Option<**i32**> | Citations of your posts or videos. Null for mobile_apps and overview | [optional]
 **share_pct** | Option<**f64**> | yours as a percentage of total (0-100) | [optional]
+**unique_subreddits** | Option<**i32**> | Number of cited subreddits (provider=reddit; null or omitted for other providers) | [optional]
+**unique_authors** | Option<**i32**> | Number of cited Reddit authors (provider=reddit; null or omitted for other providers) | [optional]
+**positive_pct** | Option<**f64**> | Positive sentiment among rated Reddit citations, as a percentage (provider=reddit; null or omitted for other providers) | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
