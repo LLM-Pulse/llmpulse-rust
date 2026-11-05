@@ -94,6 +94,7 @@ docs/CreateApiKeyRequest.md
 docs/CreateCollectionRequest.md
 docs/CreateCompetitorRequest.md
 docs/CreateProjectDraftRequest.md
+docs/CreateReputationReportRequest.md
 docs/CreateTeamInvitation201Response.md
 docs/CreateTeamInvitationRequest.md
 docs/CreateTechnicalGeoReportsRequest.md
@@ -256,6 +257,8 @@ docs/RedditPositionShare.md
 docs/RedditSubredditActivityPeriod.md
 docs/RemovePromptTagsRequest.md
 docs/RemoveTeamMember200Response.md
+docs/ReputationReportCreateResponse.md
+docs/ReputationReportSummary.md
 docs/ReputationStudiesApi.md
 docs/RevokeApiKey200Response.md
 docs/RevokeTeamInvitation200Response.md
@@ -464,6 +467,7 @@ src/models/create_api_key_request.rs
 src/models/create_collection_request.rs
 src/models/create_competitor_request.rs
 src/models/create_project_draft_request.rs
+src/models/create_reputation_report_request.rs
 src/models/create_team_invitation_201_response.rs
 src/models/create_team_invitation_request.rs
 src/models/create_technical_geo_reports_request.rs
@@ -617,6 +621,8 @@ src/models/reddit_position_share.rs
 src/models/reddit_subreddit_activity_period.rs
 src/models/remove_prompt_tags_request.rs
 src/models/remove_team_member_200_response.rs
+src/models/reputation_report_create_response.rs
+src/models/reputation_report_summary.rs
 src/models/revoke_api_key_200_response.rs
 src/models/revoke_team_invitation_200_response.rs
 src/models/sample_webhook_payloads_200_response.rs

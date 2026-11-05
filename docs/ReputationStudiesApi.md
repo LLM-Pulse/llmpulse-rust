@@ -4,12 +4,43 @@ All URIs are relative to *https://api.llmpulse.ai/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**create_reputation_report**](ReputationStudiesApi.md#create_reputation_report) | **POST** /reputation/reports | Start a reputation report
 [**get_reputation_report**](ReputationStudiesApi.md#get_reputation_report) | **GET** /reputation/reports/{id} | Get reputation report scores
 [**get_study**](ReputationStudiesApi.md#get_study) | **GET** /studies/{id} | Get a custom AI study
 [**get_study_report**](ReputationStudiesApi.md#get_study_report) | **GET** /studies/{id}/reports/{report_id} | Get custom study report scores
 [**list_reputation_reports**](ReputationStudiesApi.md#list_reputation_reports) | **GET** /reputation/reports | List reputation reports
 [**list_studies**](ReputationStudiesApi.md#list_studies) | **GET** /studies | List custom AI studies
 
+
+
+## create_reputation_report
+
+> models::ReputationReportCreateResponse create_reputation_report(create_reputation_report_request)
+Start a reputation report
+
+Starts this month's Brand Reputation report, like the Generate button on the Reputation page: 201 with the new report (status pending). When the month already holds a report that did not fail, whether it is still running or finished, nothing new starts and the answer is 200 with created false and that report. With recalculate true it uses the month's one manual recalculation instead (the Recalculate This Month button): a fresh run across every analyst model, 201 when it starts, 200 with created false while a report is still running, and ERR_LIMIT_REACHED once the month holds two reports. Generation runs in the background: poll GET /reputation/reports until status is completed, then read the scores with GET /reputation/reports/{id}. ERR_RATE_LIMITED (429, with Retry-After) means another request is starting a report for the same project; retry after a few seconds. recalculate must be true or false and unknown fields are refused (ERR_INVALID_PARAM). Requires reputation monitoring on the account, a `read_write` scope API key and, for team members, create permission on Reputation.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**create_reputation_report_request** | [**CreateReputationReportRequest**](CreateReputationReportRequest.md) |  | [required] |
+
+### Return type
+
+[**models::ReputationReportCreateResponse**](ReputationReportCreateResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## get_reputation_report
