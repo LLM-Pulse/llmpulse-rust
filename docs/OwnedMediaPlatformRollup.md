@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**provider** | Option<**Provider**> |  (enum: youtube, mobile_apps, instagram, facebook, tiktok, linkedin, reddit) | [optional]
+**provider** | Option<**Provider**> |  (enum: youtube, mobile_apps, instagram, facebook, tiktok, linkedin, trustpilot, reddit) | [optional]
 **connected** | Option<**bool**> |  | [optional]
 **total** | Option<**i32**> |  | [optional]
 **yours** | Option<**i32**> |  | [optional]

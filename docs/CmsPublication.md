@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **remote_status** | Option<**String**> | WordPress status of the post when the draft was created (draft) | [optional]
 **remote_url** | Option<**String**> |  | [optional]
 **edit_url** | Option<**String**> | The post's edit screen in the WordPress admin | [optional]
-**error_code** | Option<**String**> | Why the send failed, for example reconnect_required, missing_capability, unreachable or rejected | [optional]
+**error_code** | Option<**String**> | Why the send failed, the same token as error.meta.reason, for example reconnect_required, authorization_header_lost, missing_capability, firewall_blocked, timeout, unreachable or rejected | [optional]
 **created_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
 **sent_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
 
