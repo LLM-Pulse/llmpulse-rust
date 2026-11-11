@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **subreddit_activity** | Option<[**Vec<models::RedditSubredditActivityPeriod>**](RedditSubredditActivityPeriod.md)> | provider=reddit only. One row per subreddit and actual reporting period; the top five subreddits are separate and Others has a null subreddit | [optional]
 **positions** | Option<[**Vec<models::RedditPositionShare>**](RedditPositionShare.md)> | provider=reddit only. Position distribution over the selected date window | [optional]
 **brand_share** | Option<[**Vec<models::RedditBrandShare>**](RedditBrandShare.md)> | provider=reddit only. Citation share among the tracked brand and competitors with cited mentions | [optional]
+**replies** | Option<[**models::TrustpilotReplies**](TrustpilotReplies.md)> |  | [optional]
 **request_id** | Option<**String**> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

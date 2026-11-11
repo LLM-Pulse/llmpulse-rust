@@ -622,6 +622,8 @@ pub mod top_sources_response;
 pub use self::top_sources_response::TopSourcesResponse;
 pub mod top_sources_response_data_inner;
 pub use self::top_sources_response_data_inner::TopSourcesResponseDataInner;
+pub mod trustpilot_replies;
+pub use self::trustpilot_replies::TrustpilotReplies;
 pub mod update_annotation_request;
 pub use self::update_annotation_request::UpdateAnnotationRequest;
 pub mod update_collection_request;
