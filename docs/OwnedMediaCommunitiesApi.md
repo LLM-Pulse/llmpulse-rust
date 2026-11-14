@@ -62,9 +62,9 @@ Name | Type | Description  | Required | Notes
 **country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
 **language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |
 **brand_kind** | Option<**String**> | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. |  |
-**range** | Option<**i32**> | Number of days to look back (alternative to from/to) |  |
-**from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
-**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
+**range** | Option<**i32**> | Number of days to look back (alternative to from/to, which win when both are given). A value that is not a plain positive number returns 422 ERR_INVALID_PARAM, even beside from/to. |  |
+**from** | Option<**chrono::DateTime<chrono::FixedOffset>**> | Start of the window. Sent alone, the window runs from it to the end of today. A from later than to, or a window longer than 1,500 days, returns 422 ERR_INVALID_PARAM. |  |
+**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. Sent without from, the window covers the 30 days that end on it. |  |
 
 ### Return type
 
@@ -106,9 +106,9 @@ Name | Type | Description  | Required | Notes
 **country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
 **language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |
 **brand_kind** | Option<**String**> | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. |  |
-**range** | Option<**i32**> | Number of days to look back (alternative to from/to) |  |
-**from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
-**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
+**range** | Option<**i32**> | Number of days to look back (alternative to from/to, which win when both are given). A value that is not a plain positive number returns 422 ERR_INVALID_PARAM, even beside from/to. |  |
+**from** | Option<**chrono::DateTime<chrono::FixedOffset>**> | Start of the window. Sent alone, the window runs from it to the end of today. A from later than to, or a window longer than 1,500 days, returns 422 ERR_INVALID_PARAM. |  |
+**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. Sent without from, the window covers the 30 days that end on it. |  |
 **output** | Option<**String**> | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. |  |
 
 ### Return type
@@ -150,9 +150,9 @@ Name | Type | Description  | Required | Notes
 **country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
 **language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |
 **brand_kind** | Option<**String**> | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. |  |
-**range** | Option<**i32**> | Number of days to look back (alternative to from/to) |  |
-**from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
-**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
+**range** | Option<**i32**> | Number of days to look back (alternative to from/to, which win when both are given). A value that is not a plain positive number returns 422 ERR_INVALID_PARAM, even beside from/to. |  |
+**from** | Option<**chrono::DateTime<chrono::FixedOffset>**> | Start of the window. Sent alone, the window runs from it to the end of today. A from later than to, or a window longer than 1,500 days, returns 422 ERR_INVALID_PARAM. |  |
+**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. Sent without from, the window covers the 30 days that end on it. |  |
 **output** | Option<**String**> | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. |  |
 
 ### Return type
@@ -191,7 +191,7 @@ Name | Type | Description  | Required | Notes
 **author** | Option<**String**> | Filter to one Reddit author |  |
 **status** | Option<**String**> | view=threads only |  |
 **owned** | Option<**bool**> | Return only subreddits/authors the account has claimed as its own |  |
-**brand** | Option<**String**> | Filter to citations whose scraped Reddit content mentions a brand: 'brand' for the tracked brand, or a competitor id. Reads the page content, not the AI answer. |  |
+**brand** | Option<**String**> | Filter to citations whose scraped Reddit content mentions a brand: 'brand' for the tracked brand, or a competitor id. Reads the page content, not the AI answer. Any other value, or an id that names no competitor of the project, returns 422 ERR_INVALID_PARAM. |  |
 **order** | Option<**String**> | Sort field; the allowed set depends on view, and view=breakdowns accepts none |  |
 **direction** | Option<**String**> |  |  |[default to desc]
 **model** | Option<**String**> | Filter by one AI model. It must be a model enabled for the API key's user: an unknown value, or a model the user has not enabled, returns 422 ERR_INVALID_PARAM with the valid values in the message. |  |
@@ -199,9 +199,9 @@ Name | Type | Description  | Required | Notes
 **country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
 **language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |
 **brand_kind** | Option<**String**> | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. |  |
-**range** | Option<**i32**> | Number of days to look back (alternative to from/to) |  |
-**from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
-**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
+**range** | Option<**i32**> | Number of days to look back (alternative to from/to, which win when both are given). A value that is not a plain positive number returns 422 ERR_INVALID_PARAM, even beside from/to. |  |
+**from** | Option<**chrono::DateTime<chrono::FixedOffset>**> | Start of the window. Sent alone, the window runs from it to the end of today. A from later than to, or a window longer than 1,500 days, returns 422 ERR_INVALID_PARAM. |  |
+**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. Sent without from, the window covers the 30 days that end on it. |  |
 **output** | Option<**String**> | Rectangular output for BI tools (Tableau, Excel, Sheets, ELT). Omit for the default nested JSON. 'flat' returns the same metadata plus 'columns' and 'rows'; 'csv' returns those rows as text/csv. Errors are always returned as JSON. |  |
 
 ### Return type

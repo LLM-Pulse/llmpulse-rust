@@ -43,7 +43,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_answers
 
-> list_answers(project_id, model, collection_id, country_code, language_code, prompt, mention_filter, citation_filter, competitors, from, to, page, per_page, query, no_result)
+> list_answers(project_id, model, collection_id, country_code, language_code, prompt, prompt_type, brand_kind, mention_filter, citation_filter, competitors, from, to, page, per_page, query, no_result)
 List AI responses
 
 Successful prompt-execution responses with truncated content (max 10,000 chars). Pass `query` for case-insensitive full-text search inside response texts: `total` becomes the exact count of matching responses and each item returns `snippet` + `match_count` instead of `response`/`response_truncated`.
@@ -58,12 +58,14 @@ Name | Type | Description  | Required | Notes
 **collection_id** | Option<**String**> | One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize. |  |
 **country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
 **language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |
-**prompt** | Option<**i32**> | Filter by prompt ID |  |
+**prompt** | Option<**u32**> | Filter by prompt ID. An id that is not a plain positive number, or that names no prompt of the project, returns 422 ERR_INVALID_PARAM. |  |
+**prompt_type** | Option<**String**> | One prompt type or a comma-separated list: informational, navigational, commercial, transactional |  |
+**brand_kind** | Option<**String**> | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. |  |
 **mention_filter** | Option<**String**> | Filter by which brands are mentioned, as a two-axis matrix (your brand x competitors): mentions_you / not_mentions_you, mentions_competitor / not_mentions_competitor, and the four combined cells you_and_competitor, competitor_not_you (a rival wins and you are absent), you_not_competitor, no_brands (no tracked brand appears, i.e. open space; on answers, finished answers only). Combine with 'competitors' to narrow the competitor side to specific rivals; on a negative cell that reads 'none of these'. On /dimensions/sources it applies to the crawled content of each cited page instead of the answer text. The legacy value 'competitors_only' is still accepted as an alias of competitor_not_you. |  |
 **citation_filter** | Option<**String**> | Same two-axis matrix applied to the domains cited in the answer instead of the brands named in it (cites_no_brands still allows other domains), plus no_citations, finished answers that cite no source at all. Independent of mention_filter; pass both to intersect them (e.g. mentions_you + not_cites_you finds answers that talk about you without linking to you). |  |
-**competitors** | Option<**String**> | Comma-separated competitor IDs (unknown IDs return ERR_INVALID_PARAM) |  |
-**from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
-**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
+**competitors** | Option<**String**> | Comma-separated competitor IDs (a malformed or unknown ID returns ERR_INVALID_PARAM) |  |
+**from** | Option<**chrono::DateTime<chrono::FixedOffset>**> | Start of the window. Sent alone, the window runs from it to the end of today. A from later than to, or a window longer than 1,500 days, returns 422 ERR_INVALID_PARAM. |  |
+**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. Sent without from, the window covers the 30 days that end on it. |  |
 **page** | Option<**u32**> |  |  |[default to 1]
 **per_page** | Option<**u32**> |  |  |[default to 20]
 **query** | Option<**String**> | Case-insensitive full-text search inside AI response texts. Switches items to snippet + match_count mode. |  |

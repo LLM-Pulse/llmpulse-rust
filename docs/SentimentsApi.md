@@ -24,7 +24,7 @@ One row per tag of the project with at least one analyzed mention, with the posi
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **project_id** | **i32** | Project ID | [required] |
-**range** | Option<**i32**> | Number of days to look back, today included (default 28, like the Sentiment page). Ignored when from or to is given. |  |
+**range** | Option<**i32**> | Number of days to look back, today included (default 28, like the Sentiment page). from or to win over it, but a value that is not a plain positive number returns 422 ERR_INVALID_PARAM even beside them. |  |
 **from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
 **to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
 **model** | Option<**String**> | Filter by one AI model. It must be a model enabled for the API key's user: an unknown value, or a model the user has not enabled, returns 422 ERR_INVALID_PARAM with the valid values in the message. |  |
@@ -71,7 +71,7 @@ One row per topic AI answers associate with the brand (topics are matched case-i
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **project_id** | **i32** | Project ID | [required] |
-**range** | Option<**i32**> | Number of days to look back, today included (default 28, like the Sentiment page). Ignored when from or to is given. |  |
+**range** | Option<**i32**> | Number of days to look back, today included (default 28, like the Sentiment page). from or to win over it, but a value that is not a plain positive number returns 422 ERR_INVALID_PARAM even beside them. |  |
 **from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
 **to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
 **model** | Option<**String**> | Filter by one AI model. It must be a model enabled for the API key's user: an unknown value, or a model the user has not enabled, returns 422 ERR_INVALID_PARAM with the valid values in the message. |  |
@@ -149,15 +149,15 @@ Requires the Growth plan; lower tiers receive ERR_PLAN_REQUIRED.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **project_id** | **i32** | Project ID | [required] |
-**competitor_id** | Option<**i32**> |  |  |
-**brand_only** | Option<**bool**> |  |  |
+**competitor_id** | Option<**u32**> | Keep the sentiments about this competitor. An id that is not a plain positive number, or that names no competitor of the project, returns 422 ERR_INVALID_PARAM. |  |
+**brand_only** | Option<**bool**> | true keeps only the sentiments about your own brand. |  |
 **analysis** | Option<**String**> | One sentiment level or a comma-separated list: very_positive, positive, neutral, negative, very_negative |  |
-**model** | Option<**String**> | Filter by one AI model. Here an unknown value, or a model the API key's user has not enabled, is ignored rather than rejected: the request succeeds and returns the records of every enabled model, as if model were omitted. |  |
+**model** | Option<**String**> | Filter by one AI model. It must be a model enabled for the API key's user: an unknown value, or a model the user has not enabled, returns 422 ERR_INVALID_PARAM with the valid values in the message. |  |
 **collection_id** | Option<**String**> | One collection/tag ID or a comma-separated list of IDs. A query value is always a string on the wire, so it is typed as one: the previous integer-or-string union made generators emit a wrapper type they could not serialize. |  |
 **country_code** | Option<**String**> | One ISO country code or a comma-separated list (e.g. US,GB,DE) |  |
 **language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |
-**from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
-**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
+**from** | Option<**chrono::DateTime<chrono::FixedOffset>**> | Start of the window. Sent alone, the window runs from it to the end of today. A from later than to, or a window longer than 1,500 days, returns 422 ERR_INVALID_PARAM. |  |
+**to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. Sent without from, the window covers the 30 days that end on it. |  |
 **page** | Option<**u32**> |  |  |[default to 1]
 **per_page** | Option<**u32**> |  |  |[default to 20]
 

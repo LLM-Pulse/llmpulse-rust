@@ -23,7 +23,7 @@ Per-model mentions, citations, brand net sentiment with raw counts, weighted vis
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **project_id** | **i32** | Project ID | [required] |
-**range** | Option<**i32**> | Number of days to look back (alternative to from/to) |  |
+**range** | Option<**i32**> | Number of days to look back (alternative to from/to, which win when both are given). A value that is not a plain positive number returns 422 ERR_INVALID_PARAM, even beside from/to. |  |
 **from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
 **to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
 **granularity** | Option<**String**> |  |  |
@@ -32,7 +32,7 @@ Name | Type | Description  | Required | Notes
 **language_code** | Option<**String**> | One ISO language code or a comma-separated list (e.g. en,es,de) |  |
 **prompt_type** | Option<**String**> | One prompt type or a comma-separated list: informational, navigational, commercial, transactional |  |
 **brand_kind** | Option<**String**> | Filter by brand kind: brand (own brand/products), brand_other (competitors/other brands), non_brand (generic, no brand named). For fair 1:1 brand-vs-competitor comparisons (visibility, share of voice), use non_brand: brand-focused prompts skew results toward the brand they name. The in-app Overview page applies non_brand by default. |  |
-**competitors** | Option<**String**> | Comma-separated competitor IDs (unknown IDs return ERR_INVALID_PARAM) |  |
+**competitors** | Option<**String**> | Comma-separated competitor IDs (a malformed or unknown ID returns ERR_INVALID_PARAM) |  |
 
 ### Return type
 
@@ -61,7 +61,7 @@ Position distribution comparison
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **project_id** | **i32** | Project ID | [required] |
-**range** | Option<**i32**> | Number of days to look back (alternative to from/to) |  |
+**range** | Option<**i32**> | Number of days to look back (alternative to from/to, which win when both are given). A value that is not a plain positive number returns 422 ERR_INVALID_PARAM, even beside from/to. |  |
 **from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
 **to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
 **granularity** | Option<**String**> |  |  |
@@ -101,7 +101,7 @@ Google AI Overview result availability
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **project_id** | **i32** | Project ID | [required] |
-**range** | Option<**i32**> | Number of days to look back (alternative to from/to) |  |
+**range** | Option<**i32**> | Number of days to look back (alternative to from/to, which win when both are given). A value that is not a plain positive number returns 422 ERR_INVALID_PARAM, even beside from/to. |  |
 **from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
 **to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
 **granularity** | Option<**String**> |  |  |

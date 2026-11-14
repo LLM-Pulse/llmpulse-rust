@@ -83,7 +83,7 @@ Lists active webhook subscriptions for the account, optionally filtered by proje
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**project_id** | Option<**i32**> | Optional project filter |  |
+**project_id** | Option<**i32**> | Optional project filter. An id that is not a plain number, or that names no project of the account, returns ERR_PROJECT_NOT_FOUND. |  |
 **page** | Option<**i32**> |  |  |
 **per_page** | Option<**i32**> | Max 100 |  |
 

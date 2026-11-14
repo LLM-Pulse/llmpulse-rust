@@ -25,7 +25,7 @@ Aggregated AI bot traffic hitting the project's origin server (GPTBot, Perplexit
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **project_id** | **i32** | Project ID | [required] |
-**range** | Option<**i32**> | Number of days to look back (alternative to from/to) |  |
+**range** | Option<**i32**> | Number of days to look back (alternative to from/to, which win when both are given). A value that is not a plain positive number returns 422 ERR_INVALID_PARAM, even beside from/to. |  |
 **from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
 **to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
 **bot** | Option<**String**> | Filter by bot slug (e.g. gptbot, claudebot, perplexitybot) |  |
@@ -62,7 +62,7 @@ AI referral traffic for a project: human visits arriving from AI assistants (Cha
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **project_id** | **i32** | Project ID | [required] |
-**range** | Option<**i32**> | Number of days to look back (alternative to from/to) |  |
+**range** | Option<**i32**> | Number of days to look back (alternative to from/to, which win when both are given). A value that is not a plain positive number returns 422 ERR_INVALID_PARAM, even beside from/to. |  |
 **from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
 **to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
 **source** | Option<**String**> | Filter by a single AI source slug (e.g. chatgpt, perplexity, gemini, claude) |  |

@@ -87,7 +87,7 @@ Name | Type | Description  | Required | Notes
 **project_id** | **i32** | Project ID | [required] |
 **from** | Option<**chrono::NaiveDate**> |  |  |
 **to** | Option<**chrono::NaiveDate**> |  |  |
-**annotation_category_id** | Option<**i32**> |  |  |
+**annotation_category_id** | Option<**u32**> | Keep the annotations filed under this category, one of the project's or a system category. Any other id returns 422 ERR_INVALID_PARAM. |  |
 **page** | Option<**u32**> |  |  |[default to 1]
 **per_page** | Option<**u32**> |  |  |[default to 20]
 
