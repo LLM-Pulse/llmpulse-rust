@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **step** | **Step** |  (enum: details, prompts, competitors, owned_media) | 
 **name** | Option<**String**> |  | [optional]
-**brand_name** | Option<**String**> |  | [optional]
+**brand_name** | Option<**String**> | Defaults to name. Up to 100 characters, the name included when it stands in; finalize refuses a longer one with ERR_INVALID_PARAM | [optional]
 **description** | Option<**String**> |  | [optional]
 **industry** | Option<**Vec<String>**> |  | [optional]
 **matching_names** | Option<**Vec<String>**> | Brand-name variants used to detect mentions (details step). At most 50 names of up to 100 characters each; the step stores the list as sent, and finalize refuses a longer list or name with ERR_INVALID_PARAM (422) | [optional]
