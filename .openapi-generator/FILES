@@ -14,6 +14,13 @@ docs/AgentBotsResponse.md
 docs/AgentTrafficResponse.md
 docs/AiAgentTrafficApi.md
 docs/AiModelCitationsRow.md
+docs/AiModelDeclineCounts.md
+docs/AiModelDeclinedAnswersResponse.md
+docs/AiModelDeclinedAnswersResponseByPrompt.md
+docs/AiModelDeclinedAnswersResponseByPromptDataInner.md
+docs/AiModelDeclinedAnswersResponseChartInner.md
+docs/AiModelDeclinedAnswersResponseFilters.md
+docs/AiModelDeclinedAnswersResponseSummary.md
 docs/AiModelInsightsApi.md
 docs/AiModelInsightsFiltersEcho.md
 docs/AiModelInsightsModel.md
@@ -414,6 +421,13 @@ src/models/agent_bot.rs
 src/models/agent_bots_response.rs
 src/models/agent_traffic_response.rs
 src/models/ai_model_citations_row.rs
+src/models/ai_model_decline_counts.rs
+src/models/ai_model_declined_answers_response.rs
+src/models/ai_model_declined_answers_response_by_prompt.rs
+src/models/ai_model_declined_answers_response_by_prompt_data_inner.rs
+src/models/ai_model_declined_answers_response_chart_inner.rs
+src/models/ai_model_declined_answers_response_filters.rs
+src/models/ai_model_declined_answers_response_summary.rs
 src/models/ai_model_insights_filters_echo.rs
 src/models/ai_model_insights_model.rs
 src/models/ai_model_insights_summary_response.rs
