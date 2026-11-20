@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **per_page** | Option<**i32**> |  | [optional]
 **total** | Option<**i32**> |  | [optional]
 **data** | Option<[**Vec<models::PromptSummaryRow>**](PromptSummaryRow.md)> |  | [optional]
+**plan_required_fields** | **Vec<String>** | The row fields left out because they need a higher plan (the sentiment fields below Growth); empty when none is | 
 **request_id** | Option<**String**> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

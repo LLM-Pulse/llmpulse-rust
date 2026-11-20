@@ -166,7 +166,7 @@ Name | Type | Description  | Required | Notes
 **from** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
 **to** | Option<**chrono::DateTime<chrono::FixedOffset>**> | End of the window. A date-only value such as 2026-09-01 covers that whole day. Pass a full timestamp to end the window earlier. |  |
 **source_type** | Option<**String**> |  |  |
-**sentiment** | Option<**String**> |  |  |
+**sentiment** | Option<**String**> | Keeps the citations of answers with a negative brand sentiment. Needs the Growth plan or above: below it the filter answers 403 ERR_PLAN_REQUIRED. |  |
 **content_gap** | Option<**String**> | mentioned: the cited page mentions your brand. gap: it mentions a competitor but not your brand. Only pages with usable content whose mention analysis has completed for this project match. |  |
 **include_series** | Option<**bool**> | Adds citation_series. Without it the response is unchanged. |  |[default to false]
 
@@ -300,7 +300,7 @@ Name | Type | Description  | Required | Notes
 **include_series** | Option<**bool**> | Requires key, else 422 ERR_INVALID_PARAM. Adds citation_series to the group's row. |  |[default to false]
 **query** | Option<**String**> |  |  |
 **source_type** | Option<**String**> |  |  |
-**sentiment** | Option<**String**> |  |  |
+**sentiment** | Option<**String**> | Keeps the citations of answers with a negative brand sentiment. Needs the Growth plan or above: below it the filter answers 403 ERR_PLAN_REQUIRED. |  |
 **content_gap** | Option<**String**> | mentioned: the cited page mentions your brand. gap: it mentions a competitor but not your brand. Only pages with usable content whose mention analysis has completed for this project match. |  |
 
 ### Return type
@@ -321,7 +321,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_cited_url_occurrences
 
-> list_cited_url_occurrences(project_id, url_sha256, page, per_page)
+> list_cited_url_occurrences(project_id, url_sha256, page, per_page, sentiment)
 Cited URL occurrences
 
 ### Parameters
@@ -333,6 +333,7 @@ Name | Type | Description  | Required | Notes
 **url_sha256** | **String** | 64-character hex SHA-256 of the cited URL | [required] |
 **page** | Option<**u32**> |  |  |[default to 1]
 **per_page** | Option<**u32**> |  |  |[default to 20]
+**sentiment** | Option<**String**> | Keeps the occurrences in answers with a negative brand sentiment. Needs the Growth plan or above: below it the filter answers 403 ERR_PLAN_REQUIRED. |  |
 
 ### Return type
 

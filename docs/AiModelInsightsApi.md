@@ -16,7 +16,7 @@ Method | HTTP request | Description
 > models::AiModelInsightsSummaryResponse get_ai_model_insights_summary(project_id, range, from, to, granularity, collection_id, country_code, language_code, prompt_type, brand_kind, competitors)
 AI Model Insights summary
 
-Per-model mentions, citations, brand net sentiment with raw counts, weighted visibility totals/shares, plus actor matrices. All actor entries use the standard shape `{ type, id, competitor_id, name, domain }` with bare (scheme-less) domains. Rows cover the AI models the account has enabled or that answered in the window. A share, net sentiment or market share value with nothing behind it is null; counts, totals and weighted visibility scores stay 0.
+Per-model mentions, citations, brand net sentiment with raw counts, weighted visibility totals/shares, plus actor matrices. All actor entries use the standard shape `{ type, id, competitor_id, name, domain }` with bare (scheme-less) domains. Rows cover the AI models the account has enabled or that answered in the window. A share, net sentiment or market share value with nothing behind it is null; counts, totals and weighted visibility scores stay 0. The sentiment sections (brand_net_sentiment_by_model and sentiment_market_share) need the Growth plan or above: below it they are left out and listed in `plan_required_fields`, which is always present and empty when nothing is left out.
 
 ### Parameters
 
