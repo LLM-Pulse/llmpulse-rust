@@ -60,6 +60,13 @@ docs/ApiErrorError.md
 docs/ApiKeyInfo.md
 docs/ApiKeysApi.md
 docs/AssignPromptTagsRequest.md
+docs/BingWebmasterListResponse.md
+docs/BingWebmasterListResponseDataInner.md
+docs/BingWebmasterMetrics.md
+docs/BingWebmasterSummaryResponse.md
+docs/BingWebmasterTimeseriesResponse.md
+docs/BingWebmasterTimeseriesResponseDataInner.md
+docs/BingWebmasterToolsApi.md
 docs/CatalogProduct.md
 docs/CatalogPromptSuggestion.md
 docs/CatalogPromptSuggestionIdsRequest.md
@@ -222,6 +229,7 @@ docs/ProjectDeleteResponse.md
 docs/ProjectDetails.md
 docs/ProjectDetailsAllOfAgentTraffic.md
 docs/ProjectDetailsAllOfAiTraffic.md
+docs/ProjectDetailsAllOfBingWebmaster.md
 docs/ProjectDetailsAllOfDataCoverage.md
 docs/ProjectDetailsAllOfPitchRun.md
 docs/ProjectDetailsAllOfSearchConsole.md
@@ -388,6 +396,7 @@ src/apis/ai_model_insights_api.rs
 src/apis/annotations_api.rs
 src/apis/answers_api.rs
 src/apis/api_keys_api.rs
+src/apis/bing_webmaster_tools_api.rs
 src/apis/collections_tags_api.rs
 src/apis/competitors_api.rs
 src/apis/configuration.rs
@@ -463,6 +472,12 @@ src/models/api_error.rs
 src/models/api_error_error.rs
 src/models/api_key_info.rs
 src/models/assign_prompt_tags_request.rs
+src/models/bing_webmaster_list_response.rs
+src/models/bing_webmaster_list_response_data_inner.rs
+src/models/bing_webmaster_metrics.rs
+src/models/bing_webmaster_summary_response.rs
+src/models/bing_webmaster_timeseries_response.rs
+src/models/bing_webmaster_timeseries_response_data_inner.rs
 src/models/catalog_product.rs
 src/models/catalog_prompt_suggestion.rs
 src/models/catalog_prompt_suggestion_ids_request.rs
@@ -617,6 +632,7 @@ src/models/project_delete_response.rs
 src/models/project_details.rs
 src/models/project_details_all_of_agent_traffic.rs
 src/models/project_details_all_of_ai_traffic.rs
+src/models/project_details_all_of_bing_webmaster.rs
 src/models/project_details_all_of_data_coverage.rs
 src/models/project_details_all_of_pitch_run.rs
 src/models/project_details_all_of_search_console.rs

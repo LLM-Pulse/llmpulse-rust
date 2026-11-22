@@ -117,6 +117,7 @@ pub mod api_keys_api;
 pub mod account_api;
 pub mod annotations_api;
 pub mod answers_api;
+pub mod bing_webmaster_tools_api;
 pub mod collections_tags_api;
 pub mod competitors_api;
 pub mod custom_reports_api;

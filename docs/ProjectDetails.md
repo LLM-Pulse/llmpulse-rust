@@ -34,6 +34,7 @@ Name | Type | Description | Notes
 **pitch_run** | Option<[**models::ProjectDetailsAllOfPitchRun**](ProjectDetailsAllOfPitchRun.md)> |  | [optional]
 **data_coverage** | Option<[**models::ProjectDetailsAllOfDataCoverage**](ProjectDetailsAllOfDataCoverage.md)> |  | [optional]
 **search_console** | Option<[**models::ProjectDetailsAllOfSearchConsole**](ProjectDetailsAllOfSearchConsole.md)> |  | [optional]
+**bing_webmaster** | Option<[**models::ProjectDetailsAllOfBingWebmaster**](ProjectDetailsAllOfBingWebmaster.md)> |  | [optional]
 **ai_traffic** | Option<[**models::ProjectDetailsAllOfAiTraffic**](ProjectDetailsAllOfAiTraffic.md)> |  | [optional]
 **agent_traffic** | Option<[**models::ProjectDetailsAllOfAgentTraffic**](ProjectDetailsAllOfAgentTraffic.md)> |  | [optional]
 **request_id** | Option<**String**> |  | [optional]
