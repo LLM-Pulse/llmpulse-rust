@@ -53,7 +53,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_ai_model_position_distribution
 
-> get_ai_model_position_distribution(project_id, range, from, to, granularity, collection_id, country_code, language_code, prompt_type, brand_kind, model, brand1, brand2)
+> models::AiModelPositionDistributionResponse get_ai_model_position_distribution(project_id, range, from, to, granularity, collection_id, country_code, language_code, prompt_type, brand_kind, model, brand1, brand2)
 Position distribution comparison
 
 ### Parameters
@@ -77,7 +77,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::AiModelPositionDistributionResponse**](AiModelPositionDistributionResponse.md)
 
 ### Authorization
 
@@ -86,14 +86,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## get_ai_overview_results
 
-> get_ai_overview_results(project_id, range, from, to, granularity, collection_id, country_code, language_code, prompt_type, brand_kind, page, per_page)
+> models::AiOverviewResultsResponse get_ai_overview_results(project_id, range, from, to, granularity, collection_id, country_code, language_code, prompt_type, brand_kind, page, per_page)
 Google AI Overview result availability
 
 ### Parameters
@@ -116,7 +116,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::AiOverviewResultsResponse**](AiOverviewResultsResponse.md)
 
 ### Authorization
 
@@ -125,7 +125,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

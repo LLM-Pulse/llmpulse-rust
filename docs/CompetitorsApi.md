@@ -45,7 +45,7 @@ Name | Type | Description  | Required | Notes
 
 ## delete_competitor
 
-> delete_competitor(project_id, id)
+> models::CompetitorDeleteResponse delete_competitor(project_id, id)
 Delete a competitor
 
 Deletes a competitor (irreversible). It disappears immediately and frees a competitor slot; a background job then deletes its mentions, citations, sentiment and share of voice history. Its ads, shopping products, local businesses and brand entities are kept and move to the project or another competitor they match, or stay unattributed. Requires a `read_write` scope API key.
@@ -60,7 +60,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::CompetitorDeleteResponse**](CompetitorDeleteResponse.md)
 
 ### Authorization
 
@@ -170,7 +170,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_competitor
 
-> update_competitor(id, update_competitor_request)
+> models::CompetitorUpdateResponse update_competitor(id, update_competitor_request)
 Update a competitor
 
 Updates brand_name, the competitor website domain or host, matching_names (full replacement list; the brand name is always included automatically), color and/or the citation URL matching rule. Website domain/host and citation-rule changes share one seven-day cooldown per competitor; other fields remain editable during the cooldown. Moving to a `domain` rule on the project's own domain, or a `host` rule on its own host, returns ERR_INVALID_PARAM. Name, website or citation-rule changes re-run historical matching in the background: the competitor shows processing=true for a few minutes and further edits are rejected meanwhile. Requires a `read_write` scope API key.
@@ -185,7 +185,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::CompetitorUpdateResponse**](CompetitorUpdateResponse.md)
 
 ### Authorization
 

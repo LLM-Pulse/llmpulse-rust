@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## get_recommendation
 
-> get_recommendation(project_id, id, item_status, resolve_source_refs)
+> models::RecommendationDetailResponse get_recommendation(project_id, id, item_status, resolve_source_refs)
 Get recommendation run with items
 
 ### Parameters
@@ -28,7 +28,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::RecommendationDetailResponse**](RecommendationDetailResponse.md)
 
 ### Authorization
 
@@ -44,7 +44,7 @@ Name | Type | Description  | Required | Notes
 
 ## launch_recommendations
 
-> launch_recommendations(launch_recommendations_request)
+> models::RecommendationLaunchResponse launch_recommendations(launch_recommendations_request)
 Launch a recommendations generation
 
 Launches a full-scope recommendations generation (async job, 1-3 minutes; poll GET /recommendations/{id} until status is completed). Consumes the project weekly recommendation-item budget: returns ERR_LIMIT_REACHED when it is exhausted or when a generation of the same type is already pending/processing. sentiment_reputation requires the Scale plan or above. Requires a `read_write` scope API key.
@@ -58,7 +58,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::RecommendationLaunchResponse**](RecommendationLaunchResponse.md)
 
 ### Authorization
 

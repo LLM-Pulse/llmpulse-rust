@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **updated_at** | **chrono::DateTime<chrono::FixedOffset>** |  | 
 **total_recommendations** | **i32** |  | 
 **high_priority_count** | **i32** |  | 
-**summary** | [**models::RecommendationSummarySummary**](RecommendationSummarySummary.md) |  | 
+**summary** | [**models::RecommendationDetailResponseSummary**](RecommendationDetailResponseSummary.md) |  | 
 **context** | **serde_json::Value** | Generation context and run diagnostics as stored; empty until the generation completes. Its keys are not a stable contract | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

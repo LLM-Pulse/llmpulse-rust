@@ -173,7 +173,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_reddit_citations
 
-> list_reddit_citations(project_id, page, per_page, view, subreddit, author, status, owned, brand, order, direction, model, collection_id, country_code, language_code, brand_kind, range, from, to, output)
+> models::RedditResponse list_reddit_citations(project_id, page, per_page, view, subreddit, author, status, owned, brand, order, direction, model, collection_id, country_code, language_code, brand_kind, range, from, to, output)
 List cited Reddit content
 
 Which Reddit content AI answers cite for your tracked prompts. view=subreddits (default) returns one row per subreddit with its citation count, unique authors and positive/negative sentiment split; view=authors returns one row per author; view=threads returns the individual cited threads with upvotes, comments, average position and dominant sentiment. view=breakdowns returns the figures behind Reddit Intelligence > Sentiment and breakdowns: citations is the number of Reddit citations after the filters, and each row is one slice, with breakdown (sentiment, model or country), key, count and pct, the share within its breakdown as the page charts it. Sentiment is that of the AI answer that cited Reddit, with all five labels (very_positive to very_negative) listed, zero included; order and direction do not apply. Requires the Growth plan or above.
@@ -206,7 +206,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::RedditResponse**](RedditResponse.md)
 
 ### Authorization
 

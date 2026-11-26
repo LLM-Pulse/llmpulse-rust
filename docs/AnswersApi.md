@@ -43,7 +43,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_answers
 
-> list_answers(project_id, model, collection_id, country_code, language_code, prompt, prompt_type, brand_kind, mention_filter, citation_filter, competitors, from, to, page, per_page, query, no_result)
+> models::AnswersResponse list_answers(project_id, model, collection_id, country_code, language_code, prompt, prompt_type, brand_kind, mention_filter, citation_filter, competitors, from, to, page, per_page, query, no_result)
 List AI responses
 
 Successful prompt-execution responses with truncated content (max 10,000 chars). Pass `query` for case-insensitive full-text search inside response texts: `total` becomes the exact count of matching responses and each item returns `snippet` + `match_count` instead of `response`/`response_truncated`.
@@ -73,7 +73,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::AnswersResponse**](AnswersResponse.md)
 
 ### Authorization
 

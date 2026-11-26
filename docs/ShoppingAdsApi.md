@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## list_ads
 
-> list_ads(project_id, page, per_page, view, owned, order, direction, query, model, collection_id, country_code, language_code, prompt, prompt_type, brand_kind, range, from, to, output)
+> models::AdsResponse list_ads(project_id, page, per_page, view, owned, order, direction, query, model, collection_id, country_code, language_code, prompt, prompt_type, brand_kind, range, from, to, output)
 List AI ad placements
 
 Paid placements returned inside AI answers. view=advertisers (default) returns one row per advertising domain with its placement count, prompt reach and average and best position; view=ads returns the individual placements with title, snippet, position and the prompt that triggered them. Position 1 is the best slot, so a LOWER average position is better. Requires the Scale plan or above.
@@ -44,7 +44,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::AdsResponse**](AdsResponse.md)
 
 ### Authorization
 
@@ -107,7 +107,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_shopping
 
-> list_shopping(project_id, page, per_page, view, owned, order, direction, query, model, collection_id, country_code, language_code, prompt, prompt_type, brand_kind, range, from, to, output)
+> models::ShoppingResponse list_shopping(project_id, page, per_page, view, owned, order, direction, query, model, collection_id, country_code, language_code, prompt, prompt_type, brand_kind, range, from, to, output)
 List shopping results
 
 Product cards returned inside AI answers. view=products (default) returns one row per distinct product, merged across executions, with its appearance count, price range, rating and whether it is yours, plus a currency_count saying how many currencies it was priced in (above 1 means the row reports its highest-priced listing and min_price may be another currency); view=merchants returns one row per selling merchant, with a currency field naming the money its price range and average are expressed in (AI answers price each market in its own currency, so a merchant that sells in more than one reports the currency most of its prices use). Every response also carries a totals block matching the KPI cards in the app, whose avg_price is computed inside the single currency named by avg_price_currency. Requires the Scale plan or above.
@@ -139,7 +139,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::ShoppingResponse**](ShoppingResponse.md)
 
 ### Authorization
 

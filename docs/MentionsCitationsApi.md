@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## list_all_citations
 
-> list_all_citations(project_id, competitors, page, per_page, model, collection_id, prompt, from, to, output, country_code, language_code, prompt_type, brand_kind, range)
+> models::AllCitationsResponse list_all_citations(project_id, competitors, page, per_page, model, collection_id, prompt, from, to, output, country_code, language_code, prompt_type, brand_kind, range)
 List all citations (brand + competitor)
 
 Unified citations stream with an `actor_type` field on each record. Includes visible citations and background source references; background references use position 0, meaning no visible rank.
@@ -43,7 +43,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::AllCitationsResponse**](AllCitationsResponse.md)
 
 ### Authorization
 
@@ -52,14 +52,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## list_all_mentions
 
-> list_all_mentions(project_id, competitors, page, per_page, model, collection_id, prompt, from, to, output, country_code, language_code, prompt_type, brand_kind, range)
+> models::AllMentionsResponse list_all_mentions(project_id, competitors, page, per_page, model, collection_id, prompt, from, to, output, country_code, language_code, prompt_type, brand_kind, range)
 List all mentions (brand + competitor)
 
 Unified mentions stream. Each record has an `actor_type` field (`project` or `competitor`) so the same payload covers both.
@@ -87,7 +87,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::AllMentionsResponse**](AllMentionsResponse.md)
 
 ### Authorization
 
@@ -96,7 +96,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -146,7 +146,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_competitor_citations
 
-> list_competitor_citations(project_id, competitors, page, per_page, model, collection_id, prompt, from, to, output, country_code, language_code, prompt_type, brand_kind, range)
+> models::CompetitorCitationsResponse list_competitor_citations(project_id, competitors, page, per_page, model, collection_id, prompt, from, to, output, country_code, language_code, prompt_type, brand_kind, range)
 List competitor citations
 
 Includes visible citations and background source references. Background references use position 0, meaning no visible rank.
@@ -174,7 +174,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::CompetitorCitationsResponse**](CompetitorCitationsResponse.md)
 
 ### Authorization
 
@@ -183,7 +183,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

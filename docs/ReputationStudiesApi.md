@@ -45,7 +45,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_reputation_report
 
-> get_reputation_report(id, project_id, page, per_page, model, brand, dimension, output)
+> models::ReputationReportScoresResponse get_reputation_report(id, project_id, page, per_page, model, brand, dimension, output)
 Get reputation report scores
 
 One reputation report's scores as flat rows: one row per analyst model, brand, dimension and attribute, with its 0-100 score and the reasoning the model gave. Scores come from several analyst models independently, so compare models rather than averaging them blindly.
@@ -66,7 +66,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::ReputationReportScoresResponse**](ReputationReportScoresResponse.md)
 
 ### Authorization
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_study
 
-> get_study(id)
+> models::StudyResponse get_study(id)
 Get a custom AI study
 
 One study with its brief, the subjects it compares, the dimensions it scores them on, and its report history. Use the ids in `reports` with GET /studies/{id}/reports/{report_id}.
@@ -96,7 +96,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::StudyResponse**](StudyResponse.md)
 
 ### Authorization
 
@@ -112,7 +112,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_study_report
 
-> get_study_report(id, report_id, page, per_page, model, subject, dimension, output)
+> models::StudyReportScoresResponse get_study_report(id, report_id, page, per_page, model, subject, dimension, output)
 Get custom study report scores
 
 One custom-study report's scores as flat rows: one row per analyst model, subject, dimension and attribute, with its 0-100 score and the reasoning the model gave.
@@ -133,7 +133,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::StudyReportScoresResponse**](StudyReportScoresResponse.md)
 
 ### Authorization
 
@@ -149,7 +149,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_reputation_reports
 
-> list_reputation_reports(project_id, page, per_page, output)
+> models::ReputationReportsResponse list_reputation_reports(project_id, page, per_page, output)
 List reputation reports
 
 The monthly multi-model analyst reports scoring the tracked brand and its competitors, newest first. Pending and failed reports are included on purpose: whether this month ran at all is often the question. Each row carries the report id, its status, and which analyst models produced data. Requires reputation monitoring to be enabled on the account.
@@ -166,7 +166,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::ReputationReportsResponse**](ReputationReportsResponse.md)
 
 ### Authorization
 
@@ -175,14 +175,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## list_studies
 
-> list_studies(project_id, status, page, per_page, output)
+> models::StudiesResponse list_studies(project_id, status, page, per_page, output)
 List custom AI studies
 
 The custom AI studies defined on the account: analyst reports over any set of subjects (brands, sectors, topics) and any set of dimensions. Studies belong to the ACCOUNT, not to a project, so project_id is an optional filter here and account-level studies are returned whichever project you filter by. A team member whose project access is restricted sees only the studies of the projects they can reach. Requires reputation monitoring to be enabled on the account.
@@ -200,7 +200,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::StudiesResponse**](StudiesResponse.md)
 
 ### Authorization
 
@@ -209,7 +209,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -114,7 +114,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_cited_url_content
 
-> get_cited_url_content(project_id, url_sha256)
+> models::CitedUrlContentResponse get_cited_url_content(project_id, url_sha256)
 Cited URL cached content
 
 Unavailable page content keeps the cited URL and citation metrics. Page metadata/content and unknown brand_mentioned/competitor_mentioned return null. content_gap_status is content_unavailable (or missing_page_cache) without usable content, and mentions_not_processed when the page has usable content but its mention analysis has not completed for this project. Mention fields (brand_mentioned, competitor_mentioned, brand_position, brands, mentions, content_gap_status) describe the analysis for the requesting project: a page not yet analyzed for it returns null (never false) brand_mentioned, competitor_mentioned and brand_position, empty brands and mentions arrays and page_cache.mentions_processed false. page_cache.mentions_processed is true exactly when brand_mentioned is not null. An analyzed page keeps its last result until a newer analysis replaces it. status_code shows a saved successful response or observed 404/410; other crawl failures and error_message are hidden. last_crawled_at dates the saved copy. Domain/host crawled_urls_count counts usable copies; brand_mentioned_urls_count and competitor_mentioned_urls_count count only URLs analyzed for the project and are null when none is.
@@ -129,7 +129,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::CitedUrlContentResponse**](CitedUrlContentResponse.md)
 
 ### Authorization
 
@@ -145,7 +145,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_cited_url_detail
 
-> get_cited_url_detail(project_id, url_sha256, model, collection_id, country_code, language_code, prompt, brand_kind, from, to, source_type, sentiment, content_gap, include_series)
+> models::CitedUrlDetailsResponse get_cited_url_detail(project_id, url_sha256, model, collection_id, country_code, language_code, prompt, brand_kind, from, to, source_type, sentiment, content_gap, include_series)
 Cited URL detail
 
 Unavailable page content keeps the cited URL and citation metrics. Page metadata/content and unknown brand_mentioned/competitor_mentioned return null. content_gap_status is content_unavailable (or missing_page_cache) without usable content, and mentions_not_processed when the page has usable content but its mention analysis has not completed for this project. Mention fields (brand_mentioned, competitor_mentioned, brand_position, brands, mentions, content_gap_status) describe the analysis for the requesting project: a page not yet analyzed for it returns null (never false) brand_mentioned, competitor_mentioned and brand_position, empty brands and mentions arrays and page_cache.mentions_processed false. page_cache.mentions_processed is true exactly when brand_mentioned is not null. An analyzed page keeps its last result until a newer analysis replaces it. status_code shows a saved successful response or observed 404/410; other crawl failures and error_message are hidden. last_crawled_at dates the saved copy. Domain/host crawled_urls_count counts usable copies; brand_mentioned_urls_count and competitor_mentioned_urls_count count only URLs analyzed for the project and are null when none is. The filters narrow stats and citation_series alike. citation_series (with include_series=true) holds the answers citing the URL under the same filters: granularity (day, week or month, from the account tracking cadence, with weeks when a daily account spans more than 60 days, starting on Monday), total (equal to total_responses), by_model (answers per AI model, largest first, which can include enabled models outside the seven the model filter accepts) and data, one { date, value } point per period that holds a filtered answer, so a zero means answers ran and none cited it. Periods date each answer by the day it was created in Europe/Madrid time, the date from and to filter.
@@ -172,7 +172,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::CitedUrlDetailsResponse**](CitedUrlDetailsResponse.md)
 
 ### Authorization
 
@@ -188,7 +188,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_mentions_by_citing_domain
 
-> get_mentions_by_citing_domain(project_id, domains, model, collection_id, country_code, language_code, prompt, brand_kind, from, to)
+> models::CitingDomainMentionShareResponse get_mentions_by_citing_domain(project_id, domains, model, collection_id, country_code, language_code, prompt, brand_kind, from, to)
 Mention share by citing domain
 
 For the responses where each given source domain is cited, returns the share of those responses that mention the brand vs each competitor (brand + competitors sum to 100% per domain). Pass multiple domains to get the whole matrix in one call.
@@ -211,7 +211,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::CitingDomainMentionShareResponse**](CitingDomainMentionShareResponse.md)
 
 ### Authorization
 
@@ -272,7 +272,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_citation_groups
 
-> list_citation_groups(project_id, view, page, per_page, order, direction, model, collection_id, country_code, language_code, prompt, brand_kind, from, to, key, include_series, query, source_type, sentiment, content_gap)
+> models::CitationGroupsResponse list_citation_groups(project_id, view, page, per_page, order, direction, model, collection_id, country_code, language_code, prompt, brand_kind, from, to, key, include_series, query, source_type, sentiment, content_gap)
 Grouped citation intelligence
 
 Grouped citation intelligence by url / domain / host with per-model breakdown, citation rate, and avg citation position. Counts and citation rate include visible citations and background source references. Average position ignores rows with position=0. Owned and competitor source matching honor the project's exact-subdomain setting. Filter vocabulary aligns with `source_type` returned by the API. Unavailable page content keeps the cited URL and citation metrics. Page metadata/content and unknown brand_mentioned/competitor_mentioned return null. content_gap_status is content_unavailable (or missing_page_cache) without usable content, and mentions_not_processed when the page has usable content but its mention analysis has not completed for this project. Mention fields (brand_mentioned, competitor_mentioned, brand_position, brands, mentions, content_gap_status) describe the analysis for the requesting project: a page not yet analyzed for it returns null (never false) brand_mentioned, competitor_mentioned and brand_position, empty brands and mentions arrays and page_cache.mentions_processed false. page_cache.mentions_processed is true exactly when brand_mentioned is not null. An analyzed page keeps its last result until a newer analysis replaces it. status_code shows a saved successful response or observed 404/410; other crawl failures and error_message are hidden. last_crawled_at dates the saved copy. Domain/host crawled_urls_count counts usable copies; brand_mentioned_urls_count and competitor_mentioned_urls_count count only URLs analyzed for the project and are null when none is. Pass key to read one group; brand_kind filters by the brand focus of the prompts, like the source page. citation_series (with include_series=true) holds the answers citing the URL, domain or host under the same filters: granularity (day, week or month, from the account tracking cadence, with weeks when a daily account spans more than 60 days, starting on Monday), total (equal to total_responses), by_model (answers per AI model, largest first, which can include enabled models outside the seven the model filter accepts) and data, one { date, value } point per period that holds a filtered answer, so a zero means answers ran and none cited it. Periods date each answer by the day it was created in Europe/Madrid time, the date from and to filter.
@@ -305,7 +305,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::CitationGroupsResponse**](CitationGroupsResponse.md)
 
 ### Authorization
 
@@ -321,7 +321,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_cited_url_occurrences
 
-> list_cited_url_occurrences(project_id, url_sha256, page, per_page, sentiment)
+> models::CitedUrlOccurrencesResponse list_cited_url_occurrences(project_id, url_sha256, page, per_page, sentiment)
 Cited URL occurrences
 
 ### Parameters
@@ -337,7 +337,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::CitedUrlOccurrencesResponse**](CitedUrlOccurrencesResponse.md)
 
 ### Authorization
 
@@ -353,7 +353,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_sources
 
-> list_sources(project_id, page, per_page, model, collection_id, country_code, language_code, prompt, from, to, source_type, mention_filter, competitors, output, prompt_type, brand_kind, range)
+> models::SourcesResponse list_sources(project_id, page, per_page, model, collection_id, country_code, language_code, prompt, from, to, source_type, mention_filter, competitors, output, prompt_type, brand_kind, range)
 List source URLs
 
 ### Parameters
@@ -381,7 +381,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::SourcesResponse**](SourcesResponse.md)
 
 ### Authorization
 

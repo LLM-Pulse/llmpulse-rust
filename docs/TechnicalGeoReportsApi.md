@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## create_technical_geo_reports
 
-> create_technical_geo_reports(create_technical_geo_reports_request)
+> models::TechnicalGeoReportsCreateResponse create_technical_geo_reports(create_technical_geo_reports_request)
 Run technical GEO analysis
 
 Launches the full nine-report technical GEO analysis bundle for a URL + country. The bundle starts only when at least nine daily units remain. Each successfully created report uses one unit; a report that is not created uses none. Daily allocations vary by account. Each report runs in a background job. Requires a `read_write` scope API key.
@@ -28,7 +28,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::TechnicalGeoReportsCreateResponse**](TechnicalGeoReportsCreateResponse.md)
 
 ### Authorization
 
@@ -44,7 +44,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_technical_geo_report
 
-> get_technical_geo_report(project_id, report_type, id)
+> models::TechnicalGeoReportResponse get_technical_geo_report(project_id, report_type, id)
 Get a technical GEO report
 
 Returns the current status and the full result_data once the report is completed. While it is running, result_data is null and poll_after_seconds tells clients when to check again. Summaries carry output_language_code (the ISO 639-1 code an llms_txt report was requested in; null for an llms_txt report written in the website's own language, requested as auto or chosen in the app, and for every other report type); a completed llms_txt result_data also returns content_version (send it back to PATCH /technical_geo_reports/{id}/content), manually_edited_at, original_llms_txt_content and original_llms_full_txt_content (the generated files, kept from the first manual edit in the app, the API or MCP) and metadata.output_language_code.
@@ -60,7 +60,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::TechnicalGeoReportResponse**](TechnicalGeoReportResponse.md)
 
 ### Authorization
 
@@ -76,7 +76,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_technical_geo_reports
 
-> list_technical_geo_reports(project_id, report_type, status, batch_id, page, per_page)
+> models::TechnicalGeoReportsResponse list_technical_geo_reports(project_id, report_type, status, batch_id, page, per_page)
 List technical GEO reports
 
 Lists reports of one technical GEO type for a project, newest first. Use agent_readiness for the AI/Agent Readiness report.
@@ -95,7 +95,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::TechnicalGeoReportsResponse**](TechnicalGeoReportsResponse.md)
 
 ### Authorization
 

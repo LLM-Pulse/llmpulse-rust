@@ -107,7 +107,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_sentiment_categories
 
-> list_sentiment_categories(project_id, output)
+> models::SentimentCategoriesResponse list_sentiment_categories(project_id, output)
 List sentiment categories (Growth plan or above)
 
 Sentiment metric keys + labels + colors. For records, use /sentiments. Requires the Growth plan; lower tiers receive ERR_PLAN_REQUIRED.
@@ -122,7 +122,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::SentimentCategoriesResponse**](SentimentCategoriesResponse.md)
 
 ### Authorization
 

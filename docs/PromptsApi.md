@@ -111,7 +111,7 @@ Name | Type | Description  | Required | Notes
 
 ## delete_prompt
 
-> delete_prompt(project_id, id)
+> models::PromptDeleteResponse delete_prompt(project_id, id)
 Delete a prompt
 
 Deletes a prompt (irreversible). The prompt disappears immediately and frees a prompt slot; its historical data (executions, mentions, citations, sentiment) is purged by a background job. Until that job finishes, its answers, mentions and metrics still count the prompt, so totals can include it for a short while. The prompts of a launched pitch project are fixed, so deleting one returns ERR_INVALID_PARAM with error.meta.reason pitch_prompts_frozen. Requires a `read_write` scope API key.
@@ -126,7 +126,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::PromptDeleteResponse**](PromptDeleteResponse.md)
 
 ### Authorization
 
@@ -286,7 +286,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_query_fan_outs
 
-> list_query_fan_outs(project_id, page, per_page, view, order, direction, query, model, collection_id, country_code, language_code, prompt, prompt_type, brand_kind, range, from, to, output)
+> models::QueryFanOutsResponse list_query_fan_outs(project_id, page, per_page, view, order, direction, query, model, collection_id, country_code, language_code, prompt, prompt_type, brand_kind, range, from, to, output)
 List query fan-out
 
 The sub-queries a model actually issued when answering your tracked prompts. view=query (default) returns one row per distinct sub-query with count and share of all occurrences; view=prompt returns one row per prompt with how many distinct sub-queries it produced. Fan-out is reported mainly by ChatGPT, so an empty result usually means the models in scope do not expose it. The API returns the aggregation only: for a period-over-period delta, call it twice with explicit from/to.
@@ -317,7 +317,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::QueryFanOutsResponse**](QueryFanOutsResponse.md)
 
 ### Authorization
 

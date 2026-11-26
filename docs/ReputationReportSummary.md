@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | Report id for GET /reputation/reports/{id} | 
+**id** | **String** | Report id for GET /reputation/reports/{id}, or GET /studies/{id}/reports/{report_id} for a study report | 
 **status** | **Status** |  (enum: pending, processing, completed, failed) | 
 **created_at** | **chrono::DateTime<chrono::FixedOffset>** |  | 
 **processed_at** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]

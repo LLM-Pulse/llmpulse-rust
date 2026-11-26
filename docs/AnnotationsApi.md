@@ -43,7 +43,7 @@ Name | Type | Description  | Required | Notes
 
 ## delete_annotation
 
-> delete_annotation(project_id, id)
+> models::AnnotationDeleteResponse delete_annotation(project_id, id)
 Delete a timeline annotation
 
 Deletes an annotation. Same ownership rule as PATCH. Available on every plan and requires a `read_write` scope API key.
@@ -58,7 +58,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::AnnotationDeleteResponse**](AnnotationDeleteResponse.md)
 
 ### Authorization
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_annotations
 
-> list_annotations(project_id, from, to, annotation_category_id, page, per_page)
+> models::AnnotationsResponse list_annotations(project_id, from, to, annotation_category_id, page, per_page)
 List timeline annotations
 
 Lists project timeline annotations, newest first. Rows can come from manual notes, project automations, or platform events. The origin field distinguishes them; editable says whether the requesting user may modify the row. Available on every plan.
@@ -93,7 +93,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::AnnotationsResponse**](AnnotationsResponse.md)
 
 ### Authorization
 
@@ -109,7 +109,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_annotation
 
-> update_annotation(id, update_annotation_request)
+> models::AnnotationUpdateResponse update_annotation(id, update_annotation_request)
 Update a timeline annotation
 
 Updates title, description, annotation_date, color and/or annotation_category_id. Only user-created annotations belonging to the requesting user can be updated (system annotations never). Available on every plan and requires a `read_write` scope API key.
@@ -124,7 +124,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::AnnotationUpdateResponse**](AnnotationUpdateResponse.md)
 
 ### Authorization
 

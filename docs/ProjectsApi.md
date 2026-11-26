@@ -50,7 +50,7 @@ Name | Type | Description  | Required | Notes
 
 ## create_project_draft
 
-> create_project_draft(create_project_draft_request)
+> models::ProjectDraftResponse create_project_draft(create_project_draft_request)
 Start a project draft (wizard step 1)
 
 Start the multi-step project-creation wizard. Returns a draft_id plus AI suggestions (name, description, industry, brand aliases) for the URL. Cold URLs can take up to ~2 minutes to analyze; pass suggest=false to skip AI and respond instantly. Drafts expire after 24h. Requires a `read_write` scope API key.
@@ -64,7 +64,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::ProjectDraftResponse**](ProjectDraftResponse.md)
 
 ### Authorization
 
@@ -171,7 +171,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_project_draft
 
-> get_project_draft(id, include_suggestions)
+> models::ProjectDraftResponse get_project_draft(id, include_suggestions)
 Read a project draft
 
 ### Parameters
@@ -184,7 +184,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::ProjectDraftResponse**](ProjectDraftResponse.md)
 
 ### Authorization
 
@@ -318,7 +318,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_project_draft
 
-> update_project_draft(id, update_project_draft_request)
+> models::ProjectDraftResponse update_project_draft(id, update_project_draft_request)
 Submit a wizard step
 
 Submit one step (details, prompts, competitors, owned_media). Strict forward gating: a step is only accepted when every previous step is complete (`ERR_DRAFT_STATE` otherwise); completed steps can be resubmitted. Responds with the updated draft plus AI suggestions for the next step.
@@ -333,7 +333,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::ProjectDraftResponse**](ProjectDraftResponse.md)
 
 ### Authorization
 

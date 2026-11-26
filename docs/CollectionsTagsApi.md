@@ -76,7 +76,7 @@ Name | Type | Description  | Required | Notes
 
 ## delete_collection
 
-> delete_collection(project_id, id)
+> models::CollectionDeleteResponse delete_collection(project_id, id)
 Delete a tag
 
 Deletes a tag/collection. The prompts inside it are NOT deleted; only the grouping disappears. Requires a `read_write` scope API key.
@@ -91,7 +91,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::CollectionDeleteResponse**](CollectionDeleteResponse.md)
 
 ### Authorization
 
@@ -195,7 +195,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_collection
 
-> update_collection(id, update_collection_request)
+> models::CollectionUpdateResponse update_collection(id, update_collection_request)
 Update a tag
 
 Renames a tag/collection or changes its description. Prompt membership is managed via POST /prompts/assign_tags, not here. Requires a `read_write` scope API key.
@@ -210,7 +210,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::CollectionUpdateResponse**](CollectionUpdateResponse.md)
 
 ### Authorization
 
