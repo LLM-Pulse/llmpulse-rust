@@ -1,6 +1,6 @@
 [package]
 name = "llmpulse"
-version = "1.105.0"
+version = "1.106.0"
 authors = ["info@llmpulse.ai"]
 description = "REST API client for LLM Pulse AI visibility analytics."
 license = "MIT"
@@ -14,7 +14,9 @@ serde_repr = "^0.1"
 url = "^2.5"
 uuid = { version = "^1.8", features = ["serde", "v4"] }
 chrono = { version = "^0.4",  features = ["serde"] }
-reqwest = { version = "^0.13", default-features = false, features = ["json", "multipart", "query", "form"] }
+tokio = { version = "^1.46.0", features = ["fs"] }
+tokio-util = { version = "^0.7", features = ["codec"] }
+reqwest = { version = "^0.13", default-features = false, features = ["json", "multipart", "stream", "query", "form"] }
 
 [features]
 default = ["native-tls"]

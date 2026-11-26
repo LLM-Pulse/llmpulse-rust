@@ -269,6 +269,7 @@ docs/OwnedMediaSummaryResponse.md
 docs/OwnedMediaSummaryResponsePrevious.md
 docs/OwnedMediaWeek.md
 docs/PaginatedEnvelope.md
+docs/PeecExportImportResponse.md
 docs/Ping200Response.md
 docs/Project.md
 docs/ProjectCreateRequest.md
@@ -321,6 +322,7 @@ docs/PromptsApi.md
 docs/PromptsCreateRequest.md
 docs/PromptsCreateResponse.md
 docs/PromptsCreateResponseDataInner.md
+docs/PromptsImportFileResponse.md
 docs/PromptsImportRequest.md
 docs/PromptsImportRequestRowsInner.md
 docs/PromptsImportResponse.md
@@ -765,6 +767,7 @@ src/models/owned_media_summary_response.rs
 src/models/owned_media_summary_response_previous.rs
 src/models/owned_media_week.rs
 src/models/paginated_envelope.rs
+src/models/peec_export_import_response.rs
 src/models/ping_200_response.rs
 src/models/project.rs
 src/models/project_create_request.rs
@@ -815,6 +818,7 @@ src/models/prompt_tags_remove_response.rs
 src/models/prompts_create_request.rs
 src/models/prompts_create_response.rs
 src/models/prompts_create_response_data_inner.rs
+src/models/prompts_import_file_response.rs
 src/models/prompts_import_request.rs
 src/models/prompts_import_request_rows_inner.rs
 src/models/prompts_import_response.rs
