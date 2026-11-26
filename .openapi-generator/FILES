@@ -3,6 +3,7 @@
 .travis.yml
 Cargo.toml
 README.md
+docs/AccountAgentUsage.md
 docs/AccountApi.md
 docs/AccountCapacity.md
 docs/AccountExecutionQuota.md
@@ -421,6 +422,7 @@ src/apis/team_api.rs
 src/apis/technical_geo_reports_api.rs
 src/apis/webhooks_api.rs
 src/lib.rs
+src/models/account_agent_usage.rs
 src/models/account_capacity.rs
 src/models/account_execution_quota.rs
 src/models/account_pitch_quota.rs
