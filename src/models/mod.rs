@@ -498,8 +498,6 @@ pub mod owned_media_week;
 pub use self::owned_media_week::OwnedMediaWeek;
 pub mod paginated_envelope;
 pub use self::paginated_envelope::PaginatedEnvelope;
-pub mod peec_export_import_response;
-pub use self::peec_export_import_response::PeecExportImportResponse;
 pub mod ping_200_response;
 pub use self::ping_200_response::Ping200Response;
 pub mod project;
